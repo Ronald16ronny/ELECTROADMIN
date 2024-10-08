@@ -147,7 +147,6 @@ public class Login extends javax.swing.JFrame {
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Captura de pantalla 2024-09-23 172606.png"))); // NOI18N
         jPanel3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 20, 170, 160));
 
-        txtUsuario.setBackground(new java.awt.Color(255, 255, 255));
         txtUsuario.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txtUsuario.setForeground(new java.awt.Color(204, 204, 204));
         txtUsuario.setText("Ingrese su usuario");
@@ -167,7 +166,6 @@ public class Login extends javax.swing.JFrame {
         jSeparator1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel3.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 310, 310, 40));
 
-        psscontraseña.setBackground(new java.awt.Color(255, 255, 255));
         psscontraseña.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         psscontraseña.setForeground(new java.awt.Color(204, 204, 204));
         psscontraseña.setText("********");

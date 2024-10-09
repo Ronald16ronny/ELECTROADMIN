@@ -4,6 +4,8 @@
  */
 package Formularios;
 
+import java.awt.Dimension;
+
 /**
  *
  * @author JOSUE
@@ -15,6 +17,11 @@ public class Menu extends javax.swing.JFrame {
      */
     public Menu() {
         initComponents();
+        this.setSize(new Dimension(1200, 700));
+        this.setExtendedState(this.MAXIMIZED_BOTH);
+        this.setLocationRelativeTo(null);
+       this.setContentPane(this.dpMenu);
+       this.setContentPane(this.pnPanel);
     }
 
     /**
@@ -26,17 +33,233 @@ public class Menu extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        dpMenu = new javax.swing.JDesktopPane();
+        pnPanel = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        MnUsuario = new javax.swing.JMenu();
+        MnINuevoUsuario = new javax.swing.JMenuItem();
+        MnIGesUsuario = new javax.swing.JMenuItem();
+        MnProducto = new javax.swing.JMenu();
+        MnINuevoProducto = new javax.swing.JMenuItem();
+        MnIGesProducto = new javax.swing.JMenuItem();
+        MnIActualizarStock = new javax.swing.JMenuItem();
+        MnCliente = new javax.swing.JMenu();
+        MnINuevoCliente = new javax.swing.JMenuItem();
+        MnIGesCliente = new javax.swing.JMenuItem();
+        MnCategoria = new javax.swing.JMenu();
+        MnINuevaCategoria = new javax.swing.JMenuItem();
+        MnIGesCategoria = new javax.swing.JMenuItem();
+        MnVenta = new javax.swing.JMenu();
+        Mnventa = new javax.swing.JMenu();
+        MnIBoleta = new javax.swing.JMenuItem();
+        MnIFactura = new javax.swing.JMenuItem();
+        jSeparator1 = new javax.swing.JPopupMenu.Separator();
+        MnIGesVenta = new javax.swing.JMenuItem();
+        MnReporte = new javax.swing.JMenu();
+        MnIRepCliente = new javax.swing.JMenuItem();
+        MnIRepCategoria = new javax.swing.JMenuItem();
+        MnIRepProducto = new javax.swing.JMenuItem();
+        MnIRepVenta = new javax.swing.JMenuItem();
+        MnHistorial = new javax.swing.JMenu();
+        MnIHistorial = new javax.swing.JMenuItem();
+        MnCerrarSesion = new javax.swing.JMenu();
+        MnICerarsesion = new javax.swing.JMenuItem();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        dpMenu.setBackground(new java.awt.Color(255, 255, 255));
+        dpMenu.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        pnPanel.setBackground(new java.awt.Color(255, 255, 255));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Captura de pantalla 2024-09-20 152706.png"))); // NOI18N
+
+        javax.swing.GroupLayout pnPanelLayout = new javax.swing.GroupLayout(pnPanel);
+        pnPanel.setLayout(pnPanelLayout);
+        pnPanelLayout.setHorizontalGroup(
+            pnPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnPanelLayout.createSequentialGroup()
+                .addGap(0, 868, Short.MAX_VALUE)
+                .addComponent(jLabel1))
+        );
+        pnPanelLayout.setVerticalGroup(
+            pnPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnPanelLayout.createSequentialGroup()
+                .addContainerGap(617, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addContainerGap())
+        );
+
+        dpMenu.add(pnPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1200, 650));
+
+        jMenuBar1.setBackground(new java.awt.Color(255, 255, 255));
+
+        MnUsuario.setForeground(new java.awt.Color(0, 0, 0));
+        MnUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/USUARIO.png"))); // NOI18N
+        MnUsuario.setText("Usuario");
+        MnUsuario.setFont(new java.awt.Font("Arial Narrow", 0, 16)); // NOI18N
+        MnUsuario.setMargin(new java.awt.Insets(3, 13, 3, 13));
+
+        MnINuevoUsuario.setFont(new java.awt.Font("Arial Narrow", 0, 14)); // NOI18N
+        MnINuevoUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/NUEVO USUARIO.png"))); // NOI18N
+        MnINuevoUsuario.setText("Nuevo Usuario");
+        MnUsuario.add(MnINuevoUsuario);
+
+        MnIGesUsuario.setFont(new java.awt.Font("Arial Narrow", 0, 14)); // NOI18N
+        MnIGesUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/GESTIONARUSUARIO.png"))); // NOI18N
+        MnIGesUsuario.setText("Gestionar Usuarios");
+        MnUsuario.add(MnIGesUsuario);
+
+        jMenuBar1.add(MnUsuario);
+
+        MnProducto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/PRODUCTO.png"))); // NOI18N
+        MnProducto.setText("Producto");
+        MnProducto.setFont(new java.awt.Font("Arial Narrow", 0, 16)); // NOI18N
+        MnProducto.setMargin(new java.awt.Insets(3, 13, 3, 13));
+
+        MnINuevoProducto.setFont(new java.awt.Font("Arial Narrow", 0, 14)); // NOI18N
+        MnINuevoProducto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/NUEVO PRODUCTO.png"))); // NOI18N
+        MnINuevoProducto.setText("Nuevo Producto");
+        MnProducto.add(MnINuevoProducto);
+
+        MnIGesProducto.setFont(new java.awt.Font("Arial Narrow", 0, 14)); // NOI18N
+        MnIGesProducto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/GESTIONAR PRODUCTO.png"))); // NOI18N
+        MnIGesProducto.setText("Gestionar Producto");
+        MnProducto.add(MnIGesProducto);
+
+        MnIActualizarStock.setFont(new java.awt.Font("Arial Narrow", 0, 14)); // NOI18N
+        MnIActualizarStock.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/ACTUALIZAR STOCK.png"))); // NOI18N
+        MnIActualizarStock.setText("Actualizar Stock");
+        MnProducto.add(MnIActualizarStock);
+
+        jMenuBar1.add(MnProducto);
+
+        MnCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/CLIENTE.png"))); // NOI18N
+        MnCliente.setText("Cliente");
+        MnCliente.setFont(new java.awt.Font("Arial Narrow", 0, 16)); // NOI18N
+        MnCliente.setMargin(new java.awt.Insets(3, 13, 3, 13));
+
+        MnINuevoCliente.setFont(new java.awt.Font("Arial Narrow", 0, 14)); // NOI18N
+        MnINuevoCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/NUEVO CLIENTE.png"))); // NOI18N
+        MnINuevoCliente.setText("NuevoCliente");
+        MnCliente.add(MnINuevoCliente);
+
+        MnIGesCliente.setFont(new java.awt.Font("Arial Narrow", 0, 14)); // NOI18N
+        MnIGesCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/GESTIONAR CLIENTE.png"))); // NOI18N
+        MnIGesCliente.setText(" Gestionar Cliente");
+        MnCliente.add(MnIGesCliente);
+
+        jMenuBar1.add(MnCliente);
+
+        MnCategoria.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/CATEGORIA.png"))); // NOI18N
+        MnCategoria.setText("Categoria");
+        MnCategoria.setFont(new java.awt.Font("Arial Narrow", 0, 16)); // NOI18N
+        MnCategoria.setMargin(new java.awt.Insets(3, 13, 3, 13));
+
+        MnINuevaCategoria.setFont(new java.awt.Font("Arial Narrow", 0, 14)); // NOI18N
+        MnINuevaCategoria.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/NUEVA CATEGORIA.png"))); // NOI18N
+        MnINuevaCategoria.setText("Nueva Categoria");
+        MnCategoria.add(MnINuevaCategoria);
+
+        MnIGesCategoria.setFont(new java.awt.Font("Arial Narrow", 0, 14)); // NOI18N
+        MnIGesCategoria.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/GESTIONAR CATEGORIA.png"))); // NOI18N
+        MnIGesCategoria.setText("Gestionar Categoria");
+        MnCategoria.add(MnIGesCategoria);
+
+        jMenuBar1.add(MnCategoria);
+
+        MnVenta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/VENTA.png"))); // NOI18N
+        MnVenta.setText("Venta");
+        MnVenta.setFont(new java.awt.Font("Arial Narrow", 0, 16)); // NOI18N
+        MnVenta.setMargin(new java.awt.Insets(3, 13, 3, 13));
+
+        Mnventa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/NUEVA VENTA.png"))); // NOI18N
+        Mnventa.setText("Nueva Venta");
+        Mnventa.setFont(new java.awt.Font("Arial Narrow", 0, 14)); // NOI18N
+
+        MnIBoleta.setFont(new java.awt.Font("Arial Narrow", 0, 14)); // NOI18N
+        MnIBoleta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/BOLETA.png"))); // NOI18N
+        MnIBoleta.setText("Boleta");
+        Mnventa.add(MnIBoleta);
+
+        MnIFactura.setFont(new java.awt.Font("Arial Narrow", 0, 14)); // NOI18N
+        MnIFactura.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/FACTURA.png"))); // NOI18N
+        MnIFactura.setText("Factura");
+        Mnventa.add(MnIFactura);
+
+        MnVenta.add(Mnventa);
+        MnVenta.add(jSeparator1);
+
+        MnIGesVenta.setFont(new java.awt.Font("Arial Narrow", 0, 14)); // NOI18N
+        MnIGesVenta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/GESTIONAR VENTA.png"))); // NOI18N
+        MnIGesVenta.setText("Gestionar Venta");
+        MnVenta.add(MnIGesVenta);
+
+        jMenuBar1.add(MnVenta);
+
+        MnReporte.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/REPORTE 3.png"))); // NOI18N
+        MnReporte.setText("Reporte");
+        MnReporte.setFont(new java.awt.Font("Arial Narrow", 0, 16)); // NOI18N
+        MnReporte.setMargin(new java.awt.Insets(3, 13, 3, 13));
+
+        MnIRepCliente.setFont(new java.awt.Font("Arial Narrow", 0, 14)); // NOI18N
+        MnIRepCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/REPORTE2.png"))); // NOI18N
+        MnIRepCliente.setText("Reporte Clientes");
+        MnReporte.add(MnIRepCliente);
+
+        MnIRepCategoria.setFont(new java.awt.Font("Arial Narrow", 0, 14)); // NOI18N
+        MnIRepCategoria.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/REPORTE2.png"))); // NOI18N
+        MnIRepCategoria.setText("Reporte Categoria");
+        MnReporte.add(MnIRepCategoria);
+
+        MnIRepProducto.setFont(new java.awt.Font("Arial Narrow", 0, 14)); // NOI18N
+        MnIRepProducto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/REPORTE2.png"))); // NOI18N
+        MnIRepProducto.setText("Reporte Producto");
+        MnReporte.add(MnIRepProducto);
+
+        MnIRepVenta.setFont(new java.awt.Font("Arial Narrow", 0, 14)); // NOI18N
+        MnIRepVenta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/REPORTE2.png"))); // NOI18N
+        MnIRepVenta.setText("Reporte Venta");
+        MnReporte.add(MnIRepVenta);
+
+        jMenuBar1.add(MnReporte);
+
+        MnHistorial.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/HISTORIAL 2.png"))); // NOI18N
+        MnHistorial.setText("Historial");
+        MnHistorial.setFont(new java.awt.Font("Arial Narrow", 0, 16)); // NOI18N
+        MnHistorial.setMargin(new java.awt.Insets(3, 13, 3, 13));
+
+        MnIHistorial.setFont(new java.awt.Font("Arial Narrow", 0, 14)); // NOI18N
+        MnIHistorial.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/HISTORIAL.png"))); // NOI18N
+        MnIHistorial.setText("Ver Historial");
+        MnHistorial.add(MnIHistorial);
+
+        jMenuBar1.add(MnHistorial);
+
+        MnCerrarSesion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Exit_41038.png"))); // NOI18N
+        MnCerrarSesion.setText("Cerrar Sesión");
+        MnCerrarSesion.setFont(new java.awt.Font("Arial Narrow", 0, 16)); // NOI18N
+        MnCerrarSesion.setMargin(new java.awt.Insets(3, 13, 3, 13));
+
+        MnICerarsesion.setFont(new java.awt.Font("Arial Narrow", 0, 14)); // NOI18N
+        MnICerarsesion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Cerrar.png"))); // NOI18N
+        MnICerarsesion.setText("Cerrar Sesión");
+        MnCerrarSesion.add(MnICerarsesion);
+
+        jMenuBar1.add(MnCerrarSesion);
+
+        setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(dpMenu)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addComponent(dpMenu, javax.swing.GroupLayout.DEFAULT_SIZE, 645, Short.MAX_VALUE)
         );
 
         pack();
@@ -78,5 +301,37 @@ public class Menu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenu MnCategoria;
+    private javax.swing.JMenu MnCerrarSesion;
+    private javax.swing.JMenu MnCliente;
+    private javax.swing.JMenu MnHistorial;
+    private javax.swing.JMenuItem MnIActualizarStock;
+    private javax.swing.JMenuItem MnIBoleta;
+    private javax.swing.JMenuItem MnICerarsesion;
+    private javax.swing.JMenuItem MnIFactura;
+    private javax.swing.JMenuItem MnIGesCategoria;
+    private javax.swing.JMenuItem MnIGesCliente;
+    private javax.swing.JMenuItem MnIGesProducto;
+    private javax.swing.JMenuItem MnIGesUsuario;
+    private javax.swing.JMenuItem MnIGesVenta;
+    private javax.swing.JMenuItem MnIHistorial;
+    private javax.swing.JMenuItem MnINuevaCategoria;
+    private javax.swing.JMenuItem MnINuevoCliente;
+    private javax.swing.JMenuItem MnINuevoProducto;
+    private javax.swing.JMenuItem MnINuevoUsuario;
+    private javax.swing.JMenuItem MnIRepCategoria;
+    private javax.swing.JMenuItem MnIRepCliente;
+    private javax.swing.JMenuItem MnIRepProducto;
+    private javax.swing.JMenuItem MnIRepVenta;
+    private javax.swing.JMenu MnProducto;
+    private javax.swing.JMenu MnReporte;
+    private javax.swing.JMenu MnUsuario;
+    private javax.swing.JMenu MnVenta;
+    private javax.swing.JMenu Mnventa;
+    private javax.swing.JDesktopPane dpMenu;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JPopupMenu.Separator jSeparator1;
+    private javax.swing.JPanel pnPanel;
     // End of variables declaration//GEN-END:variables
 }

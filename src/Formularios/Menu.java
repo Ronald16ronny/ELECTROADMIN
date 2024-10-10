@@ -8,6 +8,7 @@ import InternalFrame.NuevoUsuario;
 import java.awt.Dimension;
 import javax.swing.JDesktopPane;
 
+
 /**
  *
  * @author JOSUE
@@ -120,6 +121,11 @@ public class Menu extends javax.swing.JFrame {
         MnIGesUsuario.setFont(new java.awt.Font("Arial Narrow", 0, 14)); // NOI18N
         MnIGesUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/GESTIONARUSUARIO.png"))); // NOI18N
         MnIGesUsuario.setText("Gestionar Usuarios");
+        MnIGesUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MnIGesUsuarioActionPerformed(evt);
+            }
+        });
         MnUsuario.add(MnIGesUsuario);
 
         jMenuBar1.add(MnUsuario);
@@ -132,6 +138,11 @@ public class Menu extends javax.swing.JFrame {
         MnINuevoProducto.setFont(new java.awt.Font("Arial Narrow", 0, 14)); // NOI18N
         MnINuevoProducto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/NUEVO PRODUCTO.png"))); // NOI18N
         MnINuevoProducto.setText("Nuevo Producto");
+        MnINuevoProducto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MnINuevoProductoActionPerformed(evt);
+            }
+        });
         MnProducto.add(MnINuevoProducto);
 
         MnIGesProducto.setFont(new java.awt.Font("Arial Narrow", 0, 14)); // NOI18N
@@ -154,6 +165,11 @@ public class Menu extends javax.swing.JFrame {
         MnINuevoCliente.setFont(new java.awt.Font("Arial Narrow", 0, 14)); // NOI18N
         MnINuevoCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/NUEVO CLIENTE.png"))); // NOI18N
         MnINuevoCliente.setText("NuevoCliente");
+        MnINuevoCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MnINuevoClienteActionPerformed(evt);
+            }
+        });
         MnCliente.add(MnINuevoCliente);
 
         MnIGesCliente.setFont(new java.awt.Font("Arial Narrow", 0, 14)); // NOI18N
@@ -282,6 +298,20 @@ public class Menu extends javax.swing.JFrame {
         nuevoUsuario.setVisible(true);
     }//GEN-LAST:event_MnINuevoUsuarioActionPerformed
 
+    private void MnIGesUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnIGesUsuarioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_MnIGesUsuarioActionPerformed
+
+    private void MnINuevoClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnINuevoClienteActionPerformed
+        
+    }//GEN-LAST:event_MnINuevoClienteActionPerformed
+
+      
+   private void MnINuevoProductoActionPerformed(java.awt.event.ActionEvent evt) {                                                
+      NuevoProducto nuevoProducto = new NuevoProducto();
+        jDesktopPane_menu.add(nuevoProducto);
+       nuevoProducto.setVisible(true);
+    }   
     /**
      * @param args the command line arguments
      */

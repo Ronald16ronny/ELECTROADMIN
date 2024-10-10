@@ -7,6 +7,7 @@ package Controlador;
 
 import Modelo.Producto;
 import java.sql.Statement;
+import java.sql.PreparedStatement;
 import java.sql.Connection;
 import java.sql.Statement;
 import java.sql.SQLException;
@@ -22,7 +23,7 @@ public class Crt_Producto {
         Connection cn = Conexion.conexcion.conectar();
         
         try {
-            Statement consulta = cn.prepareStatement("insert into tb_Producto values(?,?,?,?,?,?,?,?)"); 
+            PreparedStatement consulta = cn.prepareStatement("insert into tb_Producto values(?,?,?,?,?,?,?,?)"); 
             consulta.setInt(1, 0);
             consulta.setString(2, objeto.getNombre());
             consulta.setInt(3, objeto.getCantidad());

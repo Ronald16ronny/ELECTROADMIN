@@ -3,7 +3,12 @@ package Formularios;
 
 
 import java.awt.Dimension;
+import java.sql.Statement;
 import java.sql.Connection;
+import java.sql.Statement;
+import java.sql.SQLException;
+import java.sql.ResultSet;
+import javax.swing.JOptionPane;
 
 public class NuevoProducto extends javax.swing.JInternalFrame {
     
@@ -160,7 +165,19 @@ public class NuevoProducto extends javax.swing.JInternalFrame {
     private void CargarComboCategorias (){
         
         Connection cn = Conexion.conexcion.conectar();
-        
+        String sql = "select * from tb_categoria";
+            Statement st;
+            
+            try {
+                
+                st = cn.createStatement();
+                ResultSet rs = st.executeQuery(sql);
+                
+                
+            } catch (SQLException e) {
+                System.out.println("Error al cargar categorias ");
+                
+            }
         
     }
 

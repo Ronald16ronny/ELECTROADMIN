@@ -4,9 +4,11 @@
  */
 package Formularios;
 
+import InternalFrame.NuevaCategoria;
 import InternalFrame.NuevoUsuario;
 import java.awt.Dimension;
 import javax.swing.JDesktopPane;
+
 
 
 /**
@@ -187,6 +189,11 @@ public class Menu extends javax.swing.JFrame {
         MnINuevaCategoria.setFont(new java.awt.Font("Arial Narrow", 0, 14)); // NOI18N
         MnINuevaCategoria.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/NUEVA CATEGORIA.png"))); // NOI18N
         MnINuevaCategoria.setText("Nueva Categoria");
+        MnINuevaCategoria.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MnINuevaCategoriaActionPerformed(evt);
+            }
+        });
         MnCategoria.add(MnINuevaCategoria);
 
         MnIGesCategoria.setFont(new java.awt.Font("Arial Narrow", 0, 14)); // NOI18N
@@ -293,9 +300,10 @@ public class Menu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void MnINuevoUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnINuevoUsuarioActionPerformed
-        NuevoUsuario nuevoUsuario = new NuevoUsuario();
+       /* NuevoUsuario nuevoUsuario = new NuevoUsuario();
         jDesktopPane_menu.add(nuevoUsuario);
-        nuevoUsuario.setVisible(true);
+        nuevoUsuario.setVisible(true);*/
+       
     }//GEN-LAST:event_MnINuevoUsuarioActionPerformed
 
     private void MnIGesUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnIGesUsuarioActionPerformed
@@ -303,8 +311,15 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_MnIGesUsuarioActionPerformed
 
     private void MnINuevoClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnINuevoClienteActionPerformed
-        
+      
     }//GEN-LAST:event_MnINuevoClienteActionPerformed
+
+    private void MnINuevaCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnINuevaCategoriaActionPerformed
+        NuevaCategoria  nuevoCategoria = new NuevaCategoria();
+        jDesktopPane_menu.add(nuevoCategoria);
+        nuevoCategoria.setVisible(true);
+        
+    }//GEN-LAST:event_MnINuevaCategoriaActionPerformed
 
       
    private void MnINuevoProductoActionPerformed(java.awt.event.ActionEvent evt) {                                                

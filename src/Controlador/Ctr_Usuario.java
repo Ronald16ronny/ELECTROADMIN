@@ -1,6 +1,7 @@
 package Controlador;
 
 import Modelo.Usuario;
+import java.sql.PreparedStatement;
 import java.sql.Connection;
 import java.sql.Statement;
 import java.sql.SQLException;
@@ -8,6 +9,8 @@ import java.sql.ResultSet;
 import javax.swing.JOptionPane;
 
 public class Ctr_Usuario {
+    
+    
 
     //metodo para iniciar sesion
     public boolean loginUser(Usuario objeto) {

@@ -47,6 +47,7 @@ public class NuevoUsuario extends javax.swing.JInternalFrame {
         txt_Telefono = new javax.swing.JTextField();
         jButton_Guardar = new javax.swing.JButton();
         txt_password = new javax.swing.JPasswordField();
+        txt_Password = new javax.swing.JPasswordField();
         jLabel_wallpaper = new javax.swing.JLabel();
 
         jLabel1.setText("jLabel1");
@@ -112,7 +113,14 @@ public class NuevoUsuario extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(jButton_Guardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 220, 110, 30));
-        getContentPane().add(txt_password, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 140, 170, -1));
+
+        txt_password.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_passwordActionPerformed(evt);
+            }
+        });
+        getContentPane().add(txt_password, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 110, 170, -1));
+        getContentPane().add(txt_Password, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 140, 170, -1));
 
         jLabel_wallpaper.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondo-degradado-negro-morado-oscuro-superpuesto-fondo-abstracto-noche-negra-noche-oscura-espacio-texto-fondox9_661047-2331.jpg"))); // NOI18N
         getContentPane().add(jLabel_wallpaper, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 390, 270));
@@ -132,6 +140,10 @@ public class NuevoUsuario extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_TelefonoActionPerformed
 
+    private void txt_passwordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_passwordActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_passwordActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton_Guardar;
@@ -146,6 +158,7 @@ public class NuevoUsuario extends javax.swing.JInternalFrame {
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTextField txt_Apellido;
     private javax.swing.JTextField txt_Nombre;
+    private javax.swing.JPasswordField txt_Password;
     private javax.swing.JTextField txt_Telefono;
     private javax.swing.JTextField txt_Usuario;
     private javax.swing.JPasswordField txt_password;

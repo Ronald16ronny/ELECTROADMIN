@@ -20,10 +20,10 @@ public class Menu extends javax.swing.JFrame {
         this.setSize(new Dimension(1200, 700));
         this.setExtendedState(this.MAXIMIZED_BOTH);
         this.setLocationRelativeTo(null);
-        this.setLocationRelativeTo(null);
-        this.setTitle("Sistema de Ventas");
-        
-        this.setLayout(null);
+       this.setContentPane(this.dpMenu);
+       this.setContentPane(this.pnPanel);
+       
+       this.setLayout(null);
         jDesktopPane_menu = new JDesktopPane();
         
         int ancho = java.awt.Toolkit.getDefaultToolkit().getScreenSize().width;

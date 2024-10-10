@@ -4,6 +4,8 @@
  */
 package InternalFrame;
 
+import java.awt.Dimension;
+
 /**
  *
  * @author JOSUE
@@ -15,6 +17,9 @@ public class NuevoUsuario extends javax.swing.JInternalFrame {
      */
     public NuevoUsuario() {
         initComponents();
+        this.setSize(new Dimension(400, 300));
+        this.setTitle("Nuevo Usuario");
+        
     }
 
     /**
@@ -26,15 +31,20 @@ public class NuevoUsuario extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel_wallpaper = new javax.swing.JLabel();
+
+        setClosable(true);
+        setIconifiable(true);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 394, Short.MAX_VALUE)
+            .addComponent(jLabel_wallpaper, javax.swing.GroupLayout.DEFAULT_SIZE, 388, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 274, Short.MAX_VALUE)
+            .addComponent(jLabel_wallpaper, javax.swing.GroupLayout.DEFAULT_SIZE, 264, Short.MAX_VALUE)
         );
 
         pack();
@@ -42,5 +52,6 @@ public class NuevoUsuario extends javax.swing.JInternalFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel_wallpaper;
     // End of variables declaration//GEN-END:variables
 }

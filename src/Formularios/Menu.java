@@ -4,7 +4,9 @@
  */
 package Formularios;
 
+import InternalFrame.NuevoUsuario;
 import java.awt.Dimension;
+import javax.swing.JDesktopPane;
 
 /**
  *
@@ -12,16 +14,23 @@ import java.awt.Dimension;
  */
 public class Menu extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Menu
-     */
+    public static JDesktopPane jDesktopPane_menu;
     public Menu() {
         initComponents();
         this.setSize(new Dimension(1200, 700));
         this.setExtendedState(this.MAXIMIZED_BOTH);
         this.setLocationRelativeTo(null);
-       this.setContentPane(this.dpMenu);
-       this.setContentPane(this.pnPanel);
+        this.setLocationRelativeTo(null);
+        this.setTitle("Sistema de Ventas");
+        
+        this.setLayout(null);
+        jDesktopPane_menu = new JDesktopPane();
+        
+        int ancho = java.awt.Toolkit.getDefaultToolkit().getScreenSize().width;
+        int alto = java.awt.Toolkit.getDefaultToolkit().getScreenSize().height;
+        this.jDesktopPane_menu.setBounds(0, 0, ancho, (alto - 110));
+        this.add(jDesktopPane_menu);
+       
     }
 
     /**
@@ -93,9 +102,6 @@ public class Menu extends javax.swing.JFrame {
 
         dpMenu.add(pnPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1200, 650));
 
-        jMenuBar1.setBackground(new java.awt.Color(255, 255, 255));
-
-        MnUsuario.setForeground(new java.awt.Color(0, 0, 0));
         MnUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/USUARIO.png"))); // NOI18N
         MnUsuario.setText("Usuario");
         MnUsuario.setFont(new java.awt.Font("Arial Narrow", 0, 16)); // NOI18N
@@ -104,6 +110,11 @@ public class Menu extends javax.swing.JFrame {
         MnINuevoUsuario.setFont(new java.awt.Font("Arial Narrow", 0, 14)); // NOI18N
         MnINuevoUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/NUEVO USUARIO.png"))); // NOI18N
         MnINuevoUsuario.setText("Nuevo Usuario");
+        MnINuevoUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MnINuevoUsuarioActionPerformed(evt);
+            }
+        });
         MnUsuario.add(MnINuevoUsuario);
 
         MnIGesUsuario.setFont(new java.awt.Font("Arial Narrow", 0, 14)); // NOI18N
@@ -264,6 +275,12 @@ public class Menu extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void MnINuevoUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnINuevoUsuarioActionPerformed
+        NuevoUsuario nuevoUsuario = new NuevoUsuario();
+        jDesktopPane_menu.add(nuevoUsuario);
+        nuevoUsuario.setVisible(true);
+    }//GEN-LAST:event_MnINuevoUsuarioActionPerformed
 
     /**
      * @param args the command line arguments

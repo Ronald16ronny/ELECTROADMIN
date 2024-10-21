@@ -282,9 +282,9 @@ public class Menu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void MnINuevoUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnINuevoUsuarioActionPerformed
-       /* NuevoUsuario nuevoUsuario = new NuevoUsuario();
+        NuevoUsuario nuevoUsuario = new NuevoUsuario();
         jDesktopPane_menu.add(nuevoUsuario);
-        nuevoUsuario.setVisible(true);*/
+        nuevoUsuario.setVisible(true);
        
     }//GEN-LAST:event_MnINuevoUsuarioActionPerformed
 

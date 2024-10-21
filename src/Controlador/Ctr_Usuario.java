@@ -18,7 +18,7 @@ public class Ctr_Usuario {
         boolean respuesta = false;
 
         Connection cn = Conexion.conexcion.conectar();
-        String sql = "select usuario, password from tb_usuario where usuario = '" + objeto.getUsuario() + "' and password = '" + objeto.getPassword() + "';";
+        String sql = "select usuario, password from tb_usuario where usuario = '" + objeto.getUsuario() + " ' and password = '" + objeto.getPassword() + " ' ";
         Statement st;
         try {
 

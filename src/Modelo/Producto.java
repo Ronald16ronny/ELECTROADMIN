@@ -19,7 +19,6 @@ public class Producto {
     private int idCategoria;
     private int estado;
     
-    
 //Constructor
     public Producto() {
         this.idProducto =0;
@@ -29,11 +28,7 @@ public class Producto {
         this.Descripcion="";
         this.idCategoria=0;
         this.estado = 0;
-         
-        
-        
-        
-        
+    
     }
 // constructor sobrecargado
     public Producto(int idProducto, String Nombre, int Cantidad, double Precio, String Descripcion, int PorsentajeIVA, int idCategoria, int estado) {

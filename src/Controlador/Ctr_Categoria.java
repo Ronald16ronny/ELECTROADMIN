@@ -50,4 +50,45 @@ public class Ctr_Categoria {
         }
         return respuesta;
     }
+    
+     //METODO PARA ACTUALIZAR CETEGORIA
+    public boolean actualizar(Categoria obj, int idCategoria) {
+
+        boolean respuesta = false;
+        Connection cn = Conexion.conexcion.conectar();
+        try {
+
+            PreparedStatement consulta = cn.prepareStatement("update tb_categoria set descripcion=? where idCategoria = '" + idCategoria + "'");
+            consulta.setString(1, obj.getDescripcion());
+
+            if (consulta.executeUpdate() > 0) {
+
+            }
+            cn.close();
+        } catch (SQLException e) {
+            System.out.println("Error al actuaizar categoria" + e);
+        }
+        return respuesta;
+    }
+    
+      //METODO PARA ACTUALIZAR CETEGORIA
+    public boolean eliminar( int idCategoria) {
+
+        boolean respuesta = false;
+        Connection cn = Conexion.conexcion.conectar();
+        try {
+
+            PreparedStatement consulta = cn.prepareStatement("delete from tb_categoria where idCategoria = '" + idCategoria + "'");
+            consulta.executeUpdate();
+
+            if (consulta.executeUpdate() > 0) {
+
+            }
+            cn.close();
+        } catch (SQLException e) {
+            System.out.println("Error al eliminar categoria" + e);
+        }
+        return respuesta;
+    }
+    
 }

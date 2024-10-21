@@ -4,6 +4,7 @@
  */
 package Formularios;
 
+import InternalFrame.GestionarCategoria;
 import InternalFrame.NuevaCategoria;
 import InternalFrame.NuevoUsuario;
 import java.awt.Dimension;
@@ -24,7 +25,7 @@ public class Menu extends javax.swing.JFrame {
         this.setExtendedState(this.MAXIMIZED_BOTH);
         this.setLocationRelativeTo(null);
        this.setContentPane(this.dpMenu);
-       this.setContentPane(this.pnPanel);
+       
        
        this.setLayout(null);
         jDesktopPane_menu = new JDesktopPane();
@@ -46,8 +47,6 @@ public class Menu extends javax.swing.JFrame {
     private void initComponents() {
 
         dpMenu = new javax.swing.JDesktopPane();
-        pnPanel = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         MnUsuario = new javax.swing.JMenu();
         MnINuevoUsuario = new javax.swing.JMenuItem();
@@ -82,28 +81,6 @@ public class Menu extends javax.swing.JFrame {
 
         dpMenu.setBackground(new java.awt.Color(255, 255, 255));
         dpMenu.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        pnPanel.setBackground(new java.awt.Color(255, 255, 255));
-
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Captura de pantalla 2024-09-20 152706.png"))); // NOI18N
-
-        javax.swing.GroupLayout pnPanelLayout = new javax.swing.GroupLayout(pnPanel);
-        pnPanel.setLayout(pnPanelLayout);
-        pnPanelLayout.setHorizontalGroup(
-            pnPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnPanelLayout.createSequentialGroup()
-                .addGap(0, 868, Short.MAX_VALUE)
-                .addComponent(jLabel1))
-        );
-        pnPanelLayout.setVerticalGroup(
-            pnPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnPanelLayout.createSequentialGroup()
-                .addContainerGap(617, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addContainerGap())
-        );
-
-        dpMenu.add(pnPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1200, 650));
 
         MnUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/USUARIO.png"))); // NOI18N
         MnUsuario.setText("Usuario");
@@ -199,6 +176,11 @@ public class Menu extends javax.swing.JFrame {
         MnIGesCategoria.setFont(new java.awt.Font("Arial Narrow", 0, 14)); // NOI18N
         MnIGesCategoria.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/GESTIONAR CATEGORIA.png"))); // NOI18N
         MnIGesCategoria.setText("Gestionar Categoria");
+        MnIGesCategoria.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MnIGesCategoriaActionPerformed(evt);
+            }
+        });
         MnCategoria.add(MnIGesCategoria);
 
         jMenuBar1.add(MnCategoria);
@@ -321,6 +303,12 @@ public class Menu extends javax.swing.JFrame {
         
     }//GEN-LAST:event_MnINuevaCategoriaActionPerformed
 
+    private void MnIGesCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnIGesCategoriaActionPerformed
+         GestionarCategoria  gestionarCategoria = new GestionarCategoria();
+        jDesktopPane_menu.add(gestionarCategoria);
+        gestionarCategoria.setVisible(true);
+    }//GEN-LAST:event_MnIGesCategoriaActionPerformed
+
       
    private void MnINuevoProductoActionPerformed(java.awt.event.ActionEvent evt) {                                                
       NuevoProducto nuevoProducto = new NuevoProducto();
@@ -391,9 +379,7 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JMenu MnVenta;
     private javax.swing.JMenu Mnventa;
     private javax.swing.JDesktopPane dpMenu;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPopupMenu.Separator jSeparator1;
-    private javax.swing.JPanel pnPanel;
     // End of variables declaration//GEN-END:variables
 }

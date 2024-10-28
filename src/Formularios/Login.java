@@ -351,7 +351,8 @@ private void Login (){
         usuario.setUsuario(txtUsuario.getText().trim());
         usuario.setPassword(psscontraseña.getText().trim());
         if (controlUsuario.loginUser(usuario)){
-              JOptionPane.showMessageDialog(null,"Loguin Correcto...");
+            Menu menu = new Menu();
+            menu.setVisible(true);
         }else{
               JOptionPane.showMessageDialog(null,"Usuario o Contraseña incorrecta");
         }

@@ -8,6 +8,8 @@ import InternalFrame.GestionarCategoria;
 import InternalFrame.NuevaCategoria;
 import InternalFrame.NuevoUsuario;
 import java.awt.Dimension;
+import java.awt.Image;
+import java.awt.Toolkit;
 import javax.swing.JDesktopPane;
 
 
@@ -37,6 +39,12 @@ public class Menu extends javax.swing.JFrame {
        
     }
 
+    @Override
+    public Image getIconImage(){
+        Image retValue = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("Imagenes/new logo de empresa.png"));
+        return retValue;
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -261,6 +269,11 @@ public class Menu extends javax.swing.JFrame {
         MnICerarsesion.setFont(new java.awt.Font("Arial Narrow", 0, 14)); // NOI18N
         MnICerarsesion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Cerrar.png"))); // NOI18N
         MnICerarsesion.setText("Cerrar Sesión");
+        MnICerarsesion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MnICerarsesionActionPerformed(evt);
+            }
+        });
         MnCerrarSesion.add(MnICerarsesion);
 
         jMenuBar1.add(MnCerrarSesion);
@@ -308,6 +321,12 @@ public class Menu extends javax.swing.JFrame {
         jDesktopPane_menu.add(gestionarCategoria);
         gestionarCategoria.setVisible(true);
     }//GEN-LAST:event_MnIGesCategoriaActionPerformed
+
+    private void MnICerarsesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnICerarsesionActionPerformed
+       Login log = new Login();
+        log.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_MnICerarsesionActionPerformed
 
       
    private void MnINuevoProductoActionPerformed(java.awt.event.ActionEvent evt) {                                                

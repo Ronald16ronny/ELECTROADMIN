@@ -8,9 +8,12 @@ import InternalFrame.GestionarCategoria;
 import InternalFrame.NuevaCategoria;
 import InternalFrame.NuevoUsuario;
 import java.awt.Dimension;
+import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Toolkit;
+import javax.swing.ImageIcon;
 import javax.swing.JDesktopPane;
+import javax.swing.JPanel;
 
 
 
@@ -27,18 +30,15 @@ public class Menu extends javax.swing.JFrame {
         this.setExtendedState(this.MAXIMIZED_BOTH);
         this.setLocationRelativeTo(null);
        this.setContentPane(this.dpMenu);
-       
-       
        this.setLayout(null);
         jDesktopPane_menu = new JDesktopPane();
-        
         int ancho = java.awt.Toolkit.getDefaultToolkit().getScreenSize().width;
         int alto = java.awt.Toolkit.getDefaultToolkit().getScreenSize().height;
         this.jDesktopPane_menu.setBounds(0, 0, ancho, (alto - 110));
         this.add(jDesktopPane_menu);
        
     }
-
+ 
     @Override
     public Image getIconImage(){
         Image retValue = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("Imagenes/new logo de empresa.png"));
@@ -54,7 +54,13 @@ public class Menu extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        dpMenu = new javax.swing.JDesktopPane();
+        ImageIcon icon = new ImageIcon(getClass().getResource("Imagenes/fon.png"));
+        Image image = icon.getImage();
+        dpMenu = new javax.swing.JDesktopPane(){
+            public void paintComponent(Graphics g){
+                g.drawImage(image,0,0,getWidth(),getHeight(),this);
+            }
+        };
         jMenuBar1 = new javax.swing.JMenuBar();
         MnUsuario = new javax.swing.JMenu();
         MnINuevoUsuario = new javax.swing.JMenuItem();
@@ -86,14 +92,18 @@ public class Menu extends javax.swing.JFrame {
         MnICerarsesion = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setIconImage(getIconImage());
 
         dpMenu.setBackground(new java.awt.Color(255, 255, 255));
+        dpMenu.setPreferredSize(new java.awt.Dimension(1200, 700));
         dpMenu.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jMenuBar1.setBackground(new java.awt.Color(239, 244, 249));
 
         MnUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/USUARIO.png"))); // NOI18N
         MnUsuario.setText("Usuario");
         MnUsuario.setFont(new java.awt.Font("Arial Narrow", 0, 16)); // NOI18N
-        MnUsuario.setMargin(new java.awt.Insets(3, 13, 3, 13));
+        MnUsuario.setMargin(new java.awt.Insets(3, 15, 3, 15));
 
         MnINuevoUsuario.setFont(new java.awt.Font("Arial Narrow", 0, 14)); // NOI18N
         MnINuevoUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/NUEVO USUARIO.png"))); // NOI18N
@@ -120,7 +130,7 @@ public class Menu extends javax.swing.JFrame {
         MnProducto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/PRODUCTO.png"))); // NOI18N
         MnProducto.setText("Producto");
         MnProducto.setFont(new java.awt.Font("Arial Narrow", 0, 16)); // NOI18N
-        MnProducto.setMargin(new java.awt.Insets(3, 13, 3, 13));
+        MnProducto.setMargin(new java.awt.Insets(3, 15, 3, 15));
 
         MnINuevoProducto.setFont(new java.awt.Font("Arial Narrow", 0, 14)); // NOI18N
         MnINuevoProducto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/NUEVO PRODUCTO.png"))); // NOI18N
@@ -147,7 +157,7 @@ public class Menu extends javax.swing.JFrame {
         MnCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/CLIENTE.png"))); // NOI18N
         MnCliente.setText("Cliente");
         MnCliente.setFont(new java.awt.Font("Arial Narrow", 0, 16)); // NOI18N
-        MnCliente.setMargin(new java.awt.Insets(3, 13, 3, 13));
+        MnCliente.setMargin(new java.awt.Insets(3, 15, 3, 15));
 
         MnINuevoCliente.setFont(new java.awt.Font("Arial Narrow", 0, 14)); // NOI18N
         MnINuevoCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/NUEVO CLIENTE.png"))); // NOI18N
@@ -169,7 +179,7 @@ public class Menu extends javax.swing.JFrame {
         MnCategoria.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/CATEGORIA.png"))); // NOI18N
         MnCategoria.setText("Categoria");
         MnCategoria.setFont(new java.awt.Font("Arial Narrow", 0, 16)); // NOI18N
-        MnCategoria.setMargin(new java.awt.Insets(3, 13, 3, 13));
+        MnCategoria.setMargin(new java.awt.Insets(3, 15, 3, 15));
 
         MnINuevaCategoria.setFont(new java.awt.Font("Arial Narrow", 0, 14)); // NOI18N
         MnINuevaCategoria.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/NUEVA CATEGORIA.png"))); // NOI18N
@@ -196,7 +206,7 @@ public class Menu extends javax.swing.JFrame {
         MnVenta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/VENTA.png"))); // NOI18N
         MnVenta.setText("Venta");
         MnVenta.setFont(new java.awt.Font("Arial Narrow", 0, 16)); // NOI18N
-        MnVenta.setMargin(new java.awt.Insets(3, 13, 3, 13));
+        MnVenta.setMargin(new java.awt.Insets(3, 15, 3, 15));
 
         Mnventa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/NUEVA VENTA.png"))); // NOI18N
         Mnventa.setText("Nueva Venta");
@@ -225,7 +235,7 @@ public class Menu extends javax.swing.JFrame {
         MnReporte.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/REPORTE 3.png"))); // NOI18N
         MnReporte.setText("Reporte");
         MnReporte.setFont(new java.awt.Font("Arial Narrow", 0, 16)); // NOI18N
-        MnReporte.setMargin(new java.awt.Insets(3, 13, 3, 13));
+        MnReporte.setMargin(new java.awt.Insets(3, 15, 3, 15));
 
         MnIRepCliente.setFont(new java.awt.Font("Arial Narrow", 0, 14)); // NOI18N
         MnIRepCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/REPORTE2.png"))); // NOI18N
@@ -252,7 +262,7 @@ public class Menu extends javax.swing.JFrame {
         MnHistorial.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/HISTORIAL 2.png"))); // NOI18N
         MnHistorial.setText("Historial");
         MnHistorial.setFont(new java.awt.Font("Arial Narrow", 0, 16)); // NOI18N
-        MnHistorial.setMargin(new java.awt.Insets(3, 13, 3, 13));
+        MnHistorial.setMargin(new java.awt.Insets(3, 15, 3, 15));
 
         MnIHistorial.setFont(new java.awt.Font("Arial Narrow", 0, 14)); // NOI18N
         MnIHistorial.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/HISTORIAL.png"))); // NOI18N
@@ -264,7 +274,7 @@ public class Menu extends javax.swing.JFrame {
         MnCerrarSesion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Exit_41038.png"))); // NOI18N
         MnCerrarSesion.setText("Cerrar Sesión");
         MnCerrarSesion.setFont(new java.awt.Font("Arial Narrow", 0, 16)); // NOI18N
-        MnCerrarSesion.setMargin(new java.awt.Insets(3, 13, 3, 13));
+        MnCerrarSesion.setMargin(new java.awt.Insets(3, 15, 3, 15));
 
         MnICerarsesion.setFont(new java.awt.Font("Arial Narrow", 0, 14)); // NOI18N
         MnICerarsesion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Cerrar.png"))); // NOI18N
@@ -284,7 +294,7 @@ public class Menu extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(dpMenu)
+            .addComponent(dpMenu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

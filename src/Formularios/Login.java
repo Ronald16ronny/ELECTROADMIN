@@ -353,6 +353,7 @@ private void Login (){
         if (controlUsuario.loginUser(usuario)){
             Menu menu = new Menu();
             menu.setVisible(true);
+            this.dispose();
         }else{
               JOptionPane.showMessageDialog(null,"Usuario o Contraseña incorrecta");
         }

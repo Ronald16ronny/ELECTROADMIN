@@ -23,7 +23,8 @@ import javax.swing.JPanel;
  */
 public class Menu extends javax.swing.JFrame {
 
-    public static JDesktopPane jDesktopPane_menu;
+
+
     public Menu() {
         initComponents();
         this.setSize(new Dimension(1200, 700));
@@ -31,11 +32,6 @@ public class Menu extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
        this.setContentPane(this.dpMenu);
        this.setLayout(null);
-        jDesktopPane_menu = new JDesktopPane();
-        int ancho = java.awt.Toolkit.getDefaultToolkit().getScreenSize().width;
-        int alto = java.awt.Toolkit.getDefaultToolkit().getScreenSize().height;
-        this.jDesktopPane_menu.setBounds(0, 0, ancho, (alto - 110));
-        this.add(jDesktopPane_menu);
        
     }
  
@@ -54,14 +50,14 @@ public class Menu extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        ImageIcon icon = new ImageIcon(getClass().getResource("Imagenes/fon.png"));
+        ImageIcon icon = new ImageIcon(getClass().getResource("/Imagenes/fon.png"));
         Image image = icon.getImage();
         dpMenu = new javax.swing.JDesktopPane(){
             public void paintComponent(Graphics g){
                 g.drawImage(image,0,0,getWidth(),getHeight(),this);
             }
         };
-        jMenuBar1 = new javax.swing.JMenuBar();
+        mbMenu = new javax.swing.JMenuBar();
         MnUsuario = new javax.swing.JMenu();
         MnINuevoUsuario = new javax.swing.JMenuItem();
         MnIGesUsuario = new javax.swing.JMenuItem();
@@ -95,10 +91,12 @@ public class Menu extends javax.swing.JFrame {
         setIconImage(getIconImage());
 
         dpMenu.setBackground(new java.awt.Color(255, 255, 255));
+        dpMenu.setForeground(new java.awt.Color(255, 255, 255));
         dpMenu.setPreferredSize(new java.awt.Dimension(1200, 700));
         dpMenu.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jMenuBar1.setBackground(new java.awt.Color(239, 244, 249));
+        mbMenu.setBackground(new java.awt.Color(238, 234, 231));
+        mbMenu.setForeground(new java.awt.Color(0, 0, 0));
 
         MnUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/USUARIO.png"))); // NOI18N
         MnUsuario.setText("Usuario");
@@ -125,7 +123,7 @@ public class Menu extends javax.swing.JFrame {
         });
         MnUsuario.add(MnIGesUsuario);
 
-        jMenuBar1.add(MnUsuario);
+        mbMenu.add(MnUsuario);
 
         MnProducto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/PRODUCTO.png"))); // NOI18N
         MnProducto.setText("Producto");
@@ -152,7 +150,7 @@ public class Menu extends javax.swing.JFrame {
         MnIActualizarStock.setText("Actualizar Stock");
         MnProducto.add(MnIActualizarStock);
 
-        jMenuBar1.add(MnProducto);
+        mbMenu.add(MnProducto);
 
         MnCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/CLIENTE.png"))); // NOI18N
         MnCliente.setText("Cliente");
@@ -174,7 +172,7 @@ public class Menu extends javax.swing.JFrame {
         MnIGesCliente.setText(" Gestionar Cliente");
         MnCliente.add(MnIGesCliente);
 
-        jMenuBar1.add(MnCliente);
+        mbMenu.add(MnCliente);
 
         MnCategoria.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/CATEGORIA.png"))); // NOI18N
         MnCategoria.setText("Categoria");
@@ -201,7 +199,7 @@ public class Menu extends javax.swing.JFrame {
         });
         MnCategoria.add(MnIGesCategoria);
 
-        jMenuBar1.add(MnCategoria);
+        mbMenu.add(MnCategoria);
 
         MnVenta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/VENTA.png"))); // NOI18N
         MnVenta.setText("Venta");
@@ -230,7 +228,7 @@ public class Menu extends javax.swing.JFrame {
         MnIGesVenta.setText("Gestionar Venta");
         MnVenta.add(MnIGesVenta);
 
-        jMenuBar1.add(MnVenta);
+        mbMenu.add(MnVenta);
 
         MnReporte.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/REPORTE 3.png"))); // NOI18N
         MnReporte.setText("Reporte");
@@ -257,7 +255,7 @@ public class Menu extends javax.swing.JFrame {
         MnIRepVenta.setText("Reporte Venta");
         MnReporte.add(MnIRepVenta);
 
-        jMenuBar1.add(MnReporte);
+        mbMenu.add(MnReporte);
 
         MnHistorial.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/HISTORIAL 2.png"))); // NOI18N
         MnHistorial.setText("Historial");
@@ -269,7 +267,7 @@ public class Menu extends javax.swing.JFrame {
         MnIHistorial.setText("Ver Historial");
         MnHistorial.add(MnIHistorial);
 
-        jMenuBar1.add(MnHistorial);
+        mbMenu.add(MnHistorial);
 
         MnCerrarSesion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Exit_41038.png"))); // NOI18N
         MnCerrarSesion.setText("Cerrar Sesión");
@@ -286,9 +284,9 @@ public class Menu extends javax.swing.JFrame {
         });
         MnCerrarSesion.add(MnICerarsesion);
 
-        jMenuBar1.add(MnCerrarSesion);
+        mbMenu.add(MnCerrarSesion);
 
-        setJMenuBar(jMenuBar1);
+        setJMenuBar(mbMenu);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -298,7 +296,7 @@ public class Menu extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(dpMenu, javax.swing.GroupLayout.DEFAULT_SIZE, 645, Short.MAX_VALUE)
+            .addComponent(dpMenu, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 645, Short.MAX_VALUE)
         );
 
         pack();
@@ -306,7 +304,7 @@ public class Menu extends javax.swing.JFrame {
 
     private void MnINuevoUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnINuevoUsuarioActionPerformed
         NuevoUsuario nuevoUsuario = new NuevoUsuario();
-        jDesktopPane_menu.add(nuevoUsuario);
+        dpMenu.add(nuevoUsuario);
         nuevoUsuario.setVisible(true);
        
     }//GEN-LAST:event_MnINuevoUsuarioActionPerformed
@@ -321,14 +319,14 @@ public class Menu extends javax.swing.JFrame {
 
     private void MnINuevaCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnINuevaCategoriaActionPerformed
         NuevaCategoria  nuevoCategoria = new NuevaCategoria();
-        jDesktopPane_menu.add(nuevoCategoria);
+        dpMenu.add(nuevoCategoria);
         nuevoCategoria.setVisible(true);
         
     }//GEN-LAST:event_MnINuevaCategoriaActionPerformed
 
     private void MnIGesCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnIGesCategoriaActionPerformed
          GestionarCategoria  gestionarCategoria = new GestionarCategoria();
-        jDesktopPane_menu.add(gestionarCategoria);
+        dpMenu.add(gestionarCategoria);
         gestionarCategoria.setVisible(true);
     }//GEN-LAST:event_MnIGesCategoriaActionPerformed
 
@@ -341,7 +339,7 @@ public class Menu extends javax.swing.JFrame {
       
    private void MnINuevoProductoActionPerformed(java.awt.event.ActionEvent evt) {                                                
       NuevoProducto nuevoProducto = new NuevoProducto();
-        jDesktopPane_menu.add(nuevoProducto);
+        dpMenu.add(nuevoProducto);
        nuevoProducto.setVisible(true);
     }   
     /**
@@ -408,7 +406,7 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JMenu MnVenta;
     private javax.swing.JMenu Mnventa;
     private javax.swing.JDesktopPane dpMenu;
-    private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPopupMenu.Separator jSeparator1;
+    private javax.swing.JMenuBar mbMenu;
     // End of variables declaration//GEN-END:variables
 }

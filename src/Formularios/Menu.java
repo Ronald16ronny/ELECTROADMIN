@@ -6,6 +6,8 @@ package Formularios;
 
 import InternalFrame.GestionarCategoria;
 import InternalFrame.NuevaCategoria;
+import InternalFrame.NuevoCliente;
+import InternalFrame.NuevoProducto;
 import InternalFrame.NuevoUsuario;
 import java.awt.Dimension;
 import java.awt.Graphics;
@@ -314,7 +316,9 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_MnIGesUsuarioActionPerformed
 
     private void MnINuevoClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnINuevoClienteActionPerformed
-      
+        NuevoCliente  nuevoCliente = new NuevoCliente();
+        dpMenu.add(nuevoCliente);
+        nuevoCliente.setVisible(true);
     }//GEN-LAST:event_MnINuevoClienteActionPerformed
 
     private void MnINuevaCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnINuevaCategoriaActionPerformed
@@ -338,7 +342,7 @@ public class Menu extends javax.swing.JFrame {
 
       
    private void MnINuevoProductoActionPerformed(java.awt.event.ActionEvent evt) {                                                
-      NuevoProducto nuevoProducto = new NuevoProducto();
+       NuevoProducto nuevoProducto = new NuevoProducto();
         dpMenu.add(nuevoProducto);
        nuevoProducto.setVisible(true);
     }   

@@ -50,7 +50,7 @@ public class NuevaCategoria extends javax.swing.JInternalFrame {
         jLabel2.setText("Descripcion Categoria");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, -1, -1));
 
-        txtdescripcion.setFont(new java.awt.Font("Arial Narrow", 0, 12)); // NOI18N
+        txtdescripcion.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
         getContentPane().add(txtdescripcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 50, 170, -1));
 
         jButton1.setBackground(new java.awt.Color(204, 204, 204));

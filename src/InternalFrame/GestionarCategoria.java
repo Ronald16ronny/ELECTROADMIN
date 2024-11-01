@@ -157,7 +157,7 @@ public class GestionarCategoria extends javax.swing.JInternalFrame {
             
             categoria.setDescripcion(txtdescripcion.getText().trim());
             if(!controlcategoria.eliminar(idCategoria)){
-                JOptionPane.showMessageDialog(null, "Categoria Eliminar");
+                JOptionPane.showMessageDialog(null, "Categoria Eliminada");
                 txtdescripcion.setText("");
                 this.CargarTablaCategoria();
             }else{
@@ -239,7 +239,7 @@ public class GestionarCategoria extends javax.swing.JInternalFrame {
             try {
                 
                         Connection con = Conexion.conexcion.conectar();
-                        PreparedStatement pst = con.prepareStatement("select * from tb_categoria where idCategoria = '" + idCategoria + "'");
+                        PreparedStatement pst = con.prepareStatement("select * from tb_categoria where idCategoria = '" + idCategoria + " ' ");
                         ResultSet rs = pst.executeQuery();
                         if (rs.next()){
                             txtdescripcion.setText(rs.getString("descripcion"));

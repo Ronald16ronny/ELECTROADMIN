@@ -1,5 +1,5 @@
 
-package Formularios;
+package InternalFrame;
 
 
 import java.awt.Dimension;
@@ -91,9 +91,11 @@ public class NuevoProducto extends javax.swing.JInternalFrame {
         getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 200, 90, -1));
 
         txtNombre.setBackground(new java.awt.Color(153, 255, 255));
+        txtNombre.setForeground(new java.awt.Color(0, 0, 0));
         getContentPane().add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 50, 170, -1));
 
         txtCantidad.setBackground(new java.awt.Color(153, 255, 255));
+        txtCantidad.setForeground(new java.awt.Color(0, 0, 0));
         txtCantidad.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtCantidadActionPerformed(evt);
@@ -102,19 +104,24 @@ public class NuevoProducto extends javax.swing.JInternalFrame {
         getContentPane().add(txtCantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 80, 170, -1));
 
         txtPrecio.setBackground(new java.awt.Color(153, 255, 255));
+        txtPrecio.setForeground(new java.awt.Color(0, 0, 0));
         getContentPane().add(txtPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 110, 170, -1));
 
         txtDescripcion.setBackground(new java.awt.Color(153, 255, 255));
+        txtDescripcion.setForeground(new java.awt.Color(0, 0, 0));
         getContentPane().add(txtDescripcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 140, 170, -1));
 
+        CmbxIVA.setForeground(new java.awt.Color(0, 0, 0));
         CmbxIVA.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione IVA:", "No grab IVA", "18%", "16%", " " }));
         getContentPane().add(CmbxIVA, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 170, 170, -1));
 
+        CmbCategiria.setForeground(new java.awt.Color(0, 0, 0));
         CmbCategiria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione Categoria:", " ", " " }));
         getContentPane().add(CmbCategiria, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 200, 170, -1));
 
         bnGuardar.setBackground(new java.awt.Color(102, 255, 255));
         bnGuardar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        bnGuardar.setForeground(new java.awt.Color(0, 0, 0));
         bnGuardar.setText("Guardar");
         bnGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

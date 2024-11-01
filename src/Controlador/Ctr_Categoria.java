@@ -9,20 +9,25 @@ import java.sql.ResultSet;
 
 public class Ctr_Categoria {
 
-    //METODO PARA REGUISTRAR CETEGORIA
+    /**
+    *********************************************
+    * METODO PARA GUARDAR UNA NUEVA CATEGORIA
+    * *******************************************
+    * */
+    
     public boolean guardar(Categoria obj) {
 
         boolean respuesta = false;
         Connection cn = Conexion.conexcion.conectar();
         try {
 
-            PreparedStatement consulta = cn.prepareStatement("insert into tb_categoria(?,?,?)");
+            PreparedStatement consulta = cn.prepareStatement("insert into tb_categoria values (?,?,?)");
             consulta.setInt(1, 0);
             consulta.setString(2, obj.getDescripcion());
             consulta.setInt(3, obj.getEstado());
 
             if (consulta.executeUpdate() > 0) {
-
+                    respuesta = true;
             }
             cn.close();
         } catch (SQLException e) {
@@ -30,11 +35,18 @@ public class Ctr_Categoria {
         }
         return respuesta;
     }
-    // metodo para consultar si existe la categoria
+    
+    /**
+    *************************************************
+    * METODO PARA CONSULTA SI LA CATEGORIA YA EXISTE
+    * ***********************************************
+    * */
+    
+    
     public boolean existeCategoria(String categoria) {
 
         boolean respuesta = false;
-        String sql = "select decripcion from tb_categoria where descripcion = '" + categoria + "';";
+        String sql = "select descripcion from tb_categoria where descripcion = ' "+categoria+" ';";
         Statement st;
 
         try {
@@ -51,7 +63,13 @@ public class Ctr_Categoria {
         return respuesta;
     }
     
-     //METODO PARA ACTUALIZAR CETEGORIA
+    
+    /**
+    ************************************
+    * METODO PARA ACTUALIZAR CETEGORIA
+    * ***********************************
+    * */
+    
     public boolean actualizar(Categoria obj, int idCategoria) {
 
         boolean respuesta = false;
@@ -62,7 +80,7 @@ public class Ctr_Categoria {
             consulta.setString(1, obj.getDescripcion());
 
             if (consulta.executeUpdate() > 0) {
-
+                        respuesta = true;
             }
             cn.close();
         } catch (SQLException e) {
@@ -71,7 +89,13 @@ public class Ctr_Categoria {
         return respuesta;
     }
     
-      //METODO PARA ACTUALIZAR CETEGORIA
+    
+    /**
+    ************************************
+    * METODO PARA ELIMINAR CETEGORIA
+    * ***********************************
+    * */
+    
     public boolean eliminar( int idCategoria) {
 
         boolean respuesta = false;
@@ -82,7 +106,7 @@ public class Ctr_Categoria {
             consulta.executeUpdate();
 
             if (consulta.executeUpdate() > 0) {
-
+                        respuesta = true;
             }
             cn.close();
         } catch (SQLException e) {

@@ -1,8 +1,10 @@
-
 package InternalFrame;
 
-
+import Controlador.Crt_Producto;
+import Modelo.Producto;
+import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.HeadlessException;
 import java.sql.Statement;
 import java.sql.Connection;
 import java.sql.Statement;
@@ -11,13 +13,15 @@ import java.sql.ResultSet;
 import javax.swing.JOptionPane;
 
 public class NuevoProducto extends javax.swing.JInternalFrame {
-    
+
     int obtenerIdCategoriaCombo = 0;
 
     public NuevoProducto() {
         initComponents();
         this.setSize(new Dimension(400, 300));
         this.setTitle("Nuevo Producto");
+
+        this.CargarComboCategorias();
     }
 
     /**
@@ -41,7 +45,7 @@ public class NuevoProducto extends javax.swing.JInternalFrame {
         txtPrecio = new javax.swing.JTextField();
         txtDescripcion = new javax.swing.JTextField();
         CmbxIVA = new javax.swing.JComboBox<>();
-        CmbCategiria = new javax.swing.JComboBox<>();
+        CmbCategoria = new javax.swing.JComboBox<>();
         bnGuardar = new javax.swing.JButton();
         Lb1_Fondo = new javax.swing.JLabel();
 
@@ -91,11 +95,9 @@ public class NuevoProducto extends javax.swing.JInternalFrame {
         getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 200, 90, -1));
 
         txtNombre.setBackground(new java.awt.Color(153, 255, 255));
-        txtNombre.setForeground(new java.awt.Color(0, 0, 0));
         getContentPane().add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 50, 170, -1));
 
         txtCantidad.setBackground(new java.awt.Color(153, 255, 255));
-        txtCantidad.setForeground(new java.awt.Color(0, 0, 0));
         txtCantidad.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtCantidadActionPerformed(evt);
@@ -104,24 +106,24 @@ public class NuevoProducto extends javax.swing.JInternalFrame {
         getContentPane().add(txtCantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 80, 170, -1));
 
         txtPrecio.setBackground(new java.awt.Color(153, 255, 255));
-        txtPrecio.setForeground(new java.awt.Color(0, 0, 0));
         getContentPane().add(txtPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 110, 170, -1));
 
         txtDescripcion.setBackground(new java.awt.Color(153, 255, 255));
-        txtDescripcion.setForeground(new java.awt.Color(0, 0, 0));
         getContentPane().add(txtDescripcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 140, 170, -1));
 
-        CmbxIVA.setForeground(new java.awt.Color(0, 0, 0));
         CmbxIVA.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione IVA:", "No grab IVA", "18%", "16%", " " }));
         getContentPane().add(CmbxIVA, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 170, 170, -1));
 
-        CmbCategiria.setForeground(new java.awt.Color(0, 0, 0));
-        CmbCategiria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione Categoria:", " ", " " }));
-        getContentPane().add(CmbCategiria, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 200, 170, -1));
+        CmbCategoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione Categoria:", " ", " " }));
+        CmbCategoria.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CmbCategoriaActionPerformed(evt);
+            }
+        });
+        getContentPane().add(CmbCategoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 200, 170, -1));
 
         bnGuardar.setBackground(new java.awt.Color(102, 255, 255));
         bnGuardar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        bnGuardar.setForeground(new java.awt.Color(0, 0, 0));
         bnGuardar.setText("Guardar");
         bnGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -141,15 +143,108 @@ public class NuevoProducto extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txtCantidadActionPerformed
 
     private void bnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bnGuardarActionPerformed
-        
-        
-        
-        
+        Producto producto = new Producto();
+        Crt_Producto controlProducto = new Crt_Producto();
+        String iva = "";
+        String categoria = "";
+        iva = CmbxIVA.getSelectedItem().toString().trim();
+        categoria = CmbCategoria.getSelectedItem().toString().trim();
+
+        if (txtNombre.getText().equals("") || txtCantidad.getText().equals("") || txtPrecio.getText().equals("")) {
+            JOptionPane.showMessageDialog(null, "Complete todos los campos ");
+            txtNombre.setBackground(Color.red);
+            txtCantidad.setBackground(Color.red);
+            txtPrecio.setBackground(Color.red);
+
+        } else {
+            if (!controlProducto.existeProducto(txtNombre.getText().trim())) {
+
+                if (iva.equalsIgnoreCase("Selecione IVA: ")) {
+                    JOptionPane.showMessageDialog(null, "Selecione IVA  ");
+                } else {
+                    if (categoria.equalsIgnoreCase("Selecione Categoria:")) {
+                        JOptionPane.showMessageDialog(null, "Selecione categoria  ");
+                    } else {
+
+                        try {
+
+                            producto.setNombre(txtNombre.getText().trim());
+                            producto.setCantidad(Integer.parseInt(txtCantidad.getText().trim()));
+                            String preciotxt = "";
+                            double Precio = 0.0;
+                            preciotxt = txtPrecio.getText().trim();
+                            boolean aux = false;
+
+                            for (int i = 0; i < preciotxt.length(); i++) {
+
+                                if (preciotxt.charAt(i) == ',') {
+                                    String precioNuevo = preciotxt.replace(",", ".");
+                                    Precio = Double.parseDouble(precioNuevo);
+                                    aux = true;
+                                }
+
+                            }
+
+                            if (aux == true) {
+                                producto.setPrecio(Precio);
+                            } else {
+                                Precio = Double.parseDouble(preciotxt);
+                                producto.setPrecio(Precio);
+                            }
+
+                            producto.setDescripcion(txtDescripcion.getText().trim());
+
+                            if (iva.equalsIgnoreCase("No grab IVA")) {
+                                producto.setPorsentajeIVA(0);
+
+                            } else if (iva.equalsIgnoreCase("18%")) {
+                                producto.setPorsentajeIVA(18);
+                            } else if (iva.equalsIgnoreCase("16%")) {
+                                producto.setPorsentajeIVA(16);
+                            }
+
+                            this.IdCategoria();
+                            producto.setIdCategoria(obtenerIdCategoriaCombo);
+                            producto.setEstado(1);
+                            if (controlProducto.Guardar(producto)) {
+                                JOptionPane.showMessageDialog(null, "Registro guardar ");
+                                txtNombre.setBackground(Color.green);
+                                txtCantidad.setBackground(Color.green);
+                                txtPrecio.setBackground(Color.green);
+                                txtDescripcion.setBackground(Color.green);
+
+                                this.CargarComboCategorias();
+                                this.CmbxIVA.setSelectedItem("Selecione IVA: ");
+                                this.Limpiar();
+
+                            } else {
+                                JOptionPane.showMessageDialog(null, "Error al guardar ");
+                            }
+
+                        } catch (HeadlessException | NumberFormatException e) {
+                            System.out.println("Error en: "+e);
+                        }
+
+                    }
+
+                }
+
+            } else {
+                JOptionPane.showMessageDialog(null, "El producto ya existe en la Base de Datos  ");
+            }
+
+        }
+
+
     }//GEN-LAST:event_bnGuardarActionPerformed
+
+    private void CmbCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CmbCategoriaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CmbCategoriaActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> CmbCategiria;
+    private javax.swing.JComboBox<String> CmbCategoria;
     private javax.swing.JComboBox<String> CmbxIVA;
     private javax.swing.JLabel Lb1_Fondo;
     private javax.swing.JButton bnGuardar;
@@ -166,28 +261,56 @@ public class NuevoProducto extends javax.swing.JInternalFrame {
     private javax.swing.JTextField txtPrecio;
     // End of variables declaration//GEN-END:variables
 
-    
-    
-    
-    private void CargarComboCategorias (){
-        
-        Connection cn = Conexion.conexcion.conectar();
-        String sql = "select * from tb_categoria";
-            Statement st;
-            
-            try {
-                
-                st = cn.createStatement();
-                ResultSet rs = st.executeQuery(sql);
-                
-                
-            } catch (SQLException e) {
-                System.out.println("Error al cargar categorias ");
-                
-            }
-        
+    private void Limpiar() {
+        txtNombre.setText("");
+        txtCantidad.setText("");
+        txtPrecio.setText("");
+        txtDescripcion.setText("");
+
     }
 
+    private void CargarComboCategorias() {
+
+        Connection cn = Conexion.conexcion.conectar();
+        String sql = "select * from tb_categoria";
+        Statement st;
+
+        try {
+
+            st = cn.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+            CmbCategoria.removeAllItems();
+            CmbCategoria.addItem("Selecione Categoria:");
+            while (rs.next()) {
+                CmbCategoria.addItem(rs.getString("Descripcion"));
+
+            }
+            cn.close();
+
+        } catch (SQLException e) {
+            System.out.println("Error al cargar categorias ");
+
+        }
+
+    }
+
+    private int IdCategoria() {
+        String sql = "select * from tb_Categoria where description = '" + this.CmbCategoria.getSelectedItem() + "'";
+        Statement st;
+        try {
+
+            Connection cn = Conexion.conexcion.conectar();
+            st = cn.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+            while (rs.next()) {
+                obtenerIdCategoriaCombo = rs.getInt("idCategoria");
+
+            }
+
+        } catch (SQLException e) {
+            System.out.println("Error al optener id categoria ");
+        }
+        return obtenerIdCategoriaCombo;
+    }
 
 }
-

@@ -54,6 +54,8 @@ public class NuevoUsuario extends javax.swing.JInternalFrame {
 
         setClosable(true);
         setIconifiable(true);
+        setMaximizable(true);
+        setResizable(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setFont(new java.awt.Font("Kozuka Mincho Pr6N H", 0, 24)); // NOI18N

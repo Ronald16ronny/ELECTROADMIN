@@ -14,14 +14,17 @@ import java.sql.ResultSet;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import java.util.ArrayList;
+import java.util.List;
 
-public class GestionarCategoria extends javax.swing.JInternalFrame {
+
+public class GestionarCategorias extends javax.swing.JInternalFrame {
 
     private int idCategoria;
     
     
     
-    public GestionarCategoria() {
+    public GestionarCategorias() {
         initComponents();
         this.setSize(new Dimension(600, 400));
         this.CargarTablaCategoria();
@@ -116,8 +119,9 @@ public class GestionarCategoria extends javax.swing.JInternalFrame {
         jPanel3.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
 
         txtdescripcion.setBackground(new java.awt.Color(255, 255, 255));
-        txtdescripcion.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
+        txtdescripcion.setFont(new java.awt.Font("Bahnschrift", 0, 14)); // NOI18N
         txtdescripcion.setForeground(new java.awt.Color(0, 0, 0));
+        txtdescripcion.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtdescripcion.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel3.add(txtdescripcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 170, 30));
 
@@ -198,8 +202,8 @@ public class GestionarCategoria extends javax.swing.JInternalFrame {
         try {
             st = con.createStatement();
             ResultSet rs= st.executeQuery(sql);
-            GestionarCategoria.tlCategoria = new JTable(model);
-            GestionarCategoria.jScrollPane1.setViewportView(GestionarCategoria.tlCategoria);
+            GestionarCategorias.tlCategoria = new JTable(model);
+            GestionarCategorias.jScrollPane1.setViewportView(GestionarCategorias.tlCategoria);
             
             model.addColumn("idCatecoria");
             model.addColumn("Descripcion");
@@ -251,5 +255,4 @@ public class GestionarCategoria extends javax.swing.JInternalFrame {
         }
     }
     
-
 }

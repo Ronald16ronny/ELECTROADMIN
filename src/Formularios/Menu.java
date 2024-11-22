@@ -4,7 +4,8 @@
  */
 package Formularios;
 
-import InternalFrame.GestionarCategoria;
+import InternalFrame.GestionarCategorias;
+import InternalFrame.GestionarCliente;
 import InternalFrame.NuevaCategoria;
 import InternalFrame.NuevoCliente;
 import InternalFrame.NuevoProducto;
@@ -172,6 +173,11 @@ public class Menu extends javax.swing.JFrame {
         MnIGesCliente.setFont(new java.awt.Font("Arial Narrow", 0, 14)); // NOI18N
         MnIGesCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/GESTIONAR CLIENTE.png"))); // NOI18N
         MnIGesCliente.setText(" Gestionar Cliente");
+        MnIGesCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MnIGesClienteActionPerformed(evt);
+            }
+        });
         MnCliente.add(MnIGesCliente);
 
         mbMenu.add(MnCliente);
@@ -329,7 +335,7 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_MnINuevaCategoriaActionPerformed
 
     private void MnIGesCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnIGesCategoriaActionPerformed
-         GestionarCategoria  gestionarCategoria = new GestionarCategoria();
+         GestionarCategorias  gestionarCategoria = new GestionarCategorias();
         dpMenu.add(gestionarCategoria);
         gestionarCategoria.setVisible(true);
     }//GEN-LAST:event_MnIGesCategoriaActionPerformed
@@ -339,6 +345,14 @@ public class Menu extends javax.swing.JFrame {
         log.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_MnICerarsesionActionPerformed
+
+    private void MnIGesClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnIGesClienteActionPerformed
+        
+        GestionarCliente  gestionarCliente = new GestionarCliente();
+        dpMenu.add(gestionarCliente);
+        gestionarCliente.setVisible(true);
+        
+    }//GEN-LAST:event_MnIGesClienteActionPerformed
 
       
    private void MnINuevoProductoActionPerformed(java.awt.event.ActionEvent evt) {                                                

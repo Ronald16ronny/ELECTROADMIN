@@ -4,6 +4,7 @@ import Controlador.Ctr_Categoria;
 import Modelo.Categoria;
 import java.awt.Dimension;
 import javax.swing.JOptionPane;
+import java.util.List;
 
 /**
  *
@@ -32,7 +33,7 @@ public class NuevaCategoria extends javax.swing.JInternalFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         txtdescripcion = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        Guardar = new javax.swing.JButton();
         lblwalpaper = new javax.swing.JLabel();
 
         setClosable(true);
@@ -50,19 +51,24 @@ public class NuevaCategoria extends javax.swing.JInternalFrame {
         jLabel2.setText("Descripcion Categoria");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, -1, -1));
 
-        txtdescripcion.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
-        getContentPane().add(txtdescripcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 50, 170, -1));
-
-        jButton1.setBackground(new java.awt.Color(204, 204, 204));
-        jButton1.setFont(new java.awt.Font("Arial Black", 1, 14)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(0, 0, 0));
-        jButton1.setText("Guardar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+        txtdescripcion.setFont(new java.awt.Font("Bahnschrift", 0, 14)); // NOI18N
+        txtdescripcion.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtdescripcionKeyPressed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 90, 100, 30));
+        getContentPane().add(txtdescripcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 50, 170, -1));
+
+        Guardar.setBackground(new java.awt.Color(204, 204, 204));
+        Guardar.setFont(new java.awt.Font("Arial Black", 1, 14)); // NOI18N
+        Guardar.setForeground(new java.awt.Color(0, 0, 0));
+        Guardar.setText("Guardar");
+        Guardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                GuardarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(Guardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 90, 100, 30));
 
         lblwalpaper.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Captura de pantalla 2024-09-23 142356.png"))); // NOI18N
         getContentPane().add(lblwalpaper, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 390, 170));
@@ -70,9 +76,27 @@ public class NuevaCategoria extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void GuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GuardarActionPerformed
+        this.GUARDADO();
 
-        Categoria cat = new Categoria();
+    }//GEN-LAST:event_GuardarActionPerformed
+
+    private void txtdescripcionKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtdescripcionKeyPressed
+        if (evt.getKeyCode() == evt.VK_ENTER)
+            this.GUARDADO();
+    }//GEN-LAST:event_txtdescripcionKeyPressed
+
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Guardar;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel lblwalpaper;
+    private javax.swing.JTextField txtdescripcion;
+    // End of variables declaration//GEN-END:variables
+
+    private void GUARDADO() {
+        Categoria categoria = new Categoria();
         Ctr_Categoria controlcategoria = new Ctr_Categoria();
 
         //validamos campos vacios
@@ -80,27 +104,21 @@ public class NuevaCategoria extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(null, "Complete los campos");
         } else {
             if (!controlcategoria.existeCategoria(txtdescripcion.getText().trim())) {
-                cat.setDescripcion(txtdescripcion.getText().trim());
-                cat.setEstado(1);
-                if (controlcategoria.guardar(cat)) {
+                categoria.setDescripcion(txtdescripcion.getText().trim());
+                categoria.setEstado(1);
+                if (controlcategoria.guardar(categoria)) {
                     JOptionPane.showMessageDialog(null, "Reguistro guardado");
                 } else {
                     JOptionPane.showMessageDialog(null, "Error al guardar");
                 }
+
             } else {
-                JOptionPane.showMessageDialog(null, "La categoria ya esta reguistrada en la base de datos");
+                JOptionPane.showMessageDialog(null, "La categoria ya esta reguistrada");
             }
         }
+
         //limpiar campo
         txtdescripcion.setText("");
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }
 
-
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel lblwalpaper;
-    private javax.swing.JTextField txtdescripcion;
-    // End of variables declaration//GEN-END:variables
 }

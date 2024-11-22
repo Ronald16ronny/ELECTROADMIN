@@ -111,10 +111,10 @@ public class NuevoProducto extends javax.swing.JInternalFrame {
         txtDescripcion.setBackground(new java.awt.Color(153, 255, 255));
         getContentPane().add(txtDescripcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 140, 170, -1));
 
-        CmbxIVA.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione IVA:", "No grab IVA", "18%", "16%", " " }));
+        CmbxIVA.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione IGV:", "No graba IGV", "18%", "16%", "" }));
         getContentPane().add(CmbxIVA, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 170, 170, -1));
 
-        CmbCategoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione Categoria:", " ", " " }));
+        CmbCategoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione Categoria:", "", "" }));
         CmbCategoria.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CmbCategoriaActionPerformed(evt);
@@ -159,11 +159,11 @@ public class NuevoProducto extends javax.swing.JInternalFrame {
         } else {
             if (!controlProducto.existeProducto(txtNombre.getText().trim())) {
 
-                if (iva.equalsIgnoreCase("Selecione IVA: ")) {
-                    JOptionPane.showMessageDialog(null, "Selecione IVA  ");
+                if (iva.equalsIgnoreCase("Seleccione IGV: ")) {
+                    JOptionPane.showMessageDialog(null, "Seleccione IGV:");
                 } else {
-                    if (categoria.equalsIgnoreCase("Selecione Categoria:")) {
-                        JOptionPane.showMessageDialog(null, "Selecione categoria  ");
+                    if (categoria.equalsIgnoreCase("Seleccione Categoria:")) {
+                        JOptionPane.showMessageDialog(null, "Seleccione categoria");
                     } else {
 
                         try {
@@ -194,7 +194,7 @@ public class NuevoProducto extends javax.swing.JInternalFrame {
 
                             producto.setDescripcion(txtDescripcion.getText().trim());
 
-                            if (iva.equalsIgnoreCase("No grab IVA")) {
+                            if (iva.equalsIgnoreCase("No graba IGV")) {
                                 producto.setPorsentajeIVA(0);
 
                             } else if (iva.equalsIgnoreCase("18%")) {
@@ -214,7 +214,7 @@ public class NuevoProducto extends javax.swing.JInternalFrame {
                                 txtDescripcion.setBackground(Color.green);
 
                                 this.CargarComboCategorias();
-                                this.CmbxIVA.setSelectedItem("Selecione IVA: ");
+                                this.CmbxIVA.setSelectedItem("Seleccione IGV: ");
                                 this.Limpiar();
 
                             } else {
@@ -222,7 +222,7 @@ public class NuevoProducto extends javax.swing.JInternalFrame {
                             }
 
                         } catch (HeadlessException | NumberFormatException e) {
-                            System.out.println("Error en: "+e);
+                            System.out.println("Error en: " + e);
                         }
 
                     }
@@ -230,7 +230,7 @@ public class NuevoProducto extends javax.swing.JInternalFrame {
                 }
 
             } else {
-                JOptionPane.showMessageDialog(null, "El producto ya existe en la Base de Datos  ");
+                JOptionPane.showMessageDialog(null, "El producto ya existe");
             }
 
         }
@@ -280,9 +280,9 @@ public class NuevoProducto extends javax.swing.JInternalFrame {
             st = cn.createStatement();
             ResultSet rs = st.executeQuery(sql);
             CmbCategoria.removeAllItems();
-            CmbCategoria.addItem("Selecione Categoria:");
+            CmbCategoria.addItem("Seleccione Categoria:");
             while (rs.next()) {
-                CmbCategoria.addItem(rs.getString("Descripcion"));
+                CmbCategoria.addItem(rs.getString("descripcion"));
 
             }
             cn.close();
@@ -295,7 +295,7 @@ public class NuevoProducto extends javax.swing.JInternalFrame {
     }
 
     private int IdCategoria() {
-        String sql = "select * from tb_Categoria where description = '" + this.CmbCategoria.getSelectedItem() + "'";
+        String sql = "select * from tb_categoria where descripcion = '" + this.CmbCategoria.getSelectedItem() + "'";
         Statement st;
         try {
 

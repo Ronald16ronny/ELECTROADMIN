@@ -40,6 +40,7 @@ public class NuevoCliente extends javax.swing.JInternalFrame {
 
         setClosable(true);
         setIconifiable(true);
+        setResizable(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -78,12 +79,12 @@ public class NuevoCliente extends javax.swing.JInternalFrame {
         getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 170, 90, -1));
 
         txtNombre.setBackground(new java.awt.Color(153, 255, 255));
-        txtNombre.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
+        txtNombre.setFont(new java.awt.Font("Bahnschrift", 0, 12)); // NOI18N
         txtNombre.setForeground(new java.awt.Color(0, 0, 0));
         getContentPane().add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 50, 170, -1));
 
         txtapellido.setBackground(new java.awt.Color(153, 255, 255));
-        txtapellido.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
+        txtapellido.setFont(new java.awt.Font("Bahnschrift", 0, 12)); // NOI18N
         txtapellido.setForeground(new java.awt.Color(0, 0, 0));
         txtapellido.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -93,13 +94,18 @@ public class NuevoCliente extends javax.swing.JInternalFrame {
         getContentPane().add(txtapellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 80, 170, -1));
 
         txtcedula.setBackground(new java.awt.Color(153, 255, 255));
-        txtcedula.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
+        txtcedula.setFont(new java.awt.Font("Bahnschrift", 0, 12)); // NOI18N
         txtcedula.setForeground(new java.awt.Color(0, 0, 0));
         getContentPane().add(txtcedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 110, 170, -1));
 
         txtDireccion.setBackground(new java.awt.Color(153, 255, 255));
-        txtDireccion.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
+        txtDireccion.setFont(new java.awt.Font("Bahnschrift", 0, 12)); // NOI18N
         txtDireccion.setForeground(new java.awt.Color(0, 0, 0));
+        txtDireccion.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtDireccionKeyPressed(evt);
+            }
+        });
         getContentPane().add(txtDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 170, 170, -1));
 
         bnGuardar.setBackground(new java.awt.Color(102, 255, 255));
@@ -111,10 +117,15 @@ public class NuevoCliente extends javax.swing.JInternalFrame {
                 bnGuardarActionPerformed(evt);
             }
         });
+        bnGuardar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                bnGuardarKeyPressed(evt);
+            }
+        });
         getContentPane().add(bnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 210, -1, 30));
 
         txtTelefono.setBackground(new java.awt.Color(153, 255, 255));
-        txtTelefono.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
+        txtTelefono.setFont(new java.awt.Font("Bahnschrift", 0, 12)); // NOI18N
         txtTelefono.setForeground(new java.awt.Color(0, 0, 0));
         getContentPane().add(txtTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 140, 170, -1));
 
@@ -134,8 +145,8 @@ public class NuevoCliente extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txtapellidoActionPerformed
 
     private void bnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bnGuardarActionPerformed
-
-        Cliente cliente = new Cliente();
+        
+         Cliente cliente = new Cliente();
         Ctr_Cliente controlCiente = new Ctr_Cliente();
 
         if (!txtNombre.getText().isEmpty() && !txtapellido.getText().isEmpty() && !txtcedula.getText().isEmpty()) {
@@ -177,10 +188,23 @@ public class NuevoCliente extends javax.swing.JInternalFrame {
             txtcedula.setBackground(Color.red);
             txtTelefono.setBackground(Color.red);
             txtDireccion.setBackground(Color.red);
+            txtNombre.setForeground(Color.white);
+             txtapellido.setBackground(Color.white);
+            txtcedula.setBackground(Color.white);
+            txtTelefono.setBackground(Color.white);
+            txtDireccion.setBackground(Color.white);
         }
         //metodo limpiar
         this.Limpiar();
     }//GEN-LAST:event_bnGuardarActionPerformed
+
+    private void bnGuardarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_bnGuardarKeyPressed
+  
+    }//GEN-LAST:event_bnGuardarKeyPressed
+
+    private void txtDireccionKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDireccionKeyPressed
+
+    }//GEN-LAST:event_txtDireccionKeyPressed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -208,4 +232,5 @@ public class NuevoCliente extends javax.swing.JInternalFrame {
         txtDireccion.setText("");
     }
 
+      
 }

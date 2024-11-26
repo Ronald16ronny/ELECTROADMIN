@@ -51,6 +51,7 @@ public class NuevoProducto extends javax.swing.JInternalFrame {
 
         setClosable(true);
         setIconifiable(true);
+        setTitle("Nuevo Producto");
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -85,7 +86,7 @@ public class NuevoProducto extends javax.swing.JInternalFrame {
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel6.setText("IVA:");
+        jLabel6.setText("IGV:");
         getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 170, 90, -1));
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -124,6 +125,7 @@ public class NuevoProducto extends javax.swing.JInternalFrame {
 
         bnGuardar.setBackground(new java.awt.Color(102, 255, 255));
         bnGuardar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        bnGuardar.setForeground(new java.awt.Color(0, 0, 0));
         bnGuardar.setText("Guardar");
         bnGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -132,7 +134,7 @@ public class NuevoProducto extends javax.swing.JInternalFrame {
         });
         getContentPane().add(bnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 230, -1, 30));
 
-        Lb1_Fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Captura de pantalla 2024-09-23 142356.png"))); // NOI18N
+        Lb1_Fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondo-azul-para-textura.jpg"))); // NOI18N
         getContentPane().add(Lb1_Fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 390, 270));
 
         pack();

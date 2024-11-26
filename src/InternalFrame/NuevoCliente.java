@@ -41,6 +41,7 @@ public class NuevoCliente extends javax.swing.JInternalFrame {
         setClosable(true);
         setIconifiable(true);
         setResizable(true);
+        setTitle("Nuevo Cliente");
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -78,12 +79,12 @@ public class NuevoCliente extends javax.swing.JInternalFrame {
         jLabel6.setText("Dirección");
         getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 170, 90, -1));
 
-        txtNombre.setBackground(new java.awt.Color(153, 255, 255));
+        txtNombre.setBackground(new java.awt.Color(153, 204, 255));
         txtNombre.setFont(new java.awt.Font("Bahnschrift", 0, 12)); // NOI18N
         txtNombre.setForeground(new java.awt.Color(0, 0, 0));
         getContentPane().add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 50, 170, -1));
 
-        txtapellido.setBackground(new java.awt.Color(153, 255, 255));
+        txtapellido.setBackground(new java.awt.Color(153, 204, 255));
         txtapellido.setFont(new java.awt.Font("Bahnschrift", 0, 12)); // NOI18N
         txtapellido.setForeground(new java.awt.Color(0, 0, 0));
         txtapellido.addActionListener(new java.awt.event.ActionListener() {
@@ -93,12 +94,12 @@ public class NuevoCliente extends javax.swing.JInternalFrame {
         });
         getContentPane().add(txtapellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 80, 170, -1));
 
-        txtcedula.setBackground(new java.awt.Color(153, 255, 255));
+        txtcedula.setBackground(new java.awt.Color(153, 204, 255));
         txtcedula.setFont(new java.awt.Font("Bahnschrift", 0, 12)); // NOI18N
         txtcedula.setForeground(new java.awt.Color(0, 0, 0));
         getContentPane().add(txtcedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 110, 170, -1));
 
-        txtDireccion.setBackground(new java.awt.Color(153, 255, 255));
+        txtDireccion.setBackground(new java.awt.Color(153, 204, 255));
         txtDireccion.setFont(new java.awt.Font("Bahnschrift", 0, 12)); // NOI18N
         txtDireccion.setForeground(new java.awt.Color(0, 0, 0));
         txtDireccion.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -108,7 +109,7 @@ public class NuevoCliente extends javax.swing.JInternalFrame {
         });
         getContentPane().add(txtDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 170, 170, -1));
 
-        bnGuardar.setBackground(new java.awt.Color(102, 255, 255));
+        bnGuardar.setBackground(new java.awt.Color(153, 204, 255));
         bnGuardar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         bnGuardar.setForeground(new java.awt.Color(0, 0, 0));
         bnGuardar.setText("Guardar");
@@ -124,12 +125,12 @@ public class NuevoCliente extends javax.swing.JInternalFrame {
         });
         getContentPane().add(bnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 210, -1, 30));
 
-        txtTelefono.setBackground(new java.awt.Color(153, 255, 255));
+        txtTelefono.setBackground(new java.awt.Color(153, 204, 255));
         txtTelefono.setFont(new java.awt.Font("Bahnschrift", 0, 12)); // NOI18N
         txtTelefono.setForeground(new java.awt.Color(0, 0, 0));
         getContentPane().add(txtTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 140, 170, -1));
 
-        Lb1_Fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Captura de pantalla 2024-09-23 142356.png"))); // NOI18N
+        Lb1_Fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondo-azul-para-textura.jpg"))); // NOI18N
         getContentPane().add(Lb1_Fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 390, 270));
 
         txtDescripcion2.setBackground(new java.awt.Color(153, 255, 255));

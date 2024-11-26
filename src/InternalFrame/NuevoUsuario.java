@@ -56,49 +56,59 @@ public class NuevoUsuario extends javax.swing.JInternalFrame {
         setIconifiable(true);
         setMaximizable(true);
         setResizable(true);
+        setTitle("Nuevo Usuario");
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel2.setFont(new java.awt.Font("Kozuka Mincho Pr6N H", 0, 24)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Bahnschrift", 1, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Nuevo Uusario");
+        jLabel2.setText("Nuevo Usuario");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 10, -1, 40));
 
-        jLabel3.setFont(new java.awt.Font("NSimSun", 1, 18)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Bahnschrift", 1, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel3.setText("Nombres:");
         jLabel3.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 50, -1, -1));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 50, 110, -1));
 
-        jLabel4.setFont(new java.awt.Font("NSimSun", 1, 18)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Bahnschrift", 1, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel4.setText("Apellidos:");
         jLabel4.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 80, -1, -1));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 80, 110, -1));
 
-        jLabel5.setFont(new java.awt.Font("NSimSun", 1, 18)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Bahnschrift", 1, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel5.setText("Uusario:");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 110, -1, -1));
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 110, 110, -1));
 
-        jLabel6.setFont(new java.awt.Font("NSimSun", 1, 18)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Bahnschrift", 1, 18)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel6.setText("Password:");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 140, -1, -1));
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 140, 110, -1));
 
-        jLabel7.setFont(new java.awt.Font("NSimSun", 1, 18)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Bahnschrift", 1, 18)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel7.setText("Telefono:");
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 170, -1, -1));
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 170, 110, -1));
 
+        txt_Nombre.setBackground(new java.awt.Color(153, 204, 255));
         txt_Nombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_NombreActionPerformed(evt);
             }
         });
         getContentPane().add(txt_Nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 50, 170, -1));
+
+        txt_Apellido.setBackground(new java.awt.Color(153, 204, 255));
         getContentPane().add(txt_Apellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 80, 170, -1));
         getContentPane().add(txt_Usuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 80, 170, -1));
 
+        txt_Telefono.setBackground(new java.awt.Color(153, 204, 255));
         txt_Telefono.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_TelefonoActionPerformed(evt);
@@ -106,7 +116,9 @@ public class NuevoUsuario extends javax.swing.JInternalFrame {
         });
         getContentPane().add(txt_Telefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 170, 170, -1));
 
-        jButton_Guardar.setFont(new java.awt.Font("High Tower Text", 1, 18)); // NOI18N
+        jButton_Guardar.setBackground(new java.awt.Color(153, 204, 255));
+        jButton_Guardar.setFont(new java.awt.Font("Bahnschrift", 1, 18)); // NOI18N
+        jButton_Guardar.setForeground(new java.awt.Color(0, 0, 0));
         jButton_Guardar.setText("Guardar");
         jButton_Guardar.setInheritsPopupMenu(true);
         jButton_Guardar.addActionListener(new java.awt.event.ActionListener() {
@@ -116,15 +128,18 @@ public class NuevoUsuario extends javax.swing.JInternalFrame {
         });
         getContentPane().add(jButton_Guardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 220, 110, 30));
 
+        txt_password.setBackground(new java.awt.Color(153, 204, 255));
         txt_password.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_passwordActionPerformed(evt);
             }
         });
         getContentPane().add(txt_password, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 110, 170, -1));
+
+        txt_Password.setBackground(new java.awt.Color(153, 204, 255));
         getContentPane().add(txt_Password, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 140, 170, -1));
 
-        jLabel_wallpaper.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondo-degradado-negro-morado-oscuro-superpuesto-fondo-abstracto-noche-negra-noche-oscura-espacio-texto-fondox9_661047-2331.jpg"))); // NOI18N
+        jLabel_wallpaper.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondo-azul-para-textura.jpg"))); // NOI18N
         getContentPane().add(jLabel_wallpaper, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 390, 270));
 
         pack();

@@ -53,7 +53,7 @@ public class Menu extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        ImageIcon icon = new ImageIcon(getClass().getResource("/Imagenes/fon.png"));
+        ImageIcon icon = new ImageIcon(getClass().getResource("/Imagenes/fondo abstrac.jpg"));
         Image image = icon.getImage();
         dpMenu = new javax.swing.JDesktopPane(){
             public void paintComponent(Graphics g){

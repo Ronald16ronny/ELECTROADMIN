@@ -39,6 +39,7 @@ public class NuevaCategoria extends javax.swing.JInternalFrame {
         setClosable(true);
         setIconifiable(true);
         setResizable(true);
+        setTitle("Nueva Categoria");
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Arial Narrow", 1, 24)); // NOI18N
@@ -70,7 +71,7 @@ public class NuevaCategoria extends javax.swing.JInternalFrame {
         });
         getContentPane().add(Guardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 90, 100, 30));
 
-        lblwalpaper.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Captura de pantalla 2024-09-23 142356.png"))); // NOI18N
+        lblwalpaper.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondo-azul-para-textura.jpg"))); // NOI18N
         getContentPane().add(lblwalpaper, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 390, 170));
 
         pack();

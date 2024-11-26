@@ -4,6 +4,7 @@
  */
 package Formularios;
 
+import InternalFrame.Factura;
 import InternalFrame.GestionarCategorias;
 import InternalFrame.GestionarCliente;
 import InternalFrame.NuevaCategoria;
@@ -226,6 +227,11 @@ public class Menu extends javax.swing.JFrame {
         MnIFactura.setFont(new java.awt.Font("Arial Narrow", 0, 14)); // NOI18N
         MnIFactura.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/FACTURA.png"))); // NOI18N
         MnIFactura.setText("Factura");
+        MnIFactura.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MnIFacturaActionPerformed(evt);
+            }
+        });
         Mnventa.add(MnIFactura);
 
         MnVenta.add(Mnventa);
@@ -353,6 +359,12 @@ public class Menu extends javax.swing.JFrame {
         gestionarCliente.setVisible(true);
         
     }//GEN-LAST:event_MnIGesClienteActionPerformed
+
+    private void MnIFacturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnIFacturaActionPerformed
+        Factura  fac = new Factura();
+        dpMenu.add(fac);
+        fac.setVisible(true);
+    }//GEN-LAST:event_MnIFacturaActionPerformed
 
       
    private void MnINuevoProductoActionPerformed(java.awt.event.ActionEvent evt) {                                                

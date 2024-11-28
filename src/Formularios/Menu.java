@@ -7,6 +7,7 @@ package Formularios;
 import InternalFrame.Factura;
 import InternalFrame.GestionarCategorias;
 import InternalFrame.GestionarCliente;
+import InternalFrame.GestionarUsuario;
 import InternalFrame.NuevaCategoria;
 import InternalFrame.NuevoCliente;
 import InternalFrame.NuevoProducto;
@@ -324,7 +325,9 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_MnINuevoUsuarioActionPerformed
 
     private void MnIGesUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnIGesUsuarioActionPerformed
-        // TODO add your handling code here:
+        GestionarUsuario gestionarUsuario = new GestionarUsuario();
+        dpMenu.add(gestionarUsuario);
+        gestionarUsuario.setVisible(true);
     }//GEN-LAST:event_MnIGesUsuarioActionPerformed
 
     private void MnINuevoClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnINuevoClienteActionPerformed

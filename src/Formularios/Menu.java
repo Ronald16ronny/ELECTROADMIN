@@ -101,7 +101,6 @@ public class Menu extends javax.swing.JFrame {
         dpMenu.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         mbMenu.setBackground(new java.awt.Color(238, 234, 231));
-        mbMenu.setForeground(new java.awt.Color(0, 0, 0));
 
         MnUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/USUARIO.png"))); // NOI18N
         MnUsuario.setText("Usuario");
@@ -241,6 +240,11 @@ public class Menu extends javax.swing.JFrame {
         MnIGesVenta.setFont(new java.awt.Font("Arial Narrow", 0, 14)); // NOI18N
         MnIGesVenta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/GESTIONAR VENTA.png"))); // NOI18N
         MnIGesVenta.setText("Gestionar Venta");
+        MnIGesVenta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MnIGesVentaActionPerformed(evt);
+            }
+        });
         MnVenta.add(MnIGesVenta);
 
         mbMenu.add(MnVenta);
@@ -253,6 +257,11 @@ public class Menu extends javax.swing.JFrame {
         MnIRepCliente.setFont(new java.awt.Font("Arial Narrow", 0, 14)); // NOI18N
         MnIRepCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/REPORTE2.png"))); // NOI18N
         MnIRepCliente.setText("Reporte Clientes");
+        MnIRepCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MnIRepClienteActionPerformed(evt);
+            }
+        });
         MnReporte.add(MnIRepCliente);
 
         MnIRepCategoria.setFont(new java.awt.Font("Arial Narrow", 0, 14)); // NOI18N
@@ -325,9 +334,9 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_MnINuevoUsuarioActionPerformed
 
     private void MnIGesUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnIGesUsuarioActionPerformed
-        GestionarUsuario gestionarUsuario = new GestionarUsuario();
-        dpMenu.add(gestionarUsuario);
-        gestionarUsuario.setVisible(true);
+        GestionarUsuario gesUsuario = new GestionarUsuario();
+        dpMenu.add(gesUsuario);
+        gesUsuario.setVisible(true);
     }//GEN-LAST:event_MnIGesUsuarioActionPerformed
 
     private void MnINuevoClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnINuevoClienteActionPerformed
@@ -368,6 +377,14 @@ public class Menu extends javax.swing.JFrame {
         dpMenu.add(fac);
         fac.setVisible(true);
     }//GEN-LAST:event_MnIFacturaActionPerformed
+
+    private void MnIRepClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnIRepClienteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_MnIRepClienteActionPerformed
+
+    private void MnIGesVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnIGesVentaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_MnIGesVentaActionPerformed
 
       
    private void MnINuevoProductoActionPerformed(java.awt.event.ActionEvent evt) {                                                

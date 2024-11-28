@@ -4,6 +4,8 @@
  */
 package InternalFrame;
 
+import java.awt.Dimension;
+
 /**
  *
  * @author JOSUE
@@ -15,6 +17,7 @@ public class Boleta extends javax.swing.JInternalFrame {
      */
     public Boleta() {
         initComponents();
+         this.setSize(new Dimension(800, 600));
     }
 
     /**
@@ -26,21 +29,245 @@ public class Boleta extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 394, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 274, Short.MAX_VALUE)
-        );
+        jLabel1 = new javax.swing.JLabel();
+        cboCliente = new javax.swing.JComboBox<>();
+        cboProducto = new javax.swing.JComboBox<>();
+        txtCliente_Buscar = new javax.swing.JTextField();
+        btn_Buacar_Cliente = new javax.swing.JButton();
+        btn_Añadir_Producto = new javax.swing.JButton();
+        txtCantidad = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        btn_ReguistrarVenta = new javax.swing.JButton();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        txt_Subtotal = new javax.swing.JTextField();
+        txt_Descuento = new javax.swing.JTextField();
+        txt_igv = new javax.swing.JTextField();
+        txt_TotalPagar = new javax.swing.JTextField();
+        txt_cambio = new javax.swing.JTextField();
+        txt_efectivo = new javax.swing.JTextField();
+        btn_Calcular_cambio = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tbl_Productos = new javax.swing.JTable();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+
+        setTitle("Boleta");
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel1.setFont(new java.awt.Font("Bahnschrift", 1, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("Boleta");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 0, -1, -1));
+
+        cboCliente.setFont(new java.awt.Font("Bahnschrift", 0, 12)); // NOI18N
+        cboCliente.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecciones Cliente:", "Item 2", "Item 3", "Item 4" }));
+        getContentPane().add(cboCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 40, 170, -1));
+
+        cboProducto.setFont(new java.awt.Font("Bahnschrift", 0, 12)); // NOI18N
+        cboProducto.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecciones Producto:", "Item 2", "Item 3", "Item 4" }));
+        getContentPane().add(cboProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 90, 170, -1));
+
+        txtCliente_Buscar.setBackground(new java.awt.Color(255, 255, 255));
+        txtCliente_Buscar.setFont(new java.awt.Font("Bahnschrift", 0, 12)); // NOI18N
+        getContentPane().add(txtCliente_Buscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 40, 150, -1));
+
+        btn_Buacar_Cliente.setFont(new java.awt.Font("Bahnschrift", 1, 12)); // NOI18N
+        btn_Buacar_Cliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/magnifier-on-a-user_icon-icons.com_56923.png"))); // NOI18N
+        btn_Buacar_Cliente.setText("Buscar");
+        btn_Buacar_Cliente.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        getContentPane().add(btn_Buacar_Cliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 30, 120, -1));
+
+        btn_Añadir_Producto.setFont(new java.awt.Font("Bahnschrift", 1, 12)); // NOI18N
+        btn_Añadir_Producto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/1486395885-plus_80605.png"))); // NOI18N
+        btn_Añadir_Producto.setText("Añadir");
+        btn_Añadir_Producto.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        getContentPane().add(btn_Añadir_Producto, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 80, 120, -1));
+
+        txtCantidad.setBackground(new java.awt.Color(255, 255, 255));
+        txtCantidad.setFont(new java.awt.Font("Bahnschrift", 0, 12)); // NOI18N
+        getContentPane().add(txtCantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 90, 60, -1));
+
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel4.setText("Cantidad:");
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 90, 80, -1));
+
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel3.setText("Producto:");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 80, -1));
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel2.setText("Cliente:");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 80, -1));
+
+        btn_ReguistrarVenta.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btn_ReguistrarVenta.setForeground(new java.awt.Color(0, 0, 0));
+        btn_ReguistrarVenta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Printer-blue_37120(2).png"))); // NOI18N
+        btn_ReguistrarVenta.setText("Reguistrar Venta");
+        btn_ReguistrarVenta.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btn_ReguistrarVenta.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        getContentPane().add(btn_ReguistrarVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 350, 130, 110));
+
+        jPanel2.setOpaque(false);
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        jLabel6.setText("Subtotal:");
+        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 80, -1));
+
+        jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        jLabel7.setText("Descuento:");
+        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 80, -1));
+
+        jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        jLabel8.setText("IGV:");
+        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 80, -1));
+
+        jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        jLabel9.setText("Total a pagar:");
+        jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, 80, -1));
+
+        jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        jLabel10.setText("Efectivo:");
+        jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, 80, -1));
+
+        jLabel11.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        jLabel11.setText("Cambio:");
+        jPanel2.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, 80, -1));
+
+        txt_Subtotal.setBackground(new java.awt.Color(255, 255, 255));
+        txt_Subtotal.setFont(new java.awt.Font("Bahnschrift", 0, 12)); // NOI18N
+        txt_Subtotal.setForeground(new java.awt.Color(0, 0, 0));
+        txt_Subtotal.setEnabled(false);
+        jPanel2.add(txt_Subtotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 20, 120, -1));
+
+        txt_Descuento.setBackground(new java.awt.Color(255, 255, 255));
+        txt_Descuento.setFont(new java.awt.Font("Bahnschrift", 0, 12)); // NOI18N
+        txt_Descuento.setForeground(new java.awt.Color(0, 0, 0));
+        txt_Descuento.setEnabled(false);
+        jPanel2.add(txt_Descuento, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 50, 120, -1));
+
+        txt_igv.setBackground(new java.awt.Color(255, 255, 255));
+        txt_igv.setFont(new java.awt.Font("Bahnschrift", 0, 12)); // NOI18N
+        txt_igv.setForeground(new java.awt.Color(0, 0, 0));
+        txt_igv.setEnabled(false);
+        jPanel2.add(txt_igv, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 80, 120, -1));
+
+        txt_TotalPagar.setBackground(new java.awt.Color(255, 255, 255));
+        txt_TotalPagar.setFont(new java.awt.Font("Bahnschrift", 0, 12)); // NOI18N
+        txt_TotalPagar.setForeground(new java.awt.Color(0, 0, 0));
+        txt_TotalPagar.setEnabled(false);
+        jPanel2.add(txt_TotalPagar, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 110, 120, -1));
+
+        txt_cambio.setBackground(new java.awt.Color(255, 255, 255));
+        txt_cambio.setFont(new java.awt.Font("Bahnschrift", 0, 12)); // NOI18N
+        txt_cambio.setForeground(new java.awt.Color(0, 0, 0));
+        txt_cambio.setEnabled(false);
+        jPanel2.add(txt_cambio, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 180, 120, -1));
+
+        txt_efectivo.setBackground(new java.awt.Color(255, 255, 255));
+        txt_efectivo.setFont(new java.awt.Font("Bahnschrift", 0, 12)); // NOI18N
+        txt_efectivo.setForeground(new java.awt.Color(0, 0, 0));
+        jPanel2.add(txt_efectivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 150, 120, -1));
+
+        btn_Calcular_cambio.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btn_Calcular_cambio.setForeground(new java.awt.Color(0, 0, 0));
+        btn_Calcular_cambio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/pay_cash_payment_money_dollar_bill_icon_143267(1).png"))); // NOI18N
+        btn_Calcular_cambio.setText("Calcular Cambio");
+        btn_Calcular_cambio.setDisabledIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/pay_cash_payment_money_dollar_bill_icon_143267(1).png"))); // NOI18N
+        btn_Calcular_cambio.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btn_Calcular_cambio.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jPanel2.add(btn_Calcular_cambio, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 150, 130, 60));
+
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 330, 380, 210));
+
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setOpaque(false);
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        tbl_Productos.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(tbl_Productos);
+
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 740, 190));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, 760, 210));
+
+        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/invoice_generation_finance_bill_payment_receipt_document_icon_261651.png"))); // NOI18N
+        getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 10, 120, 100));
+
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondo-azul-para-textura.jpg"))); // NOI18N
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(-20, 0, 800, 570));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btn_Añadir_Producto;
+    private javax.swing.JButton btn_Buacar_Cliente;
+    private javax.swing.JButton btn_Calcular_cambio;
+    private javax.swing.JButton btn_ReguistrarVenta;
+    private javax.swing.JComboBox<String> cboCliente;
+    private javax.swing.JComboBox<String> cboProducto;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JScrollPane jScrollPane1;
+    public static javax.swing.JTable tbl_Productos;
+    private javax.swing.JTextField txtCantidad;
+    private javax.swing.JTextField txtCliente_Buscar;
+    private javax.swing.JTextField txt_Descuento;
+    private javax.swing.JTextField txt_Subtotal;
+    private javax.swing.JTextField txt_TotalPagar;
+    private javax.swing.JTextField txt_cambio;
+    private javax.swing.JTextField txt_efectivo;
+    private javax.swing.JTextField txt_igv;
     // End of variables declaration//GEN-END:variables
 }

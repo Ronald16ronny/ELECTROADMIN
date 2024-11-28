@@ -5,6 +5,11 @@
 package InternalFrame;
 
 import java.awt.Dimension;
+import java.sql.Connection;
+import java.sql.Statement;
+import java.sql.SQLException;
+import java.sql.ResultSet;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -17,8 +22,12 @@ public class Factura extends javax.swing.JInternalFrame {
      */
     public Factura() {
         initComponents();
-         this.setSize(new Dimension(800, 600));
-        
+        this.setSize(new Dimension(800, 600));
+
+        //cargar los clientes a la vista
+        this.CargarCliente();
+        //cargar los clientes a la vista
+        this.CargarProducto();
     }
 
     /**
@@ -58,6 +67,7 @@ public class Factura extends javax.swing.JInternalFrame {
         txt_efectivo = new javax.swing.JTextField();
         btn_Calcular_cambio = new javax.swing.JButton();
         btn_ReguistrarVenta = new javax.swing.JButton();
+        jLabel12 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
 
         setClosable(true);
@@ -108,6 +118,11 @@ public class Factura extends javax.swing.JInternalFrame {
         btn_Buacar_Cliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/magnifier-on-a-user_icon-icons.com_56923.png"))); // NOI18N
         btn_Buacar_Cliente.setText("Buscar");
         btn_Buacar_Cliente.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btn_Buacar_Cliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_Buacar_ClienteActionPerformed(evt);
+            }
+        });
         getContentPane().add(btn_Buacar_Cliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 30, 120, -1));
 
         btn_Añadir_Producto.setFont(new java.awt.Font("Bahnschrift", 1, 12)); // NOI18N
@@ -230,11 +245,40 @@ public class Factura extends javax.swing.JInternalFrame {
         btn_ReguistrarVenta.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         getContentPane().add(btn_ReguistrarVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 350, 130, 110));
 
+        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/invoice_document_bill_delivery_note_icon_225116(1).png"))); // NOI18N
+        getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 10, 130, 110));
+
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondo-azul-para-textura.jpg"))); // NOI18N
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(-3, -4, 800, 570));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btn_Buacar_ClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_Buacar_ClienteActionPerformed
+
+        String clientebuscar = txtCliente_Buscar.getText().trim();
+        Connection cn = Conexion.conexcion.conectar();
+        String sql = "select nombre, apellido  from tb_cliente where cedula = '" + clientebuscar + "'";
+        Statement st;
+
+        try {
+            st = cn.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+
+            if (rs.next()) {
+                cboCliente.setSelectedItem(rs.getString("nombre") + " " + rs.getString("apellido"));
+            } else {
+                cboCliente.setSelectedItem("Seleccione Cliente:");
+                JOptionPane.showMessageDialog(null, "¡DNI del Cliente incorrecta o no encontrada!");
+            }
+            txtCliente_Buscar.setText("");
+            this.txtCliente_Buscar.requestFocus();
+            cn.close();
+        } catch (SQLException e) {
+            System.out.println("Error al buscar Cliente!, " + e);
+        }
+
+    }//GEN-LAST:event_btn_Buacar_ClienteActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -247,6 +291,7 @@ public class Factura extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -268,4 +313,51 @@ public class Factura extends javax.swing.JInternalFrame {
     private javax.swing.JTextField txt_efectivo;
     private javax.swing.JTextField txt_igv;
     // End of variables declaration//GEN-END:variables
+
+    /*Metodo para cargar CLiente en el jCombobox*/
+    private void CargarCliente() {
+        Connection cn = Conexion.conexcion.conectar();
+        String sql = "select * from tb_cliente";
+        Statement st;
+
+        try {
+
+            st = cn.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+            cboCliente.removeAllItems();
+            cboCliente.addItem("Seleccione un Cliente");
+
+            while (rs.next()) {
+                cboCliente.addItem(rs.getString("nombre") + " " + rs.getString("apellido"));
+            }
+            cn.close();
+        } catch (SQLException e) {
+            System.out.println("Error al cargar Cliente: " + e);
+        }
+
+    }
+
+    /*Metodo para cargar CLiente en el jCombobox*/
+    private void CargarProducto() {
+        Connection cn = Conexion.conexcion.conectar();
+        String sql = "select * from tb_producto";
+        Statement st;
+
+        try {
+
+            st = cn.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+            cboProducto.removeAllItems();
+            cboProducto.addItem("Seleccione un Producto");
+
+            while (rs.next()) {
+                cboProducto.addItem(rs.getString("nombre"));
+            }
+            cn.close();
+        } catch (SQLException e) {
+            System.out.println("Error al cargar Producto: " + e);
+        }
+
+    }
+
 }

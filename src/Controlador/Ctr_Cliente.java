@@ -48,7 +48,7 @@ public class Ctr_Cliente {
     public boolean existeCliente(String cedula) {
 
         boolean respuesta = false;
-        String sql = "select cedula from tb_cliente where cedula = ' " + cedula + " ';";
+        String sql = "select cedula from tb_cliente where cedula = '" + cedula + "';";
         Statement st;
 
         try {

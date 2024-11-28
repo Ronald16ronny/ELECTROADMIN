@@ -59,7 +59,7 @@ public class Crt_Producto {
      */
     public boolean existeProducto(String Producto) {
         boolean respuesta = false;
-        String sql = "select nombre from tb_producto where nombre = ' " + Producto + " ';";
+        String sql = "select nombre from tb_producto where nombre = '" + Producto + "';";
         Statement st;
 
         try {

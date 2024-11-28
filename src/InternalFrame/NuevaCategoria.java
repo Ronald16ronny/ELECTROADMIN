@@ -120,6 +120,7 @@ public class NuevaCategoria extends javax.swing.JInternalFrame {
 
         //limpiar campo
         txtdescripcion.setText("");
+        this.txtdescripcion.requestFocus();
     }
 
 }

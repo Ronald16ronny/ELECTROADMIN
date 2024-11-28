@@ -153,7 +153,7 @@ public class NuevoProducto extends javax.swing.JInternalFrame {
         categoria = CmbCategoria.getSelectedItem().toString().trim();
 
         if (txtNombre.getText().equals("") || txtCantidad.getText().equals("") || txtPrecio.getText().equals("")) {
-            JOptionPane.showMessageDialog(null, "Complete todos los campos ");
+            JOptionPane.showMessageDialog(null, "Complete todos los campos");
             txtNombre.setBackground(Color.red);
             txtCantidad.setBackground(Color.red);
             txtPrecio.setBackground(Color.red);
@@ -161,7 +161,7 @@ public class NuevoProducto extends javax.swing.JInternalFrame {
         } else {
             if (!controlProducto.existeProducto(txtNombre.getText().trim())) {
 
-                if (iva.equalsIgnoreCase("Seleccione IGV: ")) {
+                if (iva.equalsIgnoreCase("Seleccione IGV:")) {
                     JOptionPane.showMessageDialog(null, "Seleccione IGV:");
                 } else {
                     if (categoria.equalsIgnoreCase("Seleccione Categoria:")) {
@@ -268,6 +268,7 @@ public class NuevoProducto extends javax.swing.JInternalFrame {
         txtCantidad.setText("");
         txtPrecio.setText("");
         txtDescripcion.setText("");
+        this.txtNombre.requestFocus();
 
     }
 

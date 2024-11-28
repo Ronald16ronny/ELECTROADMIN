@@ -231,6 +231,7 @@ public class NuevoCliente extends javax.swing.JInternalFrame {
         txtcedula.setText("");
         txtTelefono.setText("");
         txtDireccion.setText("");
+        this.txtNombre.requestFocus();
     }
 
       

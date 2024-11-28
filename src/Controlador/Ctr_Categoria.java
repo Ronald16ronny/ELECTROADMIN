@@ -46,7 +46,7 @@ public class Ctr_Categoria {
     public boolean existeCategoria(String categoria) {
 
         boolean respuesta = false;
-        String sql = "select descripcion from tb_categoria where descripcion = ' "+categoria+" ';";
+        String sql = "select descripcion from tb_categoria where descripcion = '"+categoria+"';";
         Statement st;
 
         try {

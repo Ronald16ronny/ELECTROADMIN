@@ -4,6 +4,7 @@
  */
 package Formularios;
 
+import InternalFrame.Boleta;
 import InternalFrame.Factura;
 import InternalFrame.GestionarCategorias;
 import InternalFrame.GestionarCliente;
@@ -222,6 +223,11 @@ public class Menu extends javax.swing.JFrame {
         MnIBoleta.setFont(new java.awt.Font("Arial Narrow", 0, 14)); // NOI18N
         MnIBoleta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/BOLETA.png"))); // NOI18N
         MnIBoleta.setText("Boleta");
+        MnIBoleta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MnIBoletaActionPerformed(evt);
+            }
+        });
         Mnventa.add(MnIBoleta);
 
         MnIFactura.setFont(new java.awt.Font("Arial Narrow", 0, 14)); // NOI18N
@@ -385,6 +391,12 @@ public class Menu extends javax.swing.JFrame {
     private void MnIGesVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnIGesVentaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_MnIGesVentaActionPerformed
+
+    private void MnIBoletaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnIBoletaActionPerformed
+        Boleta  bol = new Boleta();
+        dpMenu.add(bol);
+        bol.setVisible(true);
+    }//GEN-LAST:event_MnIBoletaActionPerformed
 
       
    private void MnINuevoProductoActionPerformed(java.awt.event.ActionEvent evt) {                                                

@@ -4,19 +4,7 @@
  */
 package InternalFrame;
 
-import Controlador.Ctr_Cliente;
-import Modelo.Cliente;
 import java.awt.Dimension;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import javax.swing.JOptionPane;
-import javax.swing.JTable;
-import javax.swing.table.DefaultTableModel;
 import static InternalFrame.GestionarVentas.tVentas;
 
 /**
@@ -25,13 +13,11 @@ import static InternalFrame.GestionarVentas.tVentas;
  */
 public class GestionarVentas extends javax.swing.JInternalFrame {
 
-    private int idCliente=0;
-    private int idVentas;
     
     public GestionarVentas() {
         initComponents();
         this.setSize(new Dimension(900, 500));
-        this.CargarTablaClientes();
+      
     }
 
     /**
@@ -161,29 +147,7 @@ public class GestionarVentas extends javax.swing.JInternalFrame {
 
     private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
 
-        if(txt_totalpagar.getText().isEmpty() && txtapellido.getText().isEmpty() && txtdni.getText().isEmpty() && txt_fecha.getText().isEmpty() && txtdireccion.getText().isEmpty()){
-            JOptionPane.showMessageDialog(null, "¡Complete todos los campos!");
-        }else{
-            
-            Cliente cliente = new Cliente();
-            Ctr_Cliente controlCliente = new Ctr_Cliente();
-            
-            cliente.setNombre(txt_totalpagar.getText().trim());
-            cliente.setApellido(txtapellido.getText().trim());
-            cliente.setDni(txtdni.getText().trim());
-            cliente.setTelefono(txt_fecha.getText().trim());
-            cliente.setDireccion(txtdireccion.getText().trim());
-            
-            if(controlCliente.actualizar(cliente, idCliente)){
-                 JOptionPane.showMessageDialog(null, "¡Datos del cliente Actualizados!");
-                 this.CargarTablaClientes();
-                 this.Limpiar();
-            }else{
-                 JOptionPane.showMessageDialog(null, "¡Error al Actualizar!");
-            }
-            
-            
-        }
+      
         
     }//GEN-LAST:event_btnActualizarActionPerformed
 
@@ -209,88 +173,4 @@ public class GestionarVentas extends javax.swing.JInternalFrame {
     private javax.swing.JTextField txt_fecha;
     private javax.swing.JTextField txt_totalpagar;
     // End of variables declaration//GEN-END:variables
- /**
-     *
-     * metodos para mostrar todas las categorias
-     *
-     */
-    private void CargarTablaClientes() {
-        Connection con = Conexion.conexcion.conectar();
-        DefaultTableModel model = new DefaultTableModel();
-        String sql = "select * from  tb_cliente";
-        Statement st;
-
-        try {
-            st = con.createStatement();
-            ResultSet rs = st.executeQuery(sql);
-            GestionarVentas.tVentas = new JTable(model);
-            GestionarVentas.jScrollPane1.setViewportView(GestionarVentas.tVentas);
-
-            model.addColumn("Nº");//ID
-            model.addColumn("Nombre");
-            model.addColumn("Apellido");
-            model.addColumn("Dni");
-            model.addColumn("Telefono");
-            model.addColumn("Direccion");
-            model.addColumn("Estado");
-
-            while (rs.next()) {
-                Object fila[] = new Object[7];
-
-                for (int i = 0; i < 7; i++) {
-
-                    fila[i] = rs.getObject(i + 1);
-
-                }
-                model.addRow(fila);
-            }
-            con.close();
-        } catch (SQLException e) {
-            System.out.println("Error al llenar ala tabla cliente" + e);
-        }
-
-        tVentas.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                int fila_point = tVentas.rowAtPoint(e.getPoint());
-                int columna_point = 0;
-
-                if (fila_point > -1) {
-                    idCliente = (int) model.getValueAt(fila_point, columna_point);
-                    EnviarDatosClientesSeleccionado(idCliente);
-                }
-
-            }
-        });
-
-    }
-
-    private void EnviarDatosClientesSeleccionado(int idCliente) {
-        try {
-
-            Connection con = Conexion.conexcion.conectar();
-            PreparedStatement pst = con.prepareStatement("select * from tb_cliente where idCliente = '" + idCliente + " ' ");
-            ResultSet rs = pst.executeQuery();
-            if (rs.next()) {
-                txt_totalpagar.setText(rs.getString("nombre"));
-                txtapellido.setText(rs.getString("apellido"));
-                txtdni.setText(rs.getString("cedula"));
-                txt_fecha.setText(rs.getString("telefono"));
-                txtdireccion.setText(rs.getString("direccion"));
-            }
-            con.close();
-
-        } catch (SQLException e) {
-            System.out.println("Error al seleccionar cliente" + e);
-        }
-    }
-
-    private void Limpiar() {
-        txt_totalpagar.setText("");
-        txtapellido.setText("");
-        txt_fecha.setText("");
-        txtdireccion.setText("");
-        txtdni.setText("");
-    }
-
 }

@@ -4,21 +4,18 @@
  */
 package InternalFrame;
 
+
 import Modelo.DetalleVenta;
 import java.awt.Dimension;
-import java.util.ArrayList;
-import javax.swing.table.DefaultTableModel;
 import java.sql.Connection;
 import java.sql.Statement;
 import java.sql.SQLException;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
-/**
- *
- * @author JOSUE
- */
-public class Boleta extends javax.swing.JInternalFrame {
+public class FACTURA_01 extends javax.swing.JInternalFrame {
 
     // modelo de datos 
     private DefaultTableModel modeloDatosProductos;
@@ -47,27 +44,26 @@ public class Boleta extends javax.swing.JInternalFrame {
 
     private int auxIdDetalle = 1; //id del detalle de venta
 
-    public Boleta() {
+    
+    public FACTURA_01() {
         initComponents();
-        this.setSize(new Dimension(800, 600));
+         this.setSize(new Dimension(800, 600));
 
         //cargar los clientes a la vista
         this.CargarCliente();
         //cargar los clientes a la vista
         this.CargarProducto();
-
-        this.inicializarTabla();
-
         txt_efectivo.setEnabled(false);
         btn_Añadir_Producto.setEnabled(false);
-
+        this.inicializarTabla();
         txt_Subtotal.setText("0.0");
         txt_Descuento.setText("0.0");
         txt_igv.setText("0.0");
         txt_TotalPagar.setText("0.0");
-    }
-    //metodo para inicializar la tabla de los productos
 
+    }
+
+        //metodo para inicializar la tabla de los productos
     private void inicializarTabla() {
         modeloDatosProductos = new DefaultTableModel();
         //añadir columnas
@@ -81,7 +77,7 @@ public class Boleta extends javax.swing.JInternalFrame {
         modeloDatosProductos.addColumn("Total Pagar");
         modeloDatosProductos.addColumn("Accion");
         //agregar los datos del modelo a la tabla
-        this.tbl_Productos02.setModel(modeloDatosProductos);
+        this.tbl_Productos.setModel(modeloDatosProductos);
 
     }
 
@@ -100,24 +96,29 @@ public class Boleta extends javax.swing.JInternalFrame {
             this.modeloDatosProductos.setValueAt("Eleminar", i, 8);//luego poner un boton de eliminar
         }
         //añadir al tbltable
-        tbl_Productos02.setModel(modeloDatosProductos);
+        tbl_Productos.setModel(modeloDatosProductos);
 
     }
 
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
         cboCliente = new javax.swing.JComboBox<>();
-        cboProducto = new javax.swing.JComboBox<>();
         txtCliente_Buscar = new javax.swing.JTextField();
         btn_Buacar_Cliente = new javax.swing.JButton();
-        btn_Añadir_Producto = new javax.swing.JButton();
-        txtCantidad = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        cboProducto = new javax.swing.JComboBox<>();
+        jLabel4 = new javax.swing.JLabel();
+        txtCantidad = new javax.swing.JTextField();
+        btn_Añadir_Producto = new javax.swing.JButton();
+        jLabel12 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tbl_Productos = new javax.swing.JTable();
         btn_ReguistrarVenta = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
@@ -132,27 +133,27 @@ public class Boleta extends javax.swing.JInternalFrame {
         txt_TotalPagar = new javax.swing.JTextField();
         txt_cambio = new javax.swing.JTextField();
         txt_efectivo = new javax.swing.JTextField();
-        jLabel12 = new javax.swing.JLabel();
-        boton_Cambio = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tbl_Productos02 = new javax.swing.JTable();
+        btn_Calcular_cambio_cambio = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
 
-        setTitle("Boleta");
+        setClosable(true);
+        setIconifiable(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Bahnschrift", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Boleta");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 0, -1, -1));
+        jLabel1.setText("Facturación");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 0, -1, -1));
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel2.setText("Cliente:");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 80, -1));
 
         cboCliente.setFont(new java.awt.Font("Bahnschrift", 0, 12)); // NOI18N
-        cboCliente.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecciones Cliente:", "Item 2", "Item 3", "Item 4" }));
+        cboCliente.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione Cliente:", "Item 2", "Item 3", "Item 4" }));
         getContentPane().add(cboCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 40, 170, -1));
-
-        cboProducto.setFont(new java.awt.Font("Bahnschrift", 0, 12)); // NOI18N
-        cboProducto.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecciones Producto:", "Item 2", "Item 3", "Item 4" }));
-        getContentPane().add(cboProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 90, 170, -1));
 
         txtCliente_Buscar.setBackground(new java.awt.Color(255, 255, 255));
         txtCliente_Buscar.setFont(new java.awt.Font("Bahnschrift", 0, 12)); // NOI18N
@@ -169,6 +170,25 @@ public class Boleta extends javax.swing.JInternalFrame {
         });
         getContentPane().add(btn_Buacar_Cliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 30, 120, -1));
 
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel3.setText("Producto:");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 80, -1));
+
+        cboProducto.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione Producto:", "Item 2", "Item 3", "Item 4" }));
+        getContentPane().add(cboProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 90, 170, -1));
+
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel4.setText("Cantidad:");
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 90, 80, -1));
+
+        txtCantidad.setBackground(new java.awt.Color(255, 255, 255));
+        txtCantidad.setFont(new java.awt.Font("Bahnschrift", 0, 12)); // NOI18N
+        getContentPane().add(txtCantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 90, 60, -1));
+
         btn_Añadir_Producto.setFont(new java.awt.Font("Bahnschrift", 1, 12)); // NOI18N
         btn_Añadir_Producto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/1486395885-plus_80605.png"))); // NOI18N
         btn_Añadir_Producto.setText("Añadir");
@@ -180,27 +200,34 @@ public class Boleta extends javax.swing.JInternalFrame {
         });
         getContentPane().add(btn_Añadir_Producto, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 80, 120, -1));
 
-        txtCantidad.setBackground(new java.awt.Color(255, 255, 255));
-        txtCantidad.setFont(new java.awt.Font("Bahnschrift", 0, 12)); // NOI18N
-        getContentPane().add(txtCantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 90, 60, -1));
+        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/invoice_document_bill_delivery_note_icon_225116(1).png"))); // NOI18N
+        getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 10, 130, 110));
 
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel4.setText("Cantidad:");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 90, 80, -1));
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setOpaque(false);
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel3.setText("Producto:");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 80, -1));
+        tbl_Productos.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        tbl_Productos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbl_ProductosMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(tbl_Productos);
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel2.setText("Cliente:");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 80, -1));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 740, 190));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, 760, 210));
 
         btn_ReguistrarVenta.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btn_ReguistrarVenta.setForeground(new java.awt.Color(0, 0, 0));
@@ -208,7 +235,7 @@ public class Boleta extends javax.swing.JInternalFrame {
         btn_ReguistrarVenta.setText("Reguistrar Venta");
         btn_ReguistrarVenta.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btn_ReguistrarVenta.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        getContentPane().add(btn_ReguistrarVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 340, 130, 110));
+        getContentPane().add(btn_ReguistrarVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 350, 130, 110));
 
         jPanel2.setOpaque(false);
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -277,6 +304,11 @@ public class Boleta extends javax.swing.JInternalFrame {
         txt_cambio.setFont(new java.awt.Font("Bahnschrift", 0, 12)); // NOI18N
         txt_cambio.setForeground(new java.awt.Color(0, 0, 0));
         txt_cambio.setEnabled(false);
+        txt_cambio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_cambioActionPerformed(evt);
+            }
+        });
         jPanel2.add(txt_cambio, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 180, 120, -1));
 
         txt_efectivo.setBackground(new java.awt.Color(255, 255, 255));
@@ -284,47 +316,30 @@ public class Boleta extends javax.swing.JInternalFrame {
         txt_efectivo.setForeground(new java.awt.Color(0, 0, 0));
         jPanel2.add(txt_efectivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 150, 120, -1));
 
+        btn_Calcular_cambio_cambio.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btn_Calcular_cambio_cambio.setForeground(new java.awt.Color(0, 0, 0));
+        btn_Calcular_cambio_cambio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/pay_cash_payment_money_dollar_bill_icon_143267(1).png"))); // NOI18N
+        btn_Calcular_cambio_cambio.setText("Calcular Cambio");
+        btn_Calcular_cambio_cambio.setDisabledIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/pay_cash_payment_money_dollar_bill_icon_143267(1).png"))); // NOI18N
+        btn_Calcular_cambio_cambio.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btn_Calcular_cambio_cambio.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btn_Calcular_cambio_cambio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_Calcular_cambio_cambioActionPerformed(evt);
+            }
+        });
+        jPanel2.add(btn_Calcular_cambio_cambio, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 150, 130, 60));
+
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 330, 380, 210));
 
-        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/invoice_generation_finance_bill_payment_receipt_document_icon_261651.png"))); // NOI18N
-        getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 10, 120, 100));
-
-        boton_Cambio.setText("calcular");
-        boton_Cambio.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                boton_CambioActionPerformed(evt);
-            }
-        });
-        getContentPane().add(boton_Cambio, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 470, -1, -1));
-
-        tbl_Productos02.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        tbl_Productos02.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tbl_Productos02MouseClicked(evt);
-            }
-        });
-        jScrollPane1.setViewportView(tbl_Productos02);
-
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, 740, 190));
-
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondo-azul-para-textura.jpg"))); // NOI18N
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, 800, 570));
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(-3, -4, 800, 570));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_Buacar_ClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_Buacar_ClienteActionPerformed
-        String clientebuscar = txtCliente_Buscar.getText().trim();
+         String clientebuscar = txtCliente_Buscar.getText().trim();
         Connection cn = Conexion.conexcion.conectar();
         String sql = "select nombre, apellido  from tb_cliente where cedula = '" + clientebuscar + "'";
         Statement st;
@@ -348,81 +363,104 @@ public class Boleta extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btn_Buacar_ClienteActionPerformed
 
     private void btn_Añadir_ProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_Añadir_ProductoActionPerformed
-        String combo = this.cboProducto.getSelectedItem().toString();
-        //validar que seleccione un producto
-        if (combo.equalsIgnoreCase("Seleccione Producto:")) {
-            JOptionPane.showMessageDialog(null, "Seleccione un producto");
-        } else {
-            //validar que ingrese una cantidad
-            if (!txtCantidad.getText().isEmpty()) {
-                //validar que el usuario no ingrese caracteres no numericos
-                boolean validacion = validar(txtCantidad.getText());
-                if (validacion == true) {
-                    //validar que la cantidad sea mayor a cero
-                    if (Integer.parseInt(txtCantidad.getText()) > 0) {
-                        cantidad = Integer.parseInt(txtCantidad.getText());
-                        //ejecutar metodo para obtener datos del producto
-                        this.DatosDelProducto();
-                        //validar que la cantidad de productos seleccionados no sea mayor al stock de la base de datos
-                        if (cantidad <= cantidadProductoBBDD) {
-                            subtotal = precioUnitario * cantidad;
-                            totalpagar = subtotal + igv + descuento;
-
-                            // redondear a decimales
-                            subtotal = (double) Math.round(subtotal * 100) / 100;
-                            igv = (double) Math.round(igv * 100) / 100;
-                            descuento = (double) Math.round(descuento * 100) / 100;
-                            totalpagar = (double) Math.round(totalpagar * 100) / 100;
-
-                            //se crea un nuevo producto 
-                            producto = new DetalleVenta(auxIdDetalle, //idDetalleVenta
-                                    1, /*idCabecera*/
-                                    idProducto,
-                                    nombre,
-                                    Integer.parseInt(txtCantidad.getText()),
-                                    precioUnitario,
-                                    subtotal,
-                                    descuento,
-                                    igv,
-                                    totalpagar,
-                                    1//estado
-                            );
-                            //añadir a la lista
-                            listaProducto.add(producto);
-//                            JOptionPane.showMessageDialog(null, "Producto agregado");
-                            auxIdDetalle++;
-                            txtCantidad.setText("");//Limpiar el campo
-                            //volver a cargar el combo producto
-                            this.CargarProducto();
-                            this.CalcularTotalPagar();
-
-                            txt_efectivo.setEnabled(true);
-                            boton_Cambio.setEnabled(true);
-
-                        } else {
-                            JOptionPane.showMessageDialog(null, "La cantidad supera al Stokc");
-
-                        }
-
-                    } else {
-                        JOptionPane.showMessageDialog(null, "La cantidad no puede ser cero ( 0 ), ni negativo");
-
-                    }
-
-                } else {
-                    JOptionPane.showMessageDialog(null, "En la cantidad no se admiten caracteres no numericos");
-
-                }
-            } else {
-                JOptionPane.showMessageDialog(null, "Ingresa la cantidad de Productos");
-            }
-            //llamar al metodo
-            this.ListaTabla_Producto();
+//        String combo = this.cboProducto.getSelectedItem().toString();
+//        //validar que seleccione un producto
+//        if (combo.equalsIgnoreCase("Seleccione Producto:")) {
+//            JOptionPane.showMessageDialog(null, "Seleccione un producto");
+//        } else {
+//            //validar que ingrese una cantidad
+//            if (!txtCantidad.getText().isEmpty()) {
+//                //validar que el usuario no ingrese caracteres no numericos
+//                boolean validacion = validar(txtCantidad.getText());
+//                if (validacion == true) {
+//                    //validar que la cantidad sea mayor a cero
+//                    if (Integer.parseInt(txtCantidad.getText()) > 0) {
+//                        cantidad = Integer.parseInt(txtCantidad.getText());
+//                        //ejecutar metodo para obtener datos del producto
+//                        this.DatosDelProducto();
+//                        //validar que la cantidad de productos seleccionados no sea mayor al stock de la base de datos
+//                        if (cantidad <= cantidadProductoBBDD) {
+//                            subtotal = precioUnitario * cantidad;
+//                            totalpagar = subtotal + igv + descuento;
+//
+//                            // redondear a decimales
+//                            subtotal = (double) Math.round(subtotal * 100) / 100;
+//                            igv = (double) Math.round(igv * 100) / 100;
+//                            descuento = (double) Math.round(descuento * 100) / 100;
+//                            totalpagar = (double) Math.round(totalpagar * 100) / 100;
+//
+//                            //se crea un nuevo producto 
+//                            producto = new DetalleVenta(auxIdDetalle, //idDetalleVenta
+//                                    1, /*idCabecera*/
+//                                    idProducto,
+//                                    nombre,
+//                                    Integer.parseInt(txtCantidad.getText()),
+//                                    precioUnitario,
+//                                    subtotal,
+//                                    descuento,
+//                                    igv,
+//                                    totalpagar,
+//                                    1//estado
+//                            );
+//                            //añadir a la lista
+//                            listaProducto.add(producto);
+////                            JOptionPane.showMessageDialog(null, "Producto agregado");
+//                            auxIdDetalle++;
+//                            txtCantidad.setText("");//Limpiar el campo
+//                            //volver a cargar el combo producto
+//                            this.CargarProducto();
+//                            this.CalcularTotalPagar();
+//                            txt_efectivo.setEnabled(true);
+//                            btn_Calcular_cambio_02.setEnabled(true);
+//                        } else {
+//                            JOptionPane.showMessageDialog(null, "La cantidad supera al Stokc");
+//
+//                        }
+//
+//                    } else {
+//                        JOptionPane.showMessageDialog(null, "La cantidad no puede ser cero ( 0 ), ni negativo");
+//
+//                    }
+//
+//                } else {
+//                    JOptionPane.showMessageDialog(null, "En la cantidad no se admiten caracteres no numericos");
+//
+//                }
+//            } else {
+//                JOptionPane.showMessageDialog(null, "Ingresa la cantidad de Productos");
+//            }
+//            //llamar al metodo
+//            this.ListaTabla_Producto();
 
     }//GEN-LAST:event_btn_Añadir_ProductoActionPerformed
-    
-    private void boton_CambioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_CambioActionPerformed
-           if (!txt_efectivo.getText().isEmpty()) {
+int idArrayList =0;
+    private void tbl_ProductosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_ProductosMouseClicked
+      int fila_point = tbl_Productos.rowAtPoint(evt.getPoint());
+        int columa_pint = 0;
+        if (fila_point > -1) {
+            idArrayList = (int) modeloDatosProductos.getValueAt(fila_point, columa_pint);
+        }
+        int opcion = JOptionPane.showConfirmDialog(null, "¿Eliminar Producto?");
+        //opcion de confirmar dialog - (si = 0; no = 1; cancel = 2; close = -1)
+        switch (opcion) {
+            case 0: //presione si
+                listaProducto.remove(idArrayList - 1);
+                this.CalcularTotalPagar();
+                this.ListaTabla_Producto();
+                break;
+            case 1: //presione no
+                break;
+            default: //sea que precione cancel (2) o  precione clouse (-1)
+                break;
+        } 
+    }//GEN-LAST:event_tbl_ProductosMouseClicked
+
+    private void txt_cambioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_cambioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_cambioActionPerformed
+
+    private void btn_Calcular_cambio_cambioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_Calcular_cambio_cambioActionPerformed
+      if (!txt_efectivo.getText().isEmpty()) {
             //validamos que el usuario no ingrese otros caracteres no numericos
             boolean validacion = validarDouble(txt_efectivo.getText());
             if (validacion == true) {
@@ -445,35 +483,13 @@ public class Boleta extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(null, "Ingrese dinero en efectivo para calcular cambio");
 
         }
-    }//GEN-LAST:event_boton_CambioActionPerformed
-
-    private void tbl_Productos02MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_Productos02MouseClicked
-        int idArrayList = 0;
-        int fila_point = tbl_Productos02.rowAtPoint(evt.getPoint());
-        int columa_pint = 0;
-        if (fila_point > -1) {
-            idArrayList = (int) modeloDatosProductos.getValueAt(fila_point, columa_pint);
-        }
-        int opcion = JOptionPane.showConfirmDialog(null, "¿Eliminar Producto?");
-        //opcion de confirmar dialog - (si = 0; no = 1; cancel = 2; close = -1)
-        switch (opcion) {
-            case 0: //presione si
-            listaProducto.remove(idArrayList - 1);
-            this.CalcularTotalPagar();
-            this.ListaTabla_Producto();
-            break;
-            case 1: //presione no
-            break;
-            default: //sea que precione cancel (2) o  precione clouse (-1)
-            break;
-        }
-    }//GEN-LAST:event_tbl_Productos02MouseClicked
+    }//GEN-LAST:event_btn_Calcular_cambio_cambioActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton boton_Cambio;
     private javax.swing.JButton btn_Añadir_Producto;
     private javax.swing.JButton btn_Buacar_Cliente;
+    private javax.swing.JButton btn_Calcular_cambio_cambio;
     private javax.swing.JButton btn_ReguistrarVenta;
     private javax.swing.JComboBox<String> cboCliente;
     private javax.swing.JComboBox<String> cboProducto;
@@ -489,9 +505,10 @@ public class Boleta extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable tbl_Productos02;
+    public static javax.swing.JTable tbl_Productos;
     private javax.swing.JTextField txtCantidad;
     private javax.swing.JTextField txtCliente_Buscar;
     private javax.swing.JTextField txt_Descuento;
@@ -501,6 +518,8 @@ public class Boleta extends javax.swing.JInternalFrame {
     private javax.swing.JTextField txt_efectivo;
     private javax.swing.JTextField txt_igv;
     // End of variables declaration//GEN-END:variables
+
+
     /*Metodo para cargar CLiente en el jCombobox*/
     private void CargarCliente() {
         Connection cn = Conexion.conexcion.conectar();
@@ -564,19 +583,7 @@ public class Boleta extends javax.swing.JInternalFrame {
         } catch (NumberFormatException e) {
             return false;
         }
-        
     }
-//    private boolean validarDouble(String valor) {
-//    // Eliminar espacios al principio y final y reemplazar la coma por punto
-//    valor = valor.trim().replace(",", ".");
-//    
-//    // Expresión regular para validar un número decimal con un solo punto decimal
-//    String regex = "^[-+]?\\d*\\.?\\d+$";
-//    
-//    // Validar si el valor coincide con el formato de número decimal
-//    return valor.matches(regex);
-//}
-
 
     //METODO PARA MOSTRAR LOS DATOS DEL PRODUTO SELECIONADO
     private void DatosDelProducto() {

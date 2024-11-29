@@ -155,7 +155,6 @@ public class FACTURA_01 extends javax.swing.JInternalFrame {
         cboCliente.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione Cliente:", "Item 2", "Item 3", "Item 4" }));
         getContentPane().add(cboCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 40, 170, -1));
 
-        txtCliente_Buscar.setBackground(new java.awt.Color(255, 255, 255));
         txtCliente_Buscar.setFont(new java.awt.Font("Bahnschrift", 0, 12)); // NOI18N
         getContentPane().add(txtCliente_Buscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 40, 150, -1));
 
@@ -185,7 +184,6 @@ public class FACTURA_01 extends javax.swing.JInternalFrame {
         jLabel4.setText("Cantidad:");
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 90, 80, -1));
 
-        txtCantidad.setBackground(new java.awt.Color(255, 255, 255));
         txtCantidad.setFont(new java.awt.Font("Bahnschrift", 0, 12)); // NOI18N
         getContentPane().add(txtCantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 90, 60, -1));
 
@@ -230,7 +228,6 @@ public class FACTURA_01 extends javax.swing.JInternalFrame {
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, 760, 210));
 
         btn_ReguistrarVenta.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        btn_ReguistrarVenta.setForeground(new java.awt.Color(0, 0, 0));
         btn_ReguistrarVenta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Printer-blue_37120(2).png"))); // NOI18N
         btn_ReguistrarVenta.setText("Reguistrar Venta");
         btn_ReguistrarVenta.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -276,33 +273,23 @@ public class FACTURA_01 extends javax.swing.JInternalFrame {
         jLabel11.setText("Cambio:");
         jPanel2.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, 80, -1));
 
-        txt_Subtotal.setBackground(new java.awt.Color(255, 255, 255));
         txt_Subtotal.setFont(new java.awt.Font("Bahnschrift", 0, 12)); // NOI18N
-        txt_Subtotal.setForeground(new java.awt.Color(0, 0, 0));
         txt_Subtotal.setEnabled(false);
         jPanel2.add(txt_Subtotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 20, 120, -1));
 
-        txt_Descuento.setBackground(new java.awt.Color(255, 255, 255));
         txt_Descuento.setFont(new java.awt.Font("Bahnschrift", 0, 12)); // NOI18N
-        txt_Descuento.setForeground(new java.awt.Color(0, 0, 0));
         txt_Descuento.setEnabled(false);
         jPanel2.add(txt_Descuento, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 50, 120, -1));
 
-        txt_igv.setBackground(new java.awt.Color(255, 255, 255));
         txt_igv.setFont(new java.awt.Font("Bahnschrift", 0, 12)); // NOI18N
-        txt_igv.setForeground(new java.awt.Color(0, 0, 0));
         txt_igv.setEnabled(false);
         jPanel2.add(txt_igv, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 80, 120, -1));
 
-        txt_TotalPagar.setBackground(new java.awt.Color(255, 255, 255));
         txt_TotalPagar.setFont(new java.awt.Font("Bahnschrift", 0, 12)); // NOI18N
-        txt_TotalPagar.setForeground(new java.awt.Color(0, 0, 0));
         txt_TotalPagar.setEnabled(false);
         jPanel2.add(txt_TotalPagar, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 110, 120, -1));
 
-        txt_cambio.setBackground(new java.awt.Color(255, 255, 255));
         txt_cambio.setFont(new java.awt.Font("Bahnschrift", 0, 12)); // NOI18N
-        txt_cambio.setForeground(new java.awt.Color(0, 0, 0));
         txt_cambio.setEnabled(false);
         txt_cambio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -311,13 +298,10 @@ public class FACTURA_01 extends javax.swing.JInternalFrame {
         });
         jPanel2.add(txt_cambio, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 180, 120, -1));
 
-        txt_efectivo.setBackground(new java.awt.Color(255, 255, 255));
         txt_efectivo.setFont(new java.awt.Font("Bahnschrift", 0, 12)); // NOI18N
-        txt_efectivo.setForeground(new java.awt.Color(0, 0, 0));
         jPanel2.add(txt_efectivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 150, 120, -1));
 
         btn_Calcular_cambio_cambio.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        btn_Calcular_cambio_cambio.setForeground(new java.awt.Color(0, 0, 0));
         btn_Calcular_cambio_cambio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/pay_cash_payment_money_dollar_bill_icon_143267(1).png"))); // NOI18N
         btn_Calcular_cambio_cambio.setText("Calcular Cambio");
         btn_Calcular_cambio_cambio.setDisabledIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/pay_cash_payment_money_dollar_bill_icon_143267(1).png"))); // NOI18N

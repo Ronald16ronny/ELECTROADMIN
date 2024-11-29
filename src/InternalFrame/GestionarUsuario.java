@@ -27,6 +27,8 @@ import Modelo.Usuario;
  */
 public class GestionarUsuario extends javax.swing.JInternalFrame {
 
+    private static JTable tlUsuario;
+
     private int idUsuario;
     
     public GestionarUsuario() {
@@ -143,6 +145,11 @@ public class GestionarUsuario extends javax.swing.JInternalFrame {
         txtpassword.setFont(new java.awt.Font("Bahnschrift", 0, 14)); // NOI18N
         txtpassword.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtpassword.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        txtpassword.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtpasswordActionPerformed(evt);
+            }
+        });
         jPanel3.add(txtpassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 60, 170, 30));
 
         jLabel4.setFont(new java.awt.Font("Arial Narrow", 1, 18)); // NOI18N
@@ -153,6 +160,11 @@ public class GestionarUsuario extends javax.swing.JInternalFrame {
         txtapellido.setFont(new java.awt.Font("Bahnschrift", 0, 14)); // NOI18N
         txtapellido.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtapellido.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        txtapellido.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtapellidoActionPerformed(evt);
+            }
+        });
         jPanel3.add(txtapellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 10, 170, 30));
 
         jLabel5.setFont(new java.awt.Font("Arial Narrow", 1, 18)); // NOI18N
@@ -163,6 +175,11 @@ public class GestionarUsuario extends javax.swing.JInternalFrame {
         txttelefono.setFont(new java.awt.Font("Bahnschrift", 0, 14)); // NOI18N
         txttelefono.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txttelefono.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        txttelefono.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txttelefonoActionPerformed(evt);
+            }
+        });
         jPanel3.add(txttelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 60, 170, 30));
 
         jLabel6.setFont(new java.awt.Font("Arial Narrow", 1, 18)); // NOI18N
@@ -173,6 +190,11 @@ public class GestionarUsuario extends javax.swing.JInternalFrame {
         txtusuario.setFont(new java.awt.Font("Bahnschrift", 0, 14)); // NOI18N
         txtusuario.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtusuario.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        txtusuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtusuarioActionPerformed(evt);
+            }
+        });
         jPanel3.add(txtusuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 10, 170, 30));
 
         getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 300, 860, 140));
@@ -220,7 +242,7 @@ public class GestionarUsuario extends javax.swing.JInternalFrame {
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
           Ctr_Usuario controlUsuario = new Ctr_Usuario();
           if(idUsuario == 0){
-              JOptionPane.showMessageDialog(null, "¡Seleccione un Cliente!");
+              JOptionPane.showMessageDialog(null, "¡Seleccione un usuario!");
           }else{
               if(!controlUsuario.eliminar(idUsuario)){
                   JOptionPane.showMessageDialog(null, "¡Usuario eliminado!");
@@ -235,6 +257,22 @@ public class GestionarUsuario extends javax.swing.JInternalFrame {
           }
           
     }//GEN-LAST:event_btnEliminarActionPerformed
+
+    private void txtpasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtpasswordActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtpasswordActionPerformed
+
+    private void txtapellidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtapellidoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtapellidoActionPerformed
+
+    private void txtusuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtusuarioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtusuarioActionPerformed
+
+    private void txttelefonoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txttelefonoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txttelefonoActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -272,8 +310,8 @@ public class GestionarUsuario extends javax.swing.JInternalFrame {
         try {
             st = con.createStatement();
             ResultSet rs = st.executeQuery(sql);
-            GestionarUsuario.tlUusario = new JTable(model);
-            GestionarUsuario.jScrollPane1.setViewportView(GestionarUsuario.tlUusario);
+            GestionarUsuario.tlUsuario = new JTable(model);
+            GestionarUsuario.jScrollPane1.setViewportView(GestionarUsuario.tlUsuario);
 
             model.addColumn("Nº");//ID
             model.addColumn("Nombre");
@@ -318,7 +356,7 @@ public class GestionarUsuario extends javax.swing.JInternalFrame {
         try {
 
             Connection con = Conexion.conexcion.conectar();
-            PreparedStatement pst = con.prepareStatement("select * from tb_cliente where idCliente = '" + idUsuario + " ' ");
+            PreparedStatement pst = con.prepareStatement("select * from tb_usuario where idUsuario = '" + idUsuario + " ' ");
             ResultSet rs = pst.executeQuery();
             if (rs.next()) {
                 txtnombre.setText(rs.getString("nombre"));
@@ -337,9 +375,10 @@ public class GestionarUsuario extends javax.swing.JInternalFrame {
     private void Limpiar() {
         txtnombre.setText("");
         txtapellido.setText("");
+        txtusuario.setText("");
         txtpassword.setText("");
         txttelefono.setText("");
-        txtusuario.setText("");
+        
     }
 
 }

@@ -336,7 +336,7 @@ public class GestionarUsuario extends javax.swing.JInternalFrame {
             System.out.println("Error al llenar ala tabla usuario" + e);
         }
 
-        tlUusario.addMouseListener(new MouseAdapter() {
+        tlUsuario.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
                 int fila_point = tlUsuario.rowAtPoint(e.getPoint());

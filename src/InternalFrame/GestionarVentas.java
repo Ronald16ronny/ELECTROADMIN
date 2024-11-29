@@ -248,11 +248,11 @@ public class GestionarVentas extends javax.swing.JInternalFrame {
             PreparedStatement pst = con.prepareStatement("select * from tb_cliente where idCliente = '" + idCliente + " ' ");
             ResultSet rs = pst.executeQuery();
             if (rs.next()) {
-                txtnombre.setText(rs.getString("nombre"));
-                txtapellido.setText(rs.getString("apellido"));
-                txtdni.setText(rs.getString("cedula"));
-                txttelefono.setText(rs.getString("telefono"));
-                txtdireccion.setText(rs.getString("direccion"));
+//                txtnombre.setText(rs.getString("nombre"));
+//                txtapellido.setText(rs.getString("apellido"));
+//                txtdni.setText(rs.getString("cedula"));
+//                txttelefono.setText(rs.getString("telefono"));
+//                txtdireccion.setText(rs.getString("direccion"));
             }
             con.close();
 

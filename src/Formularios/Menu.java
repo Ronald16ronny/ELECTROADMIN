@@ -4,9 +4,9 @@
  */
 package Formularios;
 
-import InternalFrame.Boleta;
+
 import InternalFrame.FACTURA_01;
-import InternalFrame.Factura;
+
 import InternalFrame.GestionarCategorias;
 import InternalFrame.GestionarCliente;
 import InternalFrame.GestionarUsuario;
@@ -394,9 +394,7 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_MnIGesVentaActionPerformed
 
     private void MnIBoletaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnIBoletaActionPerformed
-        Boleta  bol = new Boleta();
-        dpMenu.add(bol);
-        bol.setVisible(true);
+
     }//GEN-LAST:event_MnIBoletaActionPerformed
 
       

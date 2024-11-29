@@ -339,7 +339,7 @@ public class GestionarUsuario extends javax.swing.JInternalFrame {
         tlUusario.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                int fila_point = tlUusario.rowAtPoint(e.getPoint());
+                int fila_point = tlUsuario.rowAtPoint(e.getPoint());
                 int columna_point = 0;
 
                 if (fila_point > -1) {

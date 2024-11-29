@@ -69,14 +69,14 @@ public class Ctr_Usuario {
 
     /**
      *************************************************
-     * METODO PARA CONSULTA SI EL CLIENTE EXISTE
+     * METODO PARA CONSULTA SI EL USUARIO EXISTE
      * ***********************************************
      *
      */
     public boolean existeUsuario(String usuario) {
 
         boolean respuesta = false;
-        String sql = "select cedula from tb_usuario where cedula = '" + usuario + "';";
+        String sql = "select usuario from tb_usuario where usuario = '" + usuario + "';";
         Statement st;
 
         try {

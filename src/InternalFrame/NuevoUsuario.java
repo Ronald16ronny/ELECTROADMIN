@@ -178,6 +178,7 @@ public class NuevoUsuario extends javax.swing.JInternalFrame {
             } else {
                 JOptionPane.showMessageDialog(null, "El usuario ya esta registrado,ingrese otro");
             }
+            
         }
     }//GEN-LAST:event_jButton_GuardarActionPerformed
 
@@ -215,6 +216,7 @@ public class NuevoUsuario extends javax.swing.JInternalFrame {
         txt_Usuario.setText("");
         txt_Password.setText("");
         txt_Telefono.setText("");
+        this.txt_Nombre.requestFocus();
     }
 
 }

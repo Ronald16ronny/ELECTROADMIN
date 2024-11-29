@@ -4,8 +4,18 @@
  */
 package InternalFrame;
 
+import static InternalFrame.GestionarCliente.tlClientes;
 import java.awt.Dimension;
-import static InternalFrame.GestionarVentas.tVentas;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+import static InternalFrame.GestionarVentas.tbVentas;
 
 /**
  *
@@ -13,11 +23,11 @@ import static InternalFrame.GestionarVentas.tVentas;
  */
 public class GestionarVentas extends javax.swing.JInternalFrame {
 
-    
+    private int idCliente= 0;
     public GestionarVentas() {
         initComponents();
         this.setSize(new Dimension(900, 500));
-      
+        this.CargarTablaVentas();
     }
 
     /**
@@ -32,7 +42,7 @@ public class GestionarVentas extends javax.swing.JInternalFrame {
         jLabel1 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tVentas = new javax.swing.JTable();
+        tbVentas = new javax.swing.JTable();
         jPanel2 = new javax.swing.JPanel();
         btnActualizar = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
@@ -43,6 +53,7 @@ public class GestionarVentas extends javax.swing.JInternalFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         cboCliente = new javax.swing.JComboBox<>();
+        cboEstado = new javax.swing.JComboBox<>();
         jLabel7 = new javax.swing.JLabel();
 
         setClosable(true);
@@ -60,7 +71,7 @@ public class GestionarVentas extends javax.swing.JInternalFrame {
         jPanel1.setOpaque(false);
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        tVentas.setModel(new javax.swing.table.DefaultTableModel(
+        tbVentas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -71,7 +82,7 @@ public class GestionarVentas extends javax.swing.JInternalFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(tVentas);
+        jScrollPane1.setViewportView(tbVentas);
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 700, 230));
 
@@ -137,6 +148,10 @@ public class GestionarVentas extends javax.swing.JInternalFrame {
         cboCliente.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecciones Cliente:", "Item 2", "Item 3", "Item 4" }));
         jPanel3.add(cboCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 10, 170, -1));
 
+        cboEstado.setFont(new java.awt.Font("Bahnschrift", 0, 12)); // NOI18N
+        cboEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Activo", "Inactivo" }));
+        jPanel3.add(cboEstado, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 60, 170, -1));
+
         getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 280, 860, 140));
 
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondo-azul-para-textura.jpg"))); // NOI18N
@@ -159,6 +174,7 @@ public class GestionarVentas extends javax.swing.JInternalFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnActualizar;
     private javax.swing.JComboBox<String> cboCliente;
+    private javax.swing.JComboBox<String> cboEstado;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -169,8 +185,87 @@ public class GestionarVentas extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     public static javax.swing.JScrollPane jScrollPane1;
-    public static javax.swing.JTable tVentas;
+    public static javax.swing.JTable tbVentas;
     private javax.swing.JTextField txt_fecha;
     private javax.swing.JTextField txt_totalpagar;
     // End of variables declaration//GEN-END:variables
+
+    private void CargarTablaVentas() {
+        Connection con = Conexion.conexcion.conectar();
+        DefaultTableModel model = new DefaultTableModel();
+        String sql = "";
+        Statement st;
+
+        try {
+            st = con.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+            GestionarCliente.tlClientes = new JTable(model);
+            GestionarCliente.jScrollPane1.setViewportView(GestionarCliente.tlClientes);
+
+            model.addColumn("Nº");//ID
+            model.addColumn("Nombre");
+            model.addColumn("Apellido");
+            model.addColumn("Dni");
+            model.addColumn("Telefono");
+            model.addColumn("Direccion");
+            model.addColumn("Estado");
+
+            while (rs.next()) {
+                Object fila[] = new Object[7];
+
+                for (int i = 0; i < 7; i++) {
+
+                    fila[i] = rs.getObject(i + 1);
+
+                }
+                model.addRow(fila);
+            }
+            con.close();
+        } catch (SQLException e) {
+            System.out.println("Error al llenar ala tabla cliente" + e);
+        }
+
+        tlClientes.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                int fila_point = tlClientes.rowAtPoint(e.getPoint());
+                int columna_point = 0;
+
+                if (fila_point > -1) {
+                    idCliente = (int) model.getValueAt(fila_point, columna_point);
+                    EnviarDatosClientesSeleccionado(idCliente);
+                }
+
+            }
+        });
+
+    }
+
+    private void EnviarDatosClientesSeleccionado(int idCliente) {
+        try {
+
+            Connection con = Conexion.conexcion.conectar();
+            PreparedStatement pst = con.prepareStatement("select * from tb_cliente where idCliente = '" + idCliente + " ' ");
+            ResultSet rs = pst.executeQuery();
+            if (rs.next()) {
+                txtnombre.setText(rs.getString("nombre"));
+                txtapellido.setText(rs.getString("apellido"));
+                txtdni.setText(rs.getString("cedula"));
+                txttelefono.setText(rs.getString("telefono"));
+                txtdireccion.setText(rs.getString("direccion"));
+            }
+            con.close();
+
+        } catch (SQLException e) {
+            System.out.println("Error al seleccionar cliente" + e);
+        }
+    }
+
+    private void Limpiar() {
+        this.txt_totalpagar.setText("");
+        this.txt_fecha.setText("");
+        this.cboCliente.setSelectedItem("Seleccione cliente:");
+        this.cboEstado.setSelectedItem("Activo");
+        idCliente =0;
+    }
 }

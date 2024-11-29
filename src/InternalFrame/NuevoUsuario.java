@@ -172,6 +172,7 @@ public class NuevoUsuario extends javax.swing.JInternalFrame {
                 usuario.setEstado(1);
                 if (controlUsuario.guardar(usuario)) {
                     JOptionPane.showMessageDialog(null, "Usuario REGISTRADO correctamente");
+                    this.Limpiar();
                 } else {
                     JOptionPane.showMessageDialog(null, "ERROR al registrar usuario");
                 }

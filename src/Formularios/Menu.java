@@ -5,6 +5,7 @@
 package Formularios;
 
 import InternalFrame.Boleta;
+import InternalFrame.FACTURA_01;
 import InternalFrame.Factura;
 import InternalFrame.GestionarCategorias;
 import InternalFrame.GestionarCliente;
@@ -379,7 +380,7 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_MnIGesClienteActionPerformed
 
     private void MnIFacturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnIFacturaActionPerformed
-        Factura  fac = new Factura();
+        FACTURA_01 fac = new FACTURA_01();
         dpMenu.add(fac);
         fac.setVisible(true);
     }//GEN-LAST:event_MnIFacturaActionPerformed

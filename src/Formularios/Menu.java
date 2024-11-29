@@ -340,9 +340,9 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_MnINuevoUsuarioActionPerformed
 
     private void MnIGesUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnIGesUsuarioActionPerformed
-        GestionarUsuario gesUsuario = new GestionarUsuario();
-        dpMenu.add(gesUsuario);
-        gesUsuario.setVisible(true);
+        GestionarUsuario gestionarUsuario = new GestionarUsuario();
+        dpMenu.add(gestionarUsuario);
+        gestionarUsuario.setVisible(true);
     }//GEN-LAST:event_MnIGesUsuarioActionPerformed
 
     private void MnINuevoClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnINuevoClienteActionPerformed

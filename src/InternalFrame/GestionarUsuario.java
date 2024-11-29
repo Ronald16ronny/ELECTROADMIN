@@ -5,6 +5,7 @@
 package InternalFrame;
 
 import Controlador.Ctr_Cliente;
+import Controlador.Ctr_Usuario;
 import Modelo.Cliente;
 import java.awt.Dimension;
 import java.awt.event.MouseAdapter;
@@ -18,6 +19,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import static InternalFrame.GestionarUsuario.tlUusario;
+import Modelo.Usuario;
 
 /**
  *
@@ -183,43 +185,51 @@ public class GestionarUsuario extends javax.swing.JInternalFrame {
 
     private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
 
-        if(txtnombre.getText().isEmpty() && txtapellido.getText().isEmpty() && txtusuario.getText().isEmpty() && txtpassword.getText().isEmpty() && txttelefono.getText().isEmpty()){
-            JOptionPane.showMessageDialog(null, "¡Complete todos los campos!");
-        }else{
-            
-            Cliente cliente = new Cliente();
-            Ctr_Cliente controlCliente = new Ctr_Cliente();
-            
-            cliente.setNombre(txtnombre.getText().trim());
-            cliente.setApellido(txtapellido.getText().trim());
-            cliente.setDni(txtusuario.getText().trim());
-            cliente.setTelefono(txtpassword.getText().trim());
-            cliente.setDireccion(txttelefono.getText().trim());
-            
-            if(controlCliente.actualizar(cliente, idUsuario)){
-                 JOptionPane.showMessageDialog(null, "¡Datos del cliente Actualizados!");
-                 this.CargarTablaUsuarios();
-                 this.Limpiar();
-            }else{
-                 JOptionPane.showMessageDialog(null, "¡Error al Actualizar!");
+        Usuario usuario = new Usuario();
+        Ctr_Usuario controlUsuario = new Ctr_Usuario();
+        
+        if (idUsuario == 0) {
+            JOptionPane.showConfirmDialog(null, "Seleccione usuario");
+        } else {
+            if (txtnombre.getText().isEmpty()|| txtapellido.getText().isEmpty() || txtusuario.getText().isEmpty() 
+                || txtpassword.getText().isEmpty() || txttelefono.getText().isEmpty() ) {
+                
+            JOptionPane.showMessageDialog(null, "Completa todos los campos");
+            } else {
+                usuario.setNombre(txtnombre.getText().trim());
+                usuario.setApellido(txtapellido.getText().trim());
+                usuario.setUsuario(txtusuario.getText().trim());
+                usuario.setPassword(txtpassword.getText().trim());
+                usuario.setTelefono(txttelefono.getText().trim());
+                usuario.setEstado(1);
+                if (controlUsuario.actualizar(usuario, idUsuario)) {
+                    JOptionPane.showMessageDialog(null, "Actualizacion EXITOSA");
+                    
+                    this.Limpiar();
+                    this.CargarTablaUsuarios();
+                    idUsuario = 0;
+                    
+                } else {
+                    JOptionPane.showMessageDialog(null, "ERROR al actualizar usario");
+                }
             }
-            
-            
         }
         
     }//GEN-LAST:event_btnActualizarActionPerformed
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
-          Ctr_Cliente controlCliente = new Ctr_Cliente();
+          Ctr_Usuario controlUsuario = new Ctr_Usuario();
           if(idUsuario == 0){
               JOptionPane.showMessageDialog(null, "¡Seleccione un Cliente!");
           }else{
-              if(!controlCliente.eliminar(idUsuario)){
-                  JOptionPane.showMessageDialog(null, "¡Cliente eliminado!");
+              if(!controlUsuario.eliminar(idUsuario)){
+                  JOptionPane.showMessageDialog(null, "¡Usuario eliminado!");
                   this.CargarTablaUsuarios();
                   this.Limpiar();
+                  idUsuario = 0;
+                  
               }else{
-                  JOptionPane.showMessageDialog(null, "¡Error al Eliminar cliente!");
+                  JOptionPane.showMessageDialog(null, "¡Error al Eliminar usuario!");
                   this.Limpiar();
               }
           }
@@ -296,7 +306,7 @@ public class GestionarUsuario extends javax.swing.JInternalFrame {
 
                 if (fila_point > -1) {
                     idUsuario = (int) model.getValueAt(fila_point, columna_point);
-                    EnviarDatosClientesSeleccionado(idUsuario);
+                    EnviarDatosUsuarioSeleccionado(idUsuario);
                 }
 
             }
@@ -304,23 +314,23 @@ public class GestionarUsuario extends javax.swing.JInternalFrame {
 
     }
 
-    private void EnviarDatosClientesSeleccionado(int idCliente) {
+    private void EnviarDatosUsuarioSeleccionado(int idUsuario) {
         try {
 
             Connection con = Conexion.conexcion.conectar();
-            PreparedStatement pst = con.prepareStatement("select * from tb_cliente where idCliente = '" + idCliente + " ' ");
+            PreparedStatement pst = con.prepareStatement("select * from tb_cliente where idCliente = '" + idUsuario + " ' ");
             ResultSet rs = pst.executeQuery();
             if (rs.next()) {
                 txtnombre.setText(rs.getString("nombre"));
                 txtapellido.setText(rs.getString("apellido"));
-                txtusuario.setText(rs.getString("cedula"));
-                txtpassword.setText(rs.getString("telefono"));
-                txttelefono.setText(rs.getString("direccion"));
+                txtusuario.setText(rs.getString("usuario"));
+                txtpassword.setText(rs.getString("password"));
+                txttelefono.setText(rs.getString("telefono"));
             }
             con.close();
 
         } catch (SQLException e) {
-            System.out.println("Error al seleccionar cliente" + e);
+            System.out.println("Error al seleccionar usuario" + e);
         }
     }
 

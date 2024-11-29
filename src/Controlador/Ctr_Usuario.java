@@ -92,5 +92,56 @@ public class Ctr_Usuario {
         }
         return respuesta;
     }
+/**
+     ************************************
+     * METODO PARA ACTUALIZAR UN USUARIO ***********************************
+    *
+     */
+    public boolean actualizar(Usuario obj, int idUsuario) {
 
+        boolean respuesta = false;
+        Connection cn = Conexion.conexcion.conectar();
+        try {
+
+            PreparedStatement consulta = cn.prepareStatement("update tb_usuario set nombre=?, apellido=?, usuario=?, password=?, telefono=?, estado=? where idUsuario = '" + idUsuario + "'");
+            consulta.setString(2, obj.getNombre());
+            consulta.setString(3, obj.getApellido());
+            consulta.setString(4, obj.getUsuario());
+            consulta.setString(5, obj.getPassword());
+            consulta.setString(6, obj.getTelefono());
+            consulta.setInt(7, obj.getEstado());
+
+            if (consulta.executeUpdate() > 0) {
+                respuesta = true;
+            }
+            cn.close();
+        } catch (SQLException e) {
+            System.out.println("Error al actuaizar usuario" + e);
+        }
+        return respuesta;
+    }
+
+    /**
+     ************************************
+     * METODO PARA ELIMINAR USUARIO ***********************************
+    *
+     */
+    public boolean eliminar(int idUsuario) {
+
+        boolean respuesta = false;
+        Connection cn = Conexion.conexcion.conectar();
+        try {
+
+            PreparedStatement consulta = cn.prepareStatement("delete from tb_usuario where idUsuario = '" + idUsuario + "'");
+            consulta.executeUpdate();
+
+            if (consulta.executeUpdate() > 0) {
+                respuesta = true;
+            }
+            cn.close();
+        } catch (SQLException e) {
+            System.out.println("Error al eliminar usuario" + e);
+        }
+        return respuesta;
+    }
 }

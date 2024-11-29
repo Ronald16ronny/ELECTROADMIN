@@ -4,14 +4,18 @@
  */
 package InternalFrame;
 
-
+import Controlador.Ctr_ReguistrarVenta;
+import Modelo.CabeceraVenta;
 import Modelo.DetalleVenta;
+import java.sql.PreparedStatement;
 import java.awt.Dimension;
 import java.sql.Connection;
 import java.sql.Statement;
 import java.sql.SQLException;
 import java.sql.ResultSet;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -22,6 +26,8 @@ public class FACTURA_01 extends javax.swing.JInternalFrame {
     //lista para el detalle de ventas para los productos
     ArrayList<DetalleVenta> listaProducto = new ArrayList<>();
     private DetalleVenta producto;
+
+    private int idCliente = 0;//id del lciente seleccionado
 
     private int idProducto = 0;
     private String nombre = "";
@@ -44,10 +50,11 @@ public class FACTURA_01 extends javax.swing.JInternalFrame {
 
     private int auxIdDetalle = 1; //id del detalle de venta
 
-    
+    int idArrayList = 0;
+
     public FACTURA_01() {
         initComponents();
-         this.setSize(new Dimension(800, 600));
+        this.setSize(new Dimension(800, 600));
 
         //cargar los clientes a la vista
         this.CargarCliente();
@@ -63,7 +70,7 @@ public class FACTURA_01 extends javax.swing.JInternalFrame {
 
     }
 
-        //metodo para inicializar la tabla de los productos
+    //metodo para inicializar la tabla de los productos
     private void inicializarTabla() {
         modeloDatosProductos = new DefaultTableModel();
         //añadir columnas
@@ -100,7 +107,6 @@ public class FACTURA_01 extends javax.swing.JInternalFrame {
 
     }
 
-    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -232,6 +238,11 @@ public class FACTURA_01 extends javax.swing.JInternalFrame {
         btn_ReguistrarVenta.setText("Reguistrar Venta");
         btn_ReguistrarVenta.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btn_ReguistrarVenta.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btn_ReguistrarVenta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_ReguistrarVentaActionPerformed(evt);
+            }
+        });
         getContentPane().add(btn_ReguistrarVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 350, 130, 110));
 
         jPanel2.setOpaque(false);
@@ -323,7 +334,7 @@ public class FACTURA_01 extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_Buacar_ClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_Buacar_ClienteActionPerformed
-         String clientebuscar = txtCliente_Buscar.getText().trim();
+        String clientebuscar = txtCliente_Buscar.getText().trim();
         Connection cn = Conexion.conexcion.conectar();
         String sql = "select nombre, apellido  from tb_cliente where cedula = '" + clientebuscar + "'";
         Statement st;
@@ -395,7 +406,7 @@ public class FACTURA_01 extends javax.swing.JInternalFrame {
 //                            this.CargarProducto();
 //                            this.CalcularTotalPagar();
 //                            txt_efectivo.setEnabled(true);
-//                            btn_Calcular_cambio_02.setEnabled(true);
+//                            btn_Calcular_cambio_cambio.setEnabled(true);
 //                        } else {
 //                            JOptionPane.showMessageDialog(null, "La cantidad supera al Stokc");
 //
@@ -417,9 +428,10 @@ public class FACTURA_01 extends javax.swing.JInternalFrame {
 //            this.ListaTabla_Producto();
 
     }//GEN-LAST:event_btn_Añadir_ProductoActionPerformed
-int idArrayList =0;
+
     private void tbl_ProductosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_ProductosMouseClicked
-      int fila_point = tbl_Productos.rowAtPoint(evt.getPoint());
+
+        int fila_point = tbl_Productos.rowAtPoint(evt.getPoint());
         int columa_pint = 0;
         if (fila_point > -1) {
             idArrayList = (int) modeloDatosProductos.getValueAt(fila_point, columa_pint);
@@ -436,7 +448,7 @@ int idArrayList =0;
                 break;
             default: //sea que precione cancel (2) o  precione clouse (-1)
                 break;
-        } 
+        }
     }//GEN-LAST:event_tbl_ProductosMouseClicked
 
     private void txt_cambioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_cambioActionPerformed
@@ -444,7 +456,7 @@ int idArrayList =0;
     }//GEN-LAST:event_txt_cambioActionPerformed
 
     private void btn_Calcular_cambio_cambioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_Calcular_cambio_cambioActionPerformed
-      if (!txt_efectivo.getText().isEmpty()) {
+        if (!txt_efectivo.getText().isEmpty()) {
             //validamos que el usuario no ingrese otros caracteres no numericos
             boolean validacion = validarDouble(txt_efectivo.getText());
             if (validacion == true) {
@@ -468,6 +480,80 @@ int idArrayList =0;
 
         }
     }//GEN-LAST:event_btn_Calcular_cambio_cambioActionPerformed
+
+    private void btn_ReguistrarVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ReguistrarVentaActionPerformed
+        CabeceraVenta cabeceraventa = new CabeceraVenta();
+        DetalleVenta detalleventa = new DetalleVenta();
+        Ctr_ReguistrarVenta controlventa = new Ctr_ReguistrarVenta();
+
+        String fechaactual = "";
+        Date date = new Date();
+        fechaactual = new SimpleDateFormat("yyy/MM/dd").format(date);
+
+        if (!cboCliente.getSelectedItem().equals("Seleccione Cliente:")) {
+            if (listaProducto.size() > 0) {
+
+                //metodo para obtener el id del cliente
+                this.ObtenerIDCliente();
+                //reguistrar la cabecera
+
+                cabeceraventa.setIdCabeceraventa(0);
+                cabeceraventa.setIdCliente(idCliente);
+                cabeceraventa.setValorPagar(Double.parseDouble(txt_TotalPagar.getText()));
+                cabeceraventa.setFechaVenta(fechaactual);
+                cabeceraventa.setEstado(1);
+
+                if (controlventa.guardar(cabeceraventa)) {
+                    JOptionPane.showMessageDialog(null, "Cabecera reguistrada");
+                    //guardar detalle
+
+                    for (DetalleVenta elemento : listaProducto) {
+                        detalleventa.setIdDetealleventa(0);
+                        detalleventa.setIdCabeceraventa(0);
+                        detalleventa.setIdProducto(elemento.getIdProducto());
+                        detalleventa.setCantidad(elemento.getCantidad());
+                        detalleventa.setPrecioUnitario(elemento.getPrecioUnitario());
+                        detalleventa.setSubtotal(elemento.getSubtotal());
+                        detalleventa.setDescuento(elemento.getDescuento());
+                        detalleventa.setIgv(elemento.getIgv());
+                        detalleventa.setTotalapagar(elemento.getTotalapagar());
+                        detalleventa.setEstado(1);
+
+                        if (controlventa.guardarDetalle(detalleventa)) {
+                            System.out.println("Detalle de venta reguistrado");
+
+                            txt_Subtotal.setText("0.0");
+                            txt_igv.setText("0.0");
+                            txt_Descuento.setText("0.0");
+                            txt_TotalPagar.setText("0.0");
+                            txt_efectivo.setText("0.0");
+                            txt_cambio.setText("0.0");
+                            auxIdDetalle = 1;
+
+                            this.CargarCliente();
+                            this.REstarStockProductos(elemento.getIdProducto(), elemento.getCantidad());
+                        } else {
+                            JOptionPane.showMessageDialog(null, "Error al guardar detalle de venta");
+
+                        }
+                    }
+                    //vaciar la lista
+                    listaProducto.clear();
+                    ListaTabla_Producto();
+                } else {
+                    JOptionPane.showMessageDialog(null, "Error al guardar cabecera de venta");
+
+                }
+
+            } else {
+                JOptionPane.showMessageDialog(null, "Seleccione un producto");
+
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Seleccione un cliente");
+        }
+
+    }//GEN-LAST:event_btn_ReguistrarVentaActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -502,7 +588,6 @@ int idArrayList =0;
     private javax.swing.JTextField txt_efectivo;
     private javax.swing.JTextField txt_igv;
     // End of variables declaration//GEN-END:variables
-
 
     /*Metodo para cargar CLiente en el jCombobox*/
     private void CargarCliente() {
@@ -640,4 +725,58 @@ int idArrayList =0;
 
     }
 
+    //metodo para obtenre id del cliente
+    private void ObtenerIDCliente() {
+        try {
+
+            String sql = "select * tb_cliente where concat (nombre, ' ', apellido) = '" + this.cboCliente.getSelectedItem() + "'";
+            Connection cn = Conexion.conexcion.conectar();
+            Statement st;
+            st = cn.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+            while (rs.next()) {
+                idCliente = rs.getInt("idCliente");
+            }
+
+        } catch (SQLException e) {
+            System.out.println("Error al obtener id del cliente, " + e);
+        }
+    }
+
+    //metodo para restar la cantidad (stock)
+    private void REstarStockProductos(int idProducto, int cantidad) {
+        int cantidadProductosBD = 0;
+
+        try {
+            Connection cn = Conexion.conexcion.conectar();
+            String sql = "select idProducto, cantidad from tb_producto where idProducto ='" + idProducto + "'";
+            Statement st;
+            st = cn.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+            while (rs.next()) {
+                cantidadProductosBD = rs.getInt("cantidad");
+            }
+            cn.close();
+        } catch (SQLException e) {
+            System.out.println("Error al restar cantidad 1 " + e);
+
+        }
+
+        try {
+             Connection cn = Conexion.conexcion.conectar();
+             PreparedStatement consulta = cn.prepareStatement("update tb_producto set cantidad =? where idProducto = '" + idProducto + "'");
+             int cantidadnueva = cantidadProductosBD - cantidad;
+             consulta.setInt(1, cantidadnueva);
+             if(consulta.executeUpdate() > 0){
+                 System.out.println("Todo Bien");
+             }
+             cn.close();
+        } catch (SQLException e) {
+            System.out.println("Error al restar cantidad  2" + e);
+
+        }
+    }
+
 }
+
+

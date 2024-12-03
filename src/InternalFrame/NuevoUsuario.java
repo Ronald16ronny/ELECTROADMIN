@@ -83,7 +83,7 @@ public class NuevoUsuario extends javax.swing.JInternalFrame {
         jLabel5.setFont(new java.awt.Font("Bahnschrift", 1, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel5.setText("Uusario:");
+        jLabel5.setText("Usuario:");
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 110, 110, -1));
 
         jLabel6.setFont(new java.awt.Font("Bahnschrift", 1, 18)); // NOI18N
@@ -110,7 +110,7 @@ public class NuevoUsuario extends javax.swing.JInternalFrame {
         getContentPane().add(txt_Apellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 80, 170, -1));
 
         txt_Usuario.setBackground(new java.awt.Color(153, 204, 255));
-        txt_Usuario.setForeground(new java.awt.Color(204, 255, 255));
+        txt_Usuario.setForeground(new java.awt.Color(0, 0, 0));
         getContentPane().add(txt_Usuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 110, 170, -1));
 
         txt_Telefono.setBackground(new java.awt.Color(153, 204, 255));

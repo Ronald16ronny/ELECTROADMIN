@@ -7,6 +7,7 @@ package InternalFrame;
 import Controlador.Ctr_ReguistrarVenta;
 import Modelo.CabeceraVenta;
 import Modelo.DetalleVenta;
+import PDFs.VentasPDF;
 import java.sql.PreparedStatement;
 import java.awt.Dimension;
 import java.sql.Connection;
@@ -18,6 +19,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import java.awt.event.MouseEvent;
 
 public class FACTURA_01 extends javax.swing.JInternalFrame {
 
@@ -61,7 +63,7 @@ public class FACTURA_01 extends javax.swing.JInternalFrame {
         //cargar los clientes a la vista
         this.CargarProducto();
         txt_efectivo.setEnabled(false);
-        btn_Añadir_Producto.setEnabled(false);
+        btn_Calcular_cambio_cambio.setEnabled(false);
         this.inicializarTabla();
         txt_Subtotal.setText("0.0");
         txt_Descuento.setText("0.0");
@@ -353,100 +355,101 @@ public class FACTURA_01 extends javax.swing.JInternalFrame {
             this.txtCliente_Buscar.requestFocus();
             cn.close();
         } catch (SQLException e) {
-            System.out.println("Error al buscar Cliente!, " + e);
+            System.out.println("!Error al buscar Cliente! [ " + e);
         }
     }//GEN-LAST:event_btn_Buacar_ClienteActionPerformed
 
     private void btn_Añadir_ProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_Añadir_ProductoActionPerformed
-//        String combo = this.cboProducto.getSelectedItem().toString();
-//        //validar que seleccione un producto
-//        if (combo.equalsIgnoreCase("Seleccione Producto:")) {
-//            JOptionPane.showMessageDialog(null, "Seleccione un producto");
-//        } else {
-//            //validar que ingrese una cantidad
-//            if (!txtCantidad.getText().isEmpty()) {
-//                //validar que el usuario no ingrese caracteres no numericos
-//                boolean validacion = validar(txtCantidad.getText());
-//                if (validacion == true) {
-//                    //validar que la cantidad sea mayor a cero
-//                    if (Integer.parseInt(txtCantidad.getText()) > 0) {
-//                        cantidad = Integer.parseInt(txtCantidad.getText());
-//                        //ejecutar metodo para obtener datos del producto
-//                        this.DatosDelProducto();
-//                        //validar que la cantidad de productos seleccionados no sea mayor al stock de la base de datos
-//                        if (cantidad <= cantidadProductoBBDD) {
-//                            subtotal = precioUnitario * cantidad;
-//                            totalpagar = subtotal + igv + descuento;
-//
-//                            // redondear a decimales
-//                            subtotal = (double) Math.round(subtotal * 100) / 100;
-//                            igv = (double) Math.round(igv * 100) / 100;
-//                            descuento = (double) Math.round(descuento * 100) / 100;
-//                            totalpagar = (double) Math.round(totalpagar * 100) / 100;
-//
-//                            //se crea un nuevo producto 
-//                            producto = new DetalleVenta(auxIdDetalle, //idDetalleVenta
-//                                    1, /*idCabecera*/
-//                                    idProducto,
-//                                    nombre,
-//                                    Integer.parseInt(txtCantidad.getText()),
-//                                    precioUnitario,
-//                                    subtotal,
-//                                    descuento,
-//                                    igv,
-//                                    totalpagar,
-//                                    1//estado
-//                            );
-//                            //añadir a la lista
-//                            listaProducto.add(producto);
-////                            JOptionPane.showMessageDialog(null, "Producto agregado");
-//                            auxIdDetalle++;
-//                            txtCantidad.setText("");//Limpiar el campo
-//                            //volver a cargar el combo producto
-//                            this.CargarProducto();
-//                            this.CalcularTotalPagar();
-//                            txt_efectivo.setEnabled(true);
-//                            btn_Calcular_cambio_cambio.setEnabled(true);
-//                        } else {
-//                            JOptionPane.showMessageDialog(null, "La cantidad supera al Stokc");
-//
-//                        }
-//
-//                    } else {
-//                        JOptionPane.showMessageDialog(null, "La cantidad no puede ser cero ( 0 ), ni negativo");
-//
-//                    }
-//
-//                } else {
-//                    JOptionPane.showMessageDialog(null, "En la cantidad no se admiten caracteres no numericos");
-//
-//                }
-//            } else {
-//                JOptionPane.showMessageDialog(null, "Ingresa la cantidad de Productos");
-//            }
-//            //llamar al metodo
-//            this.ListaTabla_Producto();
+        String combo = this.cboProducto.getSelectedItem().toString();
+        //validar que seleccione un producto
+        if (combo.equalsIgnoreCase("Seleccione Producto:")) {
+            JOptionPane.showMessageDialog(null, "Seleccione un producto");
+        } else {
+            //validar que ingrese una cantidad
+            if (!txtCantidad.getText().isEmpty()) {
+                //validar que el usuario no ingrese caracteres no numericos
+                boolean validacion = validar(txtCantidad.getText());
+                if (validacion == true) {
+                    //validar que la cantidad sea mayor a cero
+                    if (Integer.parseInt(txtCantidad.getText()) > 0) {
+                        cantidad = Integer.parseInt(txtCantidad.getText());
+                        //ejecutar metodo para obtener datos del producto
+                        this.DatosDelProducto();
+                        //validar que la cantidad de productos seleccionados no sea mayor al stock de la base de datos
+                        if (cantidad <= cantidadProductoBBDD) {
+                            subtotal = precioUnitario * cantidad;
+                            totalpagar = subtotal + igv + descuento;
 
+                            // redondear a decimales
+                            subtotal = (double) Math.round(subtotal * 100) / 100;
+                            igv = (double) Math.round(igv * 100) / 100;
+                            descuento = (double) Math.round(descuento * 100) / 100;
+                            totalpagar = (double) Math.round(totalpagar * 100) / 100;
+
+                            //se crea un nuevo producto 
+                            producto = new DetalleVenta(auxIdDetalle, //idDetalleVenta
+                                    1, /*idCabecera*/
+                                    idProducto,
+                                    nombre,
+                                    Integer.parseInt(txtCantidad.getText()),
+                                    precioUnitario,
+                                    subtotal,
+                                    descuento,
+                                    igv,
+                                    totalpagar,
+                                    1//estado
+                            );
+                            //añadir a la lista
+                            listaProducto.add(producto);
+//                            JOptionPane.showMessageDialog(null, "Producto agregado");
+                            auxIdDetalle++;
+                            txtCantidad.setText("");//Limpiar el campo
+                            //volver a cargar el combo producto
+                            this.CargarProducto();
+                            this.CalcularTotalPagar();
+                            txt_efectivo.setEnabled(true);
+                            btn_Calcular_cambio_cambio.setEnabled(true);
+                        } else {
+                            JOptionPane.showMessageDialog(null, "La cantidad supera al Stokc");
+
+                        }
+
+                    } else {
+                        JOptionPane.showMessageDialog(null, "La cantidad no puede ser cero ( 0 ), ni negativo");
+
+                    }
+
+                } else {
+                    JOptionPane.showMessageDialog(null, "En la cantidad no se admiten caracteres no numericos");
+
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "Ingresa la cantidad de Productos");
+            }
+            //llamar al metodo
+            this.ListaTabla_Producto();
+        }
     }//GEN-LAST:event_btn_Añadir_ProductoActionPerformed
 
     private void tbl_ProductosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_ProductosMouseClicked
-
+    
         int fila_point = tbl_Productos.rowAtPoint(evt.getPoint());
         int columa_pint = 0;
-        if (fila_point > -1) {
-            idArrayList = (int) modeloDatosProductos.getValueAt(fila_point, columa_pint);
+        if (fila_point >= 0 && fila_point <tbl_Productos.getRowCount()) {
+            int  idArrayList = (int) modeloDatosProductos.getValueAt(fila_point, columa_pint);
         }
         int opcion = JOptionPane.showConfirmDialog(null, "¿Eliminar Producto?");
         //opcion de confirmar dialog - (si = 0; no = 1; cancel = 2; close = -1)
         switch (opcion) {
-            case 0: //presione si
-                listaProducto.remove(idArrayList - 1);
+            case JOptionPane.YES_OPTION: // Si preciona sí
+                listaProducto.remove(idArrayList);
                 this.CalcularTotalPagar();
                 this.ListaTabla_Producto();
                 break;
-            case 1: //presione no
+            case JOptionPane.NO_OPTION: //presione no
                 break;
-            default: //sea que precione cancel (2) o  precione clouse (-1)
+            case JOptionPane.CANCEL_OPTION: // si preciona cancelar
+            case JOptionPane.CLOSED_OPTION: // si cierra el dialogo
                 break;
         }
     }//GEN-LAST:event_tbl_ProductosMouseClicked
@@ -504,9 +507,14 @@ public class FACTURA_01 extends javax.swing.JInternalFrame {
                 cabeceraventa.setEstado(1);
 
                 if (controlventa.guardar(cabeceraventa)) {
-                    JOptionPane.showMessageDialog(null, "Cabecera reguistrada");
+                    JOptionPane.showMessageDialog(null, "¡¡ VENTA REGUISTRADA !!");
+                     
+                    //generar la factura de venta
+                    VentasPDF pdf = new VentasPDF();
+                    pdf.DatosdelCliente(idCliente);
+                    pdf.GenerarFacturaPDF();
+                    
                     //guardar detalle
-
                     for (DetalleVenta elemento : listaProducto) {
                         detalleventa.setIdDetealleventa(0);
                         detalleventa.setIdCabeceraventa(0);
@@ -541,7 +549,7 @@ public class FACTURA_01 extends javax.swing.JInternalFrame {
                     listaProducto.clear();
                     ListaTabla_Producto();
                 } else {
-                    JOptionPane.showMessageDialog(null, "Error al guardar cabecera de venta");
+                    JOptionPane.showMessageDialog(null, "Error al guardar cabecera de venta [] ");
 
                 }
 
@@ -577,13 +585,13 @@ public class FACTURA_01 extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JScrollPane jScrollPane1;
+    public static javax.swing.JScrollPane jScrollPane1;
     public static javax.swing.JTable tbl_Productos;
     private javax.swing.JTextField txtCantidad;
     private javax.swing.JTextField txtCliente_Buscar;
     private javax.swing.JTextField txt_Descuento;
     private javax.swing.JTextField txt_Subtotal;
-    private javax.swing.JTextField txt_TotalPagar;
+    public static javax.swing.JTextField txt_TotalPagar;
     private javax.swing.JTextField txt_cambio;
     private javax.swing.JTextField txt_efectivo;
     private javax.swing.JTextField txt_igv;
@@ -607,7 +615,7 @@ public class FACTURA_01 extends javax.swing.JInternalFrame {
             }
             cn.close();
         } catch (SQLException e) {
-            System.out.println("Error al cargar Cliente: " + e);
+            System.out.println("Error al cargar Cliente: [1]" + e);
         }
 
     }
@@ -729,7 +737,7 @@ public class FACTURA_01 extends javax.swing.JInternalFrame {
     private void ObtenerIDCliente() {
         try {
 
-            String sql = "select * tb_cliente where concat (nombre, ' ', apellido) = '" + this.cboCliente.getSelectedItem() + "'";
+            String sql = "select * from tb_cliente where concat (nombre, ' ', apellido) = '" + this.cboCliente.getSelectedItem() + "'";
             Connection cn = Conexion.conexcion.conectar();
             Statement st;
             st = cn.createStatement();
@@ -739,7 +747,7 @@ public class FACTURA_01 extends javax.swing.JInternalFrame {
             }
 
         } catch (SQLException e) {
-            System.out.println("Error al obtener id del cliente, " + e);
+            System.out.println("Error al obtener id del cliente [2] " + e);
         }
     }
 
@@ -776,7 +784,6 @@ public class FACTURA_01 extends javax.swing.JInternalFrame {
 
         }
     }
-
 }
 
 

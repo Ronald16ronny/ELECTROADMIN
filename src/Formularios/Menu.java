@@ -149,6 +149,11 @@ public class Menu extends javax.swing.JFrame {
         MnIGesProducto.setFont(new java.awt.Font("Arial Narrow", 0, 14)); // NOI18N
         MnIGesProducto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/GESTIONAR PRODUCTO.png"))); // NOI18N
         MnIGesProducto.setText("Gestionar Producto");
+        MnIGesProducto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MnIGesProductoActionPerformed(evt);
+            }
+        });
         MnProducto.add(MnIGesProducto);
 
         MnIActualizarStock.setFont(new java.awt.Font("Arial Narrow", 0, 14)); // NOI18N
@@ -396,6 +401,10 @@ public class Menu extends javax.swing.JFrame {
     private void MnIBoletaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnIBoletaActionPerformed
 
     }//GEN-LAST:event_MnIBoletaActionPerformed
+
+    private void MnIGesProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnIGesProductoActionPerformed
+        
+    }//GEN-LAST:event_MnIGesProductoActionPerformed
 
       
    private void MnINuevoProductoActionPerformed(java.awt.event.ActionEvent evt) {                                                

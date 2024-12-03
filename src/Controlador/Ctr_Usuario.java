@@ -10,8 +10,6 @@ import java.sql.ResultSet;
 import javax.swing.JOptionPane;
 
 public class Ctr_Usuario {
-    
-    
 
     //metodo para iniciar sesion
     public boolean loginUser(Usuario objeto) {
@@ -92,10 +90,11 @@ public class Ctr_Usuario {
         }
         return respuesta;
     }
-/**
+
+    /**
      ************************************
      * METODO PARA ACTUALIZAR UN USUARIO ***********************************
-    *
+     *
      */
     public boolean actualizar(Usuario obj, int idUsuario) {
 
@@ -104,19 +103,19 @@ public class Ctr_Usuario {
         try {
 
             PreparedStatement consulta = cn.prepareStatement("update tb_usuario set nombre=?, apellido=?, usuario=?, password=?, telefono=?, estado=? where idUsuario = '" + idUsuario + "'");
-            consulta.setString(2, obj.getNombre());
-            consulta.setString(3, obj.getApellido());
-            consulta.setString(4, obj.getUsuario());
-            consulta.setString(5, obj.getPassword());
-            consulta.setString(6, obj.getTelefono());
-            consulta.setInt(7, obj.getEstado());
+            consulta.setString(1, obj.getNombre());
+            consulta.setString(2, obj.getApellido());
+            consulta.setString(3, obj.getUsuario());
+            consulta.setString(4, obj.getPassword());
+            consulta.setString(5, obj.getTelefono());
+            consulta.setInt(6, obj.getEstado());
 
             if (consulta.executeUpdate() > 0) {
                 respuesta = true;
             }
             cn.close();
         } catch (SQLException e) {
-            System.out.println("Error al actuaizar usuario" + e);
+            System.out.println("Error al actuaizar usuario: " + e);
         }
         return respuesta;
     }
@@ -124,7 +123,7 @@ public class Ctr_Usuario {
     /**
      ************************************
      * METODO PARA ELIMINAR USUARIO ***********************************
-    *
+     *
      */
     public boolean eliminar(int idUsuario) {
 

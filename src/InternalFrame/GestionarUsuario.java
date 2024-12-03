@@ -30,7 +30,7 @@ public class GestionarUsuario extends javax.swing.JInternalFrame {
     private static JTable tlUsuario;
 
     private int idUsuario;
-    
+
     public GestionarUsuario() {
         initComponents();
         this.setSize(new Dimension(900, 500));
@@ -75,7 +75,7 @@ public class GestionarUsuario extends javax.swing.JInternalFrame {
 
         jLabel1.setFont(new java.awt.Font("Arial Narrow", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Arministrar Clientes");
+        jLabel1.setText("Arministrar Usuarios");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 0, -1, -1));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
@@ -207,17 +207,17 @@ public class GestionarUsuario extends javax.swing.JInternalFrame {
 
     private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
 
-        Usuario usuario = new Usuario();
-        Ctr_Usuario controlUsuario = new Ctr_Usuario();
-        
         if (idUsuario == 0) {
             JOptionPane.showConfirmDialog(null, "Seleccione usuario");
         } else {
-            if (txtnombre.getText().isEmpty()|| txtapellido.getText().isEmpty() || txtusuario.getText().isEmpty() 
-                || txtpassword.getText().isEmpty() || txttelefono.getText().isEmpty() ) {
-                
-            JOptionPane.showMessageDialog(null, "Completa todos los campos");
+            if (txtnombre.getText().isEmpty() || txtapellido.getText().isEmpty() || txtusuario.getText().isEmpty()
+                    || txtpassword.getText().isEmpty() || txttelefono.getText().isEmpty()) {
+
+                JOptionPane.showMessageDialog(null, "Completa todos los campos");
             } else {
+
+                Usuario usuario = new Usuario();
+                Ctr_Usuario controlUsuario = new Ctr_Usuario();
                 usuario.setNombre(txtnombre.getText().trim());
                 usuario.setApellido(txtapellido.getText().trim());
                 usuario.setUsuario(txtusuario.getText().trim());
@@ -226,36 +226,36 @@ public class GestionarUsuario extends javax.swing.JInternalFrame {
                 usuario.setEstado(1);
                 if (controlUsuario.actualizar(usuario, idUsuario)) {
                     JOptionPane.showMessageDialog(null, "Actualizacion EXITOSA");
-                    
+
                     this.Limpiar();
                     this.CargarTablaUsuarios();
                     idUsuario = 0;
-                    
+
                 } else {
                     JOptionPane.showMessageDialog(null, "ERROR al actualizar usario");
                 }
             }
         }
-        
+
     }//GEN-LAST:event_btnActualizarActionPerformed
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
-          Ctr_Usuario controlUsuario = new Ctr_Usuario();
-          if(idUsuario == 0){
-              JOptionPane.showMessageDialog(null, "¡Seleccione un usuario!");
-          }else{
-              if(!controlUsuario.eliminar(idUsuario)){
-                  JOptionPane.showMessageDialog(null, "¡Usuario eliminado!");
-                  this.CargarTablaUsuarios();
-                  this.Limpiar();
-                  idUsuario = 0;
-                  
-              }else{
-                  JOptionPane.showMessageDialog(null, "¡Error al Eliminar usuario!");
-                  this.Limpiar();
-              }
-          }
-          
+        Ctr_Usuario controlUsuario = new Ctr_Usuario();
+        if (idUsuario == 0) {
+            JOptionPane.showMessageDialog(null, "¡Seleccione un usuario!");
+        } else {
+            if (!controlUsuario.eliminar(idUsuario)) {
+                JOptionPane.showMessageDialog(null, "¡Usuario eliminado!");
+                this.CargarTablaUsuarios();
+                this.Limpiar();
+                idUsuario = 0;
+
+            } else {
+                JOptionPane.showMessageDialog(null, "¡Error al Eliminar usuario!");
+                this.Limpiar();
+            }
+        }
+
     }//GEN-LAST:event_btnEliminarActionPerformed
 
     private void txtpasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtpasswordActionPerformed
@@ -378,7 +378,7 @@ public class GestionarUsuario extends javax.swing.JInternalFrame {
         txtusuario.setText("");
         txtpassword.setText("");
         txttelefono.setText("");
-        
+
     }
 
 }

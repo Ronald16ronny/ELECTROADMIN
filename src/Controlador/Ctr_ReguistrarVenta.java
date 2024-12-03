@@ -30,7 +30,7 @@ public class Ctr_ReguistrarVenta {
         try {
 
             PreparedStatement consulta = cn.prepareStatement("insert into tb_cabecera_venta values (?, ?, ?, ?, ?)",
-                    Statement.NO_GENERATED_KEYS);
+                    Statement.RETURN_GENERATED_KEYS);
             consulta.setInt(1, 0);//id
             consulta.setInt(2, obj.getIdCliente());
             consulta.setDouble(3, obj.getValorPagar());
@@ -49,7 +49,7 @@ public class Ctr_ReguistrarVenta {
             
             cn.close();
         } catch (SQLException e) {
-            System.out.println("Error al guardar cabecera de venta" + e);
+            System.out.println("Error al guardar cabecera de venta: -- " + e);
         }
         return respuesta;
     }
@@ -83,7 +83,7 @@ public class Ctr_ReguistrarVenta {
             }
             cn.close();
         } catch (SQLException e) {
-            System.out.println("Error al guardar cabecera de venta" + e);
+            System.out.println("Error al guardar cabecera de venta: -- " + e);
         }
         return respuesta;
     }

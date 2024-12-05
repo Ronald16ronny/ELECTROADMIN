@@ -5,10 +5,12 @@
 package Formularios;
 
 
+import InternalFrame.ActualizarStock;
 import InternalFrame.FACTURA_01;
 
 import InternalFrame.GestionarCategorias;
 import InternalFrame.GestionarCliente;
+import InternalFrame.GestionarProducto;
 import InternalFrame.GestionarUsuario;
 import InternalFrame.NuevaCategoria;
 import InternalFrame.NuevoCliente;
@@ -159,6 +161,11 @@ public class Menu extends javax.swing.JFrame {
         MnIActualizarStock.setFont(new java.awt.Font("Arial Narrow", 0, 14)); // NOI18N
         MnIActualizarStock.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/ACTUALIZAR STOCK.png"))); // NOI18N
         MnIActualizarStock.setText("Actualizar Stock");
+        MnIActualizarStock.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MnIActualizarStockActionPerformed(evt);
+            }
+        });
         MnProducto.add(MnIActualizarStock);
 
         mbMenu.add(MnProducto);
@@ -403,8 +410,16 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_MnIBoletaActionPerformed
 
     private void MnIGesProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnIGesProductoActionPerformed
-        
+        GestionarProducto  gestionarpro = new GestionarProducto();
+        dpMenu.add(gestionarpro);
+        gestionarpro.setVisible(true);
     }//GEN-LAST:event_MnIGesProductoActionPerformed
+
+    private void MnIActualizarStockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnIActualizarStockActionPerformed
+        ActualizarStock  stock = new ActualizarStock();
+        dpMenu.add(stock);
+        stock.setVisible(true);
+    }//GEN-LAST:event_MnIActualizarStockActionPerformed
 
       
    private void MnINuevoProductoActionPerformed(java.awt.event.ActionEvent evt) {                                                

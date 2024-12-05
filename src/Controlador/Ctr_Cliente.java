@@ -11,7 +11,8 @@ public class Ctr_Cliente {
 
     /**
      *********************************************
-     * METODO PARA GUARDAR CLIENTE ******************************************
+     * METODO PARA GUARDAR CLIENTE 
+     ******************************************
      *
      */
     public boolean guardar(Cliente obj) {
@@ -67,7 +68,8 @@ public class Ctr_Cliente {
 
     /**
      ************************************
-     * METODO PARA ACTUALIZAR UN CLIENTE ***********************************
+     * METODO PARA ACTUALIZAR UN CLIENTE 
+     ***********************************
     *
      */
     public boolean actualizar(Cliente obj, int idCliente) {
@@ -96,7 +98,8 @@ public class Ctr_Cliente {
 
     /**
      ************************************
-     * METODO PARA ELIMINAR CLIENTE ***********************************
+     * METODO PARA ELIMINAR CLIENTE 
+     ***********************************
     *
      */
     public boolean eliminar(int idCliente) {

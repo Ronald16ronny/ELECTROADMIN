@@ -1,6 +1,6 @@
 package InternalFrame;
 
-import Controlador.Crt_Producto;
+import Controlador.Crt_Producto_po;
 import Modelo.Producto;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -146,20 +146,21 @@ public class NuevoProducto extends javax.swing.JInternalFrame {
 
     private void bnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bnGuardarActionPerformed
         Producto producto = new Producto();
-        Crt_Producto controlProducto = new Crt_Producto();
+        Crt_Producto_po controlProducto = new Crt_Producto_po();
         String iva = "";
         String categoria = "";
         iva = CmbxIVA.getSelectedItem().toString().trim();
         categoria = CmbCategoria.getSelectedItem().toString().trim();
 
-        if (txtNombre.getText().equals("") || txtCantidad.getText().equals("") || txtPrecio.getText().equals("")) {
+        if (txtNombre.getText().equals("") || txtCantidad.getText().equals("") || txtPrecio.getText().equals("") ||  txtDescripcion.getText().equals("") ) {
             JOptionPane.showMessageDialog(null, "Complete todos los campos");
             txtNombre.setBackground(Color.red);
             txtCantidad.setBackground(Color.red);
             txtPrecio.setBackground(Color.red);
+            txtDescripcion.setBackground(Color.red);
 
         } else {
-            if (!controlProducto.existeProducto(txtNombre.getText().trim())) {
+            if (!controlProducto.existeProducto(txtDescripcion.getText().trim())) {
 
                 if (iva.equalsIgnoreCase("Seleccione IGV:")) {
                     JOptionPane.showMessageDialog(null, "Seleccione IGV:");
@@ -209,14 +210,14 @@ public class NuevoProducto extends javax.swing.JInternalFrame {
                             producto.setIdCategoria(obtenerIdCategoriaCombo);
                             producto.setEstado(1);
                             if (controlProducto.Guardar(producto)) {
-                                JOptionPane.showMessageDialog(null, "Registro guardar ");
+                                JOptionPane.showMessageDialog(null, "Producto Guardado");
                                 txtNombre.setBackground(Color.green);
                                 txtCantidad.setBackground(Color.green);
                                 txtPrecio.setBackground(Color.green);
                                 txtDescripcion.setBackground(Color.green);
 
                                 this.CargarComboCategorias();
-                                this.CmbxIVA.setSelectedItem("Seleccione IGV: ");
+                                this.CmbxIVA.setSelectedItem("Seleccione IGV:");
                                 this.Limpiar();
 
                             } else {
@@ -233,6 +234,10 @@ public class NuevoProducto extends javax.swing.JInternalFrame {
 
             } else {
                 JOptionPane.showMessageDialog(null, "El producto ya existe");
+                txtNombre.setBackground(Color.white);
+                txtPrecio.setBackground(Color.white);
+                txtDescripcion.setBackground(Color.white);
+                txtCantidad.setBackground(Color.white);
             }
 
         }
